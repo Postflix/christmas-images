@@ -1,43 +1,1255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christmas Images</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #fafafa;
-      margin: 0;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-    }
-    img:hover {
-      transform: scale(1.04);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Christmas Postflix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================ */
+        /* RESET E CONFIGURAÇÕES BÁSICAS */
+        /* ============================================ */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-color-1); 
+            color: #f8f9fa; 
+            overflow-x: hidden; 
+        }
+
+        :root {
+            --color-primary: #c5221f;
+            --color-secondary: #ffd700;
+            --color-accent: #166534;
+            --bg-color-1: #0f1419;
+            --bg-color-2: #1a0e0e;
+            --bg-color-3: #0e1a0e;
+        }
+
+        /* ============================================ */
+        /* PROTEÇÃO DE IMAGENS */
+        /* ============================================ */
+        img { 
+            pointer-events: none; 
+            user-select: none; 
+            -webkit-user-drag: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .gallery-item { 
+            user-select: none; 
+        }
+
+        /* ============================================ */
+        /* ALERTA DE PROTEÇÃO */
+        /* ============================================ */
+        .protection-alert { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 99999; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        
+        .protection-alert.active { 
+            display: flex; 
+        }
+        
+        .protection-alert-content { 
+            background: linear-gradient(135deg, var(--bg-color-2) 0%, var(--bg-color-3) 100%); 
+            padding: 3rem; 
+            border-radius: 20px; 
+            border: 3px solid var(--color-primary); 
+            max-width: 600px; 
+            text-align: center; 
+            box-shadow: 0 0 50px rgba(197,34,31,0.8); 
+            animation: shake 0.5s; 
+        }
+        
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); } 
+            20%, 40%, 60%, 80% { transform: translateX(10px); } 
+        }
+        
+        .protection-alert-icon { 
+            font-size: 5rem; 
+            margin-bottom: 1rem; 
+        }
+        
+        .protection-alert h2 { 
+            color: var(--color-primary); 
+            font-size: 2rem; 
+            margin-bottom: 1rem; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+        }
+        
+        .protection-alert p { 
+            color: #fff; 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            margin-bottom: 1rem; 
+        }
+        
+        .protection-alert .tracking-info { 
+            background: rgba(0,0,0,0.5); 
+            padding: 1rem; 
+            border-radius: 10px; 
+            margin: 1.5rem 0; 
+            font-family: 'Courier New', monospace; 
+            color: var(--color-secondary); 
+            font-size: 0.95rem; 
+        }
+        
+        .protection-alert button { 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            color: #fff; 
+            border: none; 
+            padding: 1rem 3rem; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            margin-top: 1rem; 
+            transition: all 0.3s ease; 
+        }
+        
+        .protection-alert button:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 10px 30px rgba(255,215,0,0.5); 
+        }
+
+        /* ============================================ */
+        /* EFEITO DE NEVE */
+        /* ============================================ */
+        .snowflakes { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: 9999; 
+            overflow: hidden; 
+        }
+        
+        .snowflake { 
+            position: absolute; 
+            top: -20px; 
+            color: #fff; 
+            text-shadow: 0 0 5px rgba(255,255,255,0.8); 
+            user-select: none; 
+            animation: fall linear infinite; 
+        }
+        
+        @keyframes fall { 
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; } 
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; } 
+        }
+        
+        .snowflake:nth-child(1) { left: 5%; font-size: 1.2em; animation-duration: 8s; }
+        .snowflake:nth-child(2) { left: 12%; font-size: 1.5em; animation-duration: 11s; animation-delay: 1s; }
+        .snowflake:nth-child(3) { left: 18%; font-size: 0.9em; animation-duration: 9s; animation-delay: 2s; }
+        .snowflake:nth-child(4) { left: 25%; font-size: 1.3em; animation-duration: 10s; animation-delay: 0.5s; }
+        .snowflake:nth-child(5) { left: 32%; font-size: 1em; animation-duration: 12s; animation-delay: 1.5s; }
+        .snowflake:nth-child(6) { left: 40%; font-size: 1.4em; animation-duration: 9.5s; animation-delay: 0.8s; }
+        .snowflake:nth-child(7) { left: 48%; font-size: 1.1em; animation-duration: 10.5s; animation-delay: 2s; }
+        .snowflake:nth-child(8) { left: 55%; font-size: 1.6em; animation-duration: 11.5s; animation-delay: 1.2s; }
+        .snowflake:nth-child(9) { left: 63%; font-size: 0.95em; animation-duration: 8.5s; animation-delay: 0.3s; }
+        .snowflake:nth-child(10) { left: 70%; font-size: 1.35em; animation-duration: 12.5s; animation-delay: 1.8s; }
+
+        /* ============================================ */
+        /* SEÇÃO HERO */
+        /* ============================================ */
+        .hero { 
+            position: relative; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 2rem; 
+            background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 50%, var(--bg-color-3) 100%); 
+            z-index: 2; 
+            overflow: hidden; 
+        }
+        
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%; 
+            background: radial-gradient(circle at 20% 30%, rgba(197,34,31,0.15) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 70%, rgba(22,101,52,0.15) 0%, transparent 50%); 
+            animation: glow 15s ease-in-out infinite; 
+        }
+        
+        @keyframes glow { 
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.6; } 
+            50% { transform: rotate(180deg) scale(1.1); opacity: 0.9; } 
+        }
+        
+        .hero-content { 
+            max-width: 900px; 
+            z-index: 10; 
+            position: relative; 
+        }
+        
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 8vw, 5.5rem); 
+            font-weight: 900; 
+            margin-bottom: 1rem; 
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 25%, var(--color-accent) 50%, var(--color-secondary) 75%, var(--color-primary) 100%); 
+            background-size: 300% 100%; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+            line-height: 1.2; 
+            animation: shimmer 8s linear infinite; 
+        }
+        
+        @keyframes shimmer { 
+            0% { background-position: 0% 50%; } 
+            100% { background-position: 300% 50%; } 
+        }
+        
+        .hero-subtitle { 
+            font-size: clamp(1.1rem, 3vw, 1.6rem); 
+            color: var(--color-secondary); 
+            font-weight: 700; 
+            margin-bottom: 2rem; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            text-shadow: 0 0 20px rgba(255,215,0,0.5); 
+        }
+        
+        .hero-description { 
+            font-size: clamp(1rem, 2vw, 1.25rem); 
+            color: #e0e0e0; 
+            margin-bottom: 3rem; 
+            line-height: 1.8; 
+        }
+
+        /* ============================================ */
+        /* SEÇÕES GERAIS */
+        /* ============================================ */
+        .section { 
+            padding: 1.5rem 2rem; 
+            position: relative; 
+            z-index: 2; 
+        }
+        
+        .section-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            text-align: center; 
+            margin-bottom: 1rem; 
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 50%, var(--color-accent) 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        
+        .section-subtitle { 
+            text-align: center; 
+            font-size: 1.2rem; 
+            color: #b0b0b0; 
+            margin-bottom: 4rem; 
+        }
+
+        /* ============================================ */
+        /* GRADE DE RECURSOS */
+        /* ============================================ */
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .feature-card { 
+            background: rgba(26,26,26,0.8); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            border: 2px solid rgba(255,215,0,0.2); 
+            transition: all 0.4s ease; 
+            text-align: center; 
+        }
+        
+        .feature-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--color-secondary); 
+            box-shadow: 0 20px 40px rgba(255,215,0,0.3); 
+        }
+        
+        .feature-icon { 
+            font-size: 4rem; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .feature-title { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.5rem; 
+            color: var(--color-secondary); 
+            margin-bottom: 1rem; 
+        }
+        
+        .feature-description { 
+            color: #d0d0d0; 
+            line-height: 1.8; 
+        }
+
+        /* ============================================ */
+        /* GALERIA */
+        /* ============================================ */
+        .gallery { 
+            background: linear-gradient(135deg, #0a1e0a 0%, var(--bg-color-2) 50%, #0a1e0a 100%); 
+        }
+        
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        
+        .gallery-item { 
+            position: relative; 
+            aspect-ratio: 4/5; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: transform 0.3s ease; 
+        }
+        
+        .gallery-item:hover { 
+            transform: scale(1.05); 
+        }
+        
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        
+        .gallery-overlay { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
+            padding: 1.5rem; 
+            transform: translateY(100%); 
+            transition: transform 0.3s ease; 
+        }
+        
+        .gallery-item:hover .gallery-overlay { 
+            transform: translateY(0); 
+        }
+        
+        .gallery-caption { 
+            color: var(--color-secondary); 
+            font-weight: 700; 
+            font-size: 1rem; 
+        }
+
+        /* ============================================ */
+        /* LIGHTBOX */
+        /* ============================================ */
+        .lightbox { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 10000; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        
+        .lightbox.active { 
+            display: flex; 
+        }
+        
+        .lightbox-content { 
+            position: relative; 
+            max-width: 90%; 
+            max-height: 90%; 
+        }
+        
+        .lightbox-close { 
+            position: absolute; 
+            top: -50px; 
+            right: 0; 
+            background: var(--color-primary); 
+            color: white; 
+            border: none; 
+            font-size: 2rem; 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        
+        .lightbox-close:hover { 
+            background: var(--color-secondary); 
+            transform: rotate(90deg); 
+        }
+        
+        .lightbox-image { 
+            max-width: 100%; 
+            max-height: 85vh; 
+            border-radius: 10px; 
+            box-shadow: 0 0 50px rgba(255,215,0,0.5); 
+        }
+
+        /* ============================================ */
+        /* PREÇOS */
+        /* ============================================ */
+        .pricing { 
+            background: linear-gradient(135deg, var(--bg-color-2) 0%, var(--bg-color-1) 50%, var(--bg-color-3) 100%); 
+        }
+        
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 3rem; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
+        
+        .pricing-card { 
+            background: rgba(26,26,26,0.9); 
+            padding: 3rem; 
+            border-radius: 25px; 
+            border: 3px solid transparent; 
+            transition: all 0.4s ease; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        .pricing-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent)); 
+            opacity: 0; 
+            transition: opacity 0.4s ease; 
+            z-index: -1; 
+        }
+        
+        .pricing-card:hover { 
+            transform: translateY(-15px); 
+            border-color: var(--color-secondary); 
+            box-shadow: 0 25px 50px rgba(255,215,0,0.4); 
+        }
+        
+        .pricing-card:hover::before { 
+            opacity: 0.1; 
+        }
+        
+        .pricing-badge { 
+            display: inline-block; 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            color: white; 
+            padding: 0.5rem 1.5rem; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .pricing-title { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 2rem; 
+            color: var(--color-secondary); 
+            margin-bottom: 1rem; 
+        }
+        
+        .pricing-price { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: white; 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .pricing-price::before { 
+            content: '$'; 
+            font-size: 2rem; 
+            vertical-align: super; 
+        }
+        
+        .pricing-period { 
+            color: #b0b0b0; 
+            margin-bottom: 2rem; 
+            font-size: 0.95rem; 
+        }
+        
+        .pricing-features { 
+            list-style: none; 
+            margin-bottom: 2.5rem; 
+        }
+        
+        .pricing-features li { 
+            padding: 0.8rem 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            color: #e0e0e0; 
+        }
+        
+        .pricing-features li::before { 
+            content: '✓'; 
+            color: var(--color-accent); 
+            font-weight: bold; 
+            margin-right: 1rem; 
+            font-size: 1.2rem; 
+        }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 1.2rem 3rem; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            cursor: pointer; 
+        }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            color: white; 
+        }
+        
+        .btn-primary:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 15px 35px rgba(255,215,0,0.5); 
+        }
+
+        /* ============================================ */
+        /* RODAPÉ */
+        /* ============================================ */
+        .footer { 
+            background: #0a0a0a; 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            border-top: 2px solid rgba(255,215,0,0.2); 
+        }
+        
+        .footer p { 
+            color: #b0b0b0; 
+            margin-bottom: 1rem; 
+        }
+        
+        .footer-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            margin-top: 1.5rem; 
+        }
+        
+        .footer-links a { 
+            color: var(--color-secondary); 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+        }
+        
+        .footer-links a:hover { 
+            color: white; 
+        }
+
+        /* ============================================ */
+        /* RESPONSIVIDADE */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        /* ============================================ */
+        /* MODAIS PARA TERMS E PRIVACY */
+        /* ============================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10001;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(26,26,26,0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--color-secondary);
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            background: var(--color-secondary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-content h1 {
+            color: var(--color-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .modal-content .update-date {
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-content h2 {
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content p {
+            margin-bottom: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+        
+        .modal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content li {
+            margin-bottom: 0.5rem;
+            color: #d0d0d0;
+        }
+        
+        .modal-content strong {
+            color: var(--color-secondary);
+        }
+    </style>
 </head>
 <body>
+    <!-- Alerta de Proteção -->
+    <div class="protection-alert" id="protectionAlert">
+        <div class="protection-alert-content">
+            <div class="protection-alert-icon">⚠️</div>
+            <h2>Protected Content!</h2>
+            <p>This content is protected by international copyright laws.</p>
+            <p>Copy, download, or screenshot attempts are monitored and recorded.</p>
+            <div class="tracking-info">
+                <strong>Your access has been logged:</strong><br>
+                IP: <span id="fakeIP">XXX.XXX.XXX.XXX</span><br>
+                Tracking ID: <span id="fakeTrackingID">XXXXXXXXXXXX</span><br>
+                Date/Time: <span id="timestamp"></span>
+            </div>
+            <p style="font-size: 0.95rem;">Please respect the creator's copyright.</p>
+            <button onclick="closeProtectionAlert()">I Understand</button>
+        </div>
+    </div>
 
-  <!-- LISTA AUTOMÁTICA DAS IMAGENS -->
-  <script>
-    const total = 120; // número de imagens
-    const container = document.body;
-    for (let i = 1; i <= total; i++) {
-      const img = document.createElement("img");
-      img.src = `./christmas-${String(i).padStart(3, '0')}.png`;
-      img.alt = `Christmas ${i}`;
-      container.appendChild(img);
-    }
-  </script>
+    <!-- Flocos de Neve -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+    </div>
 
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle"></h1>
+            <p class="hero-subtitle" id="heroSubtitle"></p>
+            <p class="hero-description" id="heroDescription"></p>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section class="section">
+        <h2 class="section-title">What's Included</h2>
+        <p class="section-subtitle">Everything you need for the perfect holiday greeting</p>
+        <div class="features-grid" id="featuresGrid"></div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="gallery section">
+        <h2 class="section-title">Image Gallery</h2>
+        <p class="section-subtitle" id="gallerySubtitle"></p>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
+
+    <!-- Preços -->
+    <section class="pricing section">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-subtitle" id="pricingSubtitle"></p>
+        <div class="pricing-grid" id="pricingGrid"></div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p id="footerText"></p>
+        <div class="footer-links">
+            <a href="#" onclick="openModal('termsModal'); return false;">Terms</a>
+            <a href="#" onclick="openModal('privacyModal'); return false;">Privacy</a>
+        </div>
+        <p style="margin-top:2rem;font-size:0.9rem;" id="footerNote"></p>
+    </footer>
+
+    <!-- Modal Terms -->
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('termsModal')">×</button>
+            <h1>Terms of Service</h1>
+            <p class="update-date">Last Updated: November 2025</p>
+            
+            <h2>1. Agreement to Terms</h2>
+            <p>By accessing and using Holiday Postflix services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this service.</p>
+            
+            <h2>2. License to Use</h2>
+            <p>Upon purchase, you are granted a <strong>non-exclusive, non-transferable license</strong> to use the holiday images provided. This license includes:</p>
+            <ul>
+                <li>Personal use for greeting cards, social media posts, and personal communications</li>
+                <li>Commercial use for business marketing, client communications, and promotional materials</li>
+                <li>The right to download and save images for the duration specified in your purchase</li>
+            </ul>
+            
+            <h2>3. Restrictions</h2>
+            <p>You may <strong>NOT</strong>:</p>
+            <ul>
+                <li>Resell, redistribute, or share the images with third parties</li>
+                <li>Claim ownership or authorship of the images</li>
+                <li>Use the images in any way that violates copyright laws</li>
+                <li>Create derivative works intended for resale without explicit permission</li>
+                <li>Bypass or attempt to bypass any security measures protecting the content</li>
+            </ul>
+            
+            <h2>4. Payment and Refunds</h2>
+            <p>All purchases are <strong>one-time payments</strong> with no recurring charges. Due to the digital nature of the product, <strong>refunds are not available</strong> once access has been granted. Please review all information carefully before purchasing.</p>
+            
+            <h2>5. Access Period</h2>
+            <p>Your access to the images is valid through the date specified in your purchase plan. After this period, access may be revoked unless otherwise stated.</p>
+            
+            <h2>6. Intellectual Property</h2>
+            <p>All images are AI-generated and owned by Holiday Postflix. The images are protected by international copyright laws. You acquire a license to use the images, but not ownership of the intellectual property.</p>
+            
+            <h2>7. Disclaimer of Warranties</h2>
+            <p>The service and images are provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the service will be uninterrupted, secure, or error-free.</p>
+            
+            <h2>8. Limitation of Liability</h2>
+            <p>Holiday Postflix shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service.</p>
+            
+            <h2>9. Changes to Terms</h2>
+            <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Your continued use of the service after changes constitutes acceptance of the modified terms.</p>
+            
+            <h2>10. Contact Information</h2>
+            <p>For questions about these Terms of Service, please contact us at: <strong>postflix@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- Modal Privacy -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('privacyModal')">×</button>
+            <h1>Privacy Policy</h1>
+            <p class="update-date">Last Updated: November 2025</p>
+            
+            <h2>1. Introduction</h2>
+            <p>At Holiday Postflix, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services.</p>
+            
+            <h2>2. Information We Collect</h2>
+            <p>We may collect the following types of information:</p>
+            <ul>
+                <li><strong>Payment Information:</strong> Processed securely through our payment provider (Gumroad). We do not store your credit card details.</li>
+                <li><strong>Email Address:</strong> Used for sending purchase confirmations and access links.</li>
+                <li><strong>Usage Data:</strong> Basic analytics about how you interact with our website (page views, time spent, etc.).</li>
+                <li><strong>IP Address:</strong> Collected for security purposes and fraud prevention.</li>
+            </ul>
+            
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the collected information for the following purposes:</p>
+            <ul>
+                <li>To process your purchases and provide access to images</li>
+                <li>To send you important updates about your purchase</li>
+                <li>To improve our services and user experience</li>
+                <li>To prevent fraud and ensure security</li>
+                <li>To comply with legal obligations</li>
+            </ul>
+            
+            <h2>4. Information Sharing</h2>
+            <p>We <strong>DO NOT sell, trade, or rent</strong> your personal information to third parties. We may share information only in the following circumstances:</p>
+            <ul>
+                <li><strong>Payment Processing:</strong> With Gumroad for payment processing</li>
+                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
+                <li><strong>Service Providers:</strong> With trusted partners who help operate our service (all bound by confidentiality agreements)</li>
+            </ul>
+            
+            <h2>5. Data Security</h2>
+            <p>We implement industry-standard security measures to protect your personal information, including:</p>
+            <ul>
+                <li>Secure SSL/TLS encryption for all data transmission</li>
+                <li>Regular security audits and updates</li>
+                <li>Restricted access to personal data</li>
+                <li>Secure payment processing through trusted providers</li>
+            </ul>
+            
+            <h2>6. Cookies and Tracking</h2>
+            <p>We may use cookies and similar tracking technologies to enhance your experience. You can control cookie settings through your browser preferences.</p>
+            
+            <h2>7. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access the personal information we hold about you</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request deletion of your personal data (subject to legal requirements)</li>
+                <li>Opt-out of marketing communications</li>
+                <li>Withdraw consent where processing is based on consent</li>
+            </ul>
+            
+            <h2>8. Data Retention</h2>
+            <p>We retain your personal information only for as long as necessary to provide our services and comply with legal obligations. Purchase records may be kept for accounting and tax purposes.</p>
+            
+            <h2>9. Children's Privacy</h2>
+            <p>Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children.</p>
+            
+            <h2>10. International Data Transfers</h2>
+            <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place for such transfers.</p>
+            
+            <h2>11. Changes to Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page with an updated date.</p>
+            
+            <h2>12. Contact Us</h2>
+            <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at: <strong>postflix@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURAÇÃO - EDITE AQUI!
+        // ============================================
+        
+        const CONFIG = {
+            theme: {
+                holiday: "Christmas",
+                emoji: "🎄",
+                year: "2025",
+                validUntil: "January 31, 2026"
+            },
+
+            colors: {
+                primary: "#c5221f",
+                secondary: "#ffd700",
+                accent: "#166534",
+                background1: "#0f1419",
+                background2: "#1a0e0e",
+                background3: "#0e1a0e"
+            },
+
+            titles: {
+                main: "Christmas Postflix",
+                subtitle: "120 Premium Holiday Images",
+                description: "Create stunning personalized Christmas greetings in seconds. Choose from 120 premium AI-generated holiday images. Perfect for businesses, influencers, and anyone spreading holiday cheer!"
+            },
+
+            images: {
+                total: 120,
+                baseUrl: "https://postflix.github.io/christmas-images/",
+                prefix: "christmas-",
+                extension: ".png",
+                categories: [
+                    "Winter Landscape",
+                    "Holiday Treats",
+                    "Religious Scene",
+                    "Holiday Lights",
+                    "Festive Decor"
+                ]
+            },
+
+            features: [
+                {
+                    icon: "🖼️",
+                    title: "120 Premium Images",
+                    description: "Professionally designed Christmas images in various categories: winter landscapes, festive treats, religious scenes, and more."
+                },
+                {
+                    icon: "🌍",
+                    title: "High Quality",
+                    description: "All images are professionally crafted in high resolution, perfect for digital use and sharing on social media."
+                },
+                {
+                    icon: "⏰",
+                    title: "Valid Until Jan 31",
+                    description: "Full access through the entire holiday season and New Year 2026 celebrations."
+                },
+                {
+                    icon: "💎",
+                    title: "Commercial Use",
+                    description: "Use for personal or business purposes. Perfect for businesses, influencers, and professionals."
+                },
+                {
+                    icon: "📱",
+                    title: "Instant Download",
+                    description: "Get immediate access to all images after purchase. No waiting, start creating right away."
+                },
+                {
+                    icon: "🎨",
+                    title: "Multiple Categories",
+                    description: "Diverse collection covering winter scenes, treats, decorations, and traditional holiday imagery."
+                }
+            ],
+
+            pricing: {
+                sectionSubtitle: "One-time payment. No subscriptions.",
+                plans: [
+                    {
+                        badge: "🎁 EARLY BIRD",
+                        title: "Early Access",
+                        price: "9.90",
+                        period: "Available until November 30, 2025",
+                        features: [
+                            "120 Premium Holiday Images",
+                            "High-Resolution Downloads",
+                            "Multiple Categories",
+                            "Valid until January 31, 2026",
+                            "Commercial Use Allowed",
+                            "Instant Access"
+                        ],
+                        buyLink: "https://gumroad.com/your-product-link"
+                    },
+                    {
+                        badge: "⭐ STANDARD",
+                        title: "Standard Access",
+                        price: "14.90",
+                        period: "Available until December 22, 2025",
+                        features: [
+                            "120 Premium Holiday Images",
+                            "High-Resolution Downloads",
+                            "Multiple Categories",
+                            "Valid until January 31, 2026",
+                            "Commercial Use Allowed",
+                            "Instant Access"
+                        ],
+                        buyLink: "https://gumroad.com/your-product-link"
+                    }
+                ]
+            },
+
+            footer: {
+                text: "Christmas Postflix © 2025 - Create Beautiful Holiday Greetings",
+                note: "All images are AI-generated and optimized for digital use. Valid through January 31, 2026.",
+                contactEmail: "postflix@gmail.com"
+            }
+        };
+
+        // ============================================
+        // FUNÇÕES DE PROTEÇÃO
+        // ============================================
+        
+        function generateFakeIP() {
+            return Array.from({length: 4}, () => Math.floor(Math.random() * 256)).join('.');
+        }
+
+        function generateFakeTrackingID() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            return Array.from({length: 12}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        }
+
+        function showProtectionAlert() {
+            document.getElementById('fakeIP').textContent = generateFakeIP();
+            document.getElementById('fakeTrackingID').textContent = generateFakeTrackingID();
+            document.getElementById('timestamp').textContent = new Date().toLocaleString('pt-BR');
+            document.getElementById('protectionAlert').classList.add('active');
+        }
+
+        function closeProtectionAlert() {
+            document.getElementById('protectionAlert').classList.remove('active');
+        }
+
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            showProtectionAlert();
+            return false;
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.keyCode == 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode == 73) ||
+                (e.ctrlKey && e.shiftKey && e.keyCode == 74) ||
+                (e.ctrlKey && e.keyCode == 85) ||
+                (e.ctrlKey && e.keyCode == 83) ||
+                (e.ctrlKey && e.keyCode == 80)) {
+                e.preventDefault();
+                showProtectionAlert();
+                return false;
+            }
+            
+            if ((e.ctrlKey || e.metaKey) && (e.keyCode == 67 || e.keyCode == 88)) {
+                const sel = window.getSelection();
+                if (sel.toString().length > 0) {
+                    e.preventDefault();
+                    showProtectionAlert();
+                    return false;
+                }
+            }
+        });
+
+        document.addEventListener('dragstart', e => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                showProtectionAlert();
+                return false;
+            }
+        });
+
+        document.addEventListener('keyup', e => {
+            if (e.key === 'PrintScreen') {
+                showProtectionAlert();
+            }
+        });
+
+        // ============================================
+        // APLICAR CORES DO TEMA
+        // ============================================
+        
+        function applyThemeColors() {
+            const root = document.documentElement;
+            root.style.setProperty('--color-primary', CONFIG.colors.primary);
+            root.style.setProperty('--color-secondary', CONFIG.colors.secondary);
+            root.style.setProperty('--color-accent', CONFIG.colors.accent);
+            root.style.setProperty('--bg-color-1', CONFIG.colors.background1);
+            root.style.setProperty('--bg-color-2', CONFIG.colors.background2);
+            root.style.setProperty('--bg-color-3', CONFIG.colors.background3);
+        }
+
+        // ============================================
+        // ATUALIZAR CONTEÚDO DA PÁGINA
+        // ============================================
+        
+        function updateHeroSection() {
+            document.getElementById('heroTitle').innerHTML = `${CONFIG.theme.emoji} ${CONFIG.titles.main}`;
+            document.getElementById('heroSubtitle').textContent = CONFIG.titles.subtitle;
+            document.getElementById('heroDescription').textContent = CONFIG.titles.description;
+            document.title = `${CONFIG.theme.emoji} ${CONFIG.titles.main}`;
+        }
+
+        function generateFeatures() {
+            const grid = document.getElementById('featuresGrid');
+            grid.innerHTML = '';
+            
+            CONFIG.features.forEach(feature => {
+                const card = document.createElement('div');
+                card.className = 'feature-card';
+                card.innerHTML = `
+                    <div class="feature-icon">${feature.icon}</div>
+                    <h3 class="feature-title">${feature.title}</h3>
+                    <p class="feature-description">${feature.description}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function generateGallery() {
+            const gallery = document.getElementById('galleryGrid');
+            gallery.innerHTML = '';
+            
+            for (let i = 1; i <= CONFIG.images.total; i++) {
+                const num = String(i).padStart(3, '0');
+                
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(num);
+                item.innerHTML = `
+                    <img src="${CONFIG.images.baseUrl}${CONFIG.images.prefix}${num}${CONFIG.images.extension}" 
+                         alt="${CONFIG.theme.holiday} Image ${i}" 
+                         loading="lazy">
+                `;
+                gallery.appendChild(item);
+            }
+            
+            document.getElementById('gallerySubtitle').textContent = 
+                `Click any image to preview (showing ${CONFIG.images.total} premium images)`;
+        }
+
+        function generatePricing() {
+            const grid = document.getElementById('pricingGrid');
+            grid.innerHTML = '';
+            
+            CONFIG.pricing.plans.forEach(plan => {
+                const card = document.createElement('div');
+                card.className = 'pricing-card';
+                
+                const features = plan.features.map(f => `<li>${f}</li>`).join('');
+                
+                card.innerHTML = `
+                    <div class="pricing-badge">${plan.badge}</div>
+                    <h3 class="pricing-title">${plan.title}</h3>
+                    <div class="pricing-price">${plan.price}</div>
+                    <p class="pricing-period">${plan.period}</p>
+                    <ul class="pricing-features">${features}</ul>
+                    <a href="${plan.buyLink}" class="btn btn-primary">
+                        ${CONFIG.theme.emoji} Buy Now - $${plan.price}
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+            
+            document.getElementById('pricingSubtitle').textContent = 
+                `${CONFIG.pricing.sectionSubtitle} Use until ${CONFIG.theme.validUntil}`;
+        }
+
+        function updateFooter() {
+            document.getElementById('footerText').innerHTML = 
+                `${CONFIG.theme.emoji} ${CONFIG.footer.text}`;
+            document.getElementById('footerNote').textContent = CONFIG.footer.note;
+        }
+
+        // ============================================
+        // LIGHTBOX
+        // ============================================
+        
+        function openLightbox(num) {
+            document.getElementById('lightboxImage').src = 
+                `${CONFIG.images.baseUrl}${CONFIG.images.prefix}${num}${CONFIG.images.extension}`;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeProtectionAlert();
+                closeAllModals();
+            }
+        });
+
+        // ============================================
+        // MODAIS
+        // ============================================
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Fechar modal clicando fora
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeAllModals();
+            }
+        });
+
+        // ============================================
+        // INICIALIZAÇÃO
+        // ============================================
+        
+        function init() {
+            applyThemeColors();
+            updateHeroSection();
+            generateFeatures();
+            generateGallery();
+            generatePricing();
+            updateFooter();
+            
+            console.log('%c⚠️ COPYRIGHT PROTECTED', 'color:#c5221f;font-size:24px;font-weight:bold');
+            console.log('%cThis content is protected by international copyright laws.', 'color:#ffd700;font-size:14px');
+        }
+
+        init();
+    </script>
 </body>
 </html>
