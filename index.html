@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Christmas Postflix</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>✨ Postflix.ai - Professional Holiday Cards | 10 Categories + AI Tool</title>
+    <meta name="description" content="Create personalized professional holiday cards with 1800 phrases in 6 languages. Perfect for businesses, healthcare, beauty, fitness, and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700;800&family=Mountains+of+Christmas:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         /* ============================================ */
-        /* RESET E CONFIGURAÇÕES BÁSICAS */
+        /* RESET & BASIC CONFIGURATION */
         /* ============================================ */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg-color-1); 
-            color: #f8f9fa; 
-            overflow-x: hidden; 
-        }
-
         :root {
             --color-primary: #c5221f;
             --color-secondary: #ffd700;
@@ -30,9 +25,16 @@
             --bg-color-2: #1a0e0e;
             --bg-color-3: #0e1a0e;
         }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color-1);
+            color: #f8f9fa;
+            overflow-x: hidden;
+        }
 
         /* ============================================ */
-        /* PROTEÇÃO DE IMAGENS */
+        /* IMAGE PROTECTION SYSTEM */
         /* ============================================ */
         img { 
             pointer-events: none; 
@@ -47,559 +49,482 @@
         }
 
         /* ============================================ */
-        /* ALERTA DE PROTEÇÃO */
+        /* HERO SECTION */
         /* ============================================ */
-        .protection-alert { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.95); 
-            z-index: 99999; 
-            align-items: center; 
-            justify-content: center; 
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--bg-color-2) 0%, var(--bg-color-1) 50%, var(--bg-color-3) 100%);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .protection-alert.active { 
-            display: flex; 
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(197, 34, 31, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(22, 101, 52, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
-        
-        .protection-alert-content { 
-            background: linear-gradient(135deg, var(--bg-color-2) 0%, var(--bg-color-3) 100%); 
-            padding: 3rem; 
-            border-radius: 20px; 
-            border: 3px solid var(--color-primary); 
-            max-width: 600px; 
-            text-align: center; 
-            box-shadow: 0 0 50px rgba(197,34,31,0.8); 
-            animation: shake 0.5s; 
+
+        .hero-content {
+            max-width: 1200px;
+            z-index: 1;
         }
-        
-        @keyframes shake { 
-            0%, 100% { transform: translateX(0); } 
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); } 
-            20%, 40%, 60%, 80% { transform: translateX(10px); } 
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-primary), #ff4444);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(197, 34, 31, 0.4);
         }
-        
-        .protection-alert-icon { 
-            font-size: 5rem; 
-            margin-bottom: 1rem; 
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fff, var(--color-secondary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .protection-alert h2 { 
-            color: var(--color-primary); 
-            font-size: 2rem; 
-            margin-bottom: 1rem; 
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 800; 
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #d1d5db;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
-        
-        .protection-alert p { 
-            color: #fff; 
-            font-size: 1.1rem; 
-            line-height: 1.8; 
-            margin-bottom: 1rem; 
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
         }
-        
-        .protection-alert .tracking-info { 
-            background: rgba(0,0,0,0.5); 
-            padding: 1rem; 
-            border-radius: 10px; 
-            margin: 1.5rem 0; 
-            font-family: 'Courier New', monospace; 
-            color: var(--color-secondary); 
-            font-size: 0.95rem; 
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
-        .protection-alert button { 
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
-            color: #fff; 
-            border: none; 
-            padding: 1rem 3rem; 
-            border-radius: 50px; 
-            font-weight: 800; 
-            font-size: 1.1rem; 
-            cursor: pointer; 
-            margin-top: 1rem; 
-            transition: all 0.3s ease; 
+
+        @keyframes btnGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(197, 34, 31, 0.5), 0 0 40px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 15px 40px rgba(197, 34, 31, 0.7), 0 0 60px rgba(255, 215, 0, 0.5); }
         }
-        
-        .protection-alert button:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 10px 30px rgba(255,215,0,0.5); 
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
+            background-size: 200% 100%;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(197, 34, 31, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+            animation: btnGlow 3s ease-in-out infinite;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-position: 100% 0;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
         }
 
         /* ============================================ */
-        /* EFEITO DE NEVE */
+        /* STATS BOXES */
         /* ============================================ */
-        .snowflakes { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            pointer-events: none; 
-            z-index: 9999; 
-            overflow: hidden; 
+        .stats-section {
+            padding: 80px 20px;
+            background: var(--bg-color-1);
         }
-        
-        .snowflake { 
-            position: absolute; 
-            top: -20px; 
-            color: #fff; 
-            text-shadow: 0 0 5px rgba(255,255,255,0.8); 
-            user-select: none; 
-            animation: fall linear infinite; 
-        }
-        
-        @keyframes fall { 
-            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; } 
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; } 
-        }
-        
-        .snowflake:nth-child(1) { left: 5%; font-size: 1.2em; animation-duration: 8s; }
-        .snowflake:nth-child(2) { left: 12%; font-size: 1.5em; animation-duration: 11s; animation-delay: 1s; }
-        .snowflake:nth-child(3) { left: 18%; font-size: 0.9em; animation-duration: 9s; animation-delay: 2s; }
-        .snowflake:nth-child(4) { left: 25%; font-size: 1.3em; animation-duration: 10s; animation-delay: 0.5s; }
-        .snowflake:nth-child(5) { left: 32%; font-size: 1em; animation-duration: 12s; animation-delay: 1.5s; }
-        .snowflake:nth-child(6) { left: 40%; font-size: 1.4em; animation-duration: 9.5s; animation-delay: 0.8s; }
-        .snowflake:nth-child(7) { left: 48%; font-size: 1.1em; animation-duration: 10.5s; animation-delay: 2s; }
-        .snowflake:nth-child(8) { left: 55%; font-size: 1.6em; animation-duration: 11.5s; animation-delay: 1.2s; }
-        .snowflake:nth-child(9) { left: 63%; font-size: 0.95em; animation-duration: 8.5s; animation-delay: 0.3s; }
-        .snowflake:nth-child(10) { left: 70%; font-size: 1.35em; animation-duration: 12.5s; animation-delay: 1.8s; }
 
-        /* ============================================ */
-        /* SEÇÃO HERO */
-        /* ============================================ */
-        .hero { 
-            position: relative; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            padding: 2rem; 
-            background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 50%, var(--bg-color-3) 100%); 
-            z-index: 2; 
-            overflow: hidden; 
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
-        
-        .hero::before { 
-            content: ''; 
-            position: absolute; 
-            top: -50%; 
-            left: -50%; 
-            width: 200%; 
-            height: 200%; 
-            background: radial-gradient(circle at 20% 30%, rgba(197,34,31,0.15) 0%, transparent 50%), 
-                        radial-gradient(circle at 80% 70%, rgba(22,101,52,0.15) 0%, transparent 50%); 
-            animation: glow 15s ease-in-out infinite; 
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(197, 34, 31, 0.1), rgba(22, 101, 52, 0.1));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
-        
-        @keyframes glow { 
-            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.6; } 
-            50% { transform: rotate(180deg) scale(1.1); opacity: 0.9; } 
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-secondary);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
         }
-        
-        .hero-content { 
-            max-width: 900px; 
-            z-index: 10; 
-            position: relative; 
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-secondary), #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
         }
-        
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 8vw, 5.5rem); 
-            font-weight: 900; 
-            margin-bottom: 1rem; 
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 25%, var(--color-accent) 50%, var(--color-secondary) 75%, var(--color-primary) 100%); 
-            background-size: 300% 100%; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            background-clip: text; 
-            line-height: 1.2; 
-            animation: shimmer 8s linear infinite; 
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            font-weight: 600;
         }
-        
-        @keyframes shimmer { 
-            0% { background-position: 0% 50%; } 
-            100% { background-position: 300% 50%; } 
-        }
-        
-        .hero-subtitle { 
-            font-size: clamp(1.1rem, 3vw, 1.6rem); 
-            color: var(--color-secondary); 
-            font-weight: 700; 
-            margin-bottom: 2rem; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            text-shadow: 0 0 20px rgba(255,215,0,0.5); 
-        }
-        
-        .hero-description { 
-            font-size: clamp(1rem, 2vw, 1.25rem); 
-            color: #e0e0e0; 
-            margin-bottom: 3rem; 
-            line-height: 1.8; 
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 10px;
         }
 
         /* ============================================ */
-        /* SEÇÕES GERAIS */
+        /* FEATURES SECTION */
         /* ============================================ */
-        .section { 
-            padding: 1.5rem 2rem; 
-            position: relative; 
-            z-index: 2; 
+        .features-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-color-1), var(--bg-color-2));
         }
-        
-        .section-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 6vw, 4rem); 
-            text-align: center; 
-            margin-bottom: 1rem; 
-            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 50%, var(--color-accent) 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .section-subtitle { 
-            text-align: center; 
-            font-size: 1.2rem; 
-            color: #b0b0b0; 
-            margin-bottom: 4rem; 
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #9ca3af;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* ============================================ */
-        /* GRADE DE RECURSOS */
+        /* CATEGORIES SECTION */
         /* ============================================ */
-        .features-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+        .categories-section {
+            padding: 100px 20px;
+            background: var(--bg-color-3);
         }
-        
-        .feature-card { 
-            background: rgba(26,26,26,0.8); 
-            padding: 2.5rem; 
-            border-radius: 20px; 
-            border: 2px solid rgba(255,215,0,0.2); 
-            transition: all 0.4s ease; 
-            text-align: center; 
+
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
         }
-        
-        .feature-card:hover { 
-            transform: translateY(-10px); 
-            border-color: var(--color-secondary); 
-            box-shadow: 0 20px 40px rgba(255,215,0,0.3); 
+
+        .category-tag {
+            background: linear-gradient(135deg, rgba(197, 34, 31, 0.2), rgba(22, 101, 52, 0.2));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: default;
         }
-        
-        .feature-icon { 
-            font-size: 4rem; 
-            margin-bottom: 1.5rem; 
-        }
-        
-        .feature-title { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 1.5rem; 
-            color: var(--color-secondary); 
-            margin-bottom: 1rem; 
-        }
-        
-        .feature-description { 
-            color: #d0d0d0; 
-            line-height: 1.8; 
+
+        .category-tag:hover {
+            background: linear-gradient(135deg, rgba(197, 34, 31, 0.3), rgba(22, 101, 52, 0.3));
+            border-color: var(--color-secondary);
+            transform: scale(1.05);
         }
 
         /* ============================================ */
-        /* GALERIA */
+        /* PRICING SECTION */
         /* ============================================ */
-        .gallery { 
-            background: linear-gradient(135deg, #0a1e0a 0%, var(--bg-color-2) 50%, #0a1e0a 100%); 
+        .pricing-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-color-2), var(--bg-color-1));
         }
-        
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 1.5rem; 
-            max-width: 1400px; 
-            margin: 0 auto; 
+
+        .pricing-container {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
-        
-        .gallery-item { 
-            position: relative; 
-            aspect-ratio: 4/5; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            cursor: pointer; 
-            transition: transform 0.3s ease; 
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
         }
-        
-        .gallery-item:hover { 
-            transform: scale(1.05); 
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-secondary);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
         }
-        
-        .gallery-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-primary), #ff4444);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(197, 34, 31, 0.4);
         }
-        
-        .gallery-overlay { 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
-            padding: 1.5rem; 
-            transform: translateY(100%); 
-            transition: transform 0.3s ease; 
+
+        .pricing-card.popular {
+            border-color: var(--color-secondary);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(197, 34, 31, 0.05));
         }
-        
-        .gallery-item:hover .gallery-overlay { 
-            transform: translateY(0); 
+
+        .pricing-card.popular .pricing-badge {
+            background: linear-gradient(135deg, var(--color-secondary), #ffed4e);
+            color: var(--bg-color-1);
         }
-        
-        .gallery-caption { 
-            color: var(--color-secondary); 
-            font-weight: 700; 
-            font-size: 1rem; 
+
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .pricing-price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .pricing-period {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: var(--color-accent);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.3rem;
         }
 
         /* ============================================ */
-        /* LIGHTBOX */
+        /* HOW IT WORKS */
         /* ============================================ */
-        .lightbox { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.95); 
-            z-index: 10000; 
-            align-items: center; 
-            justify-content: center; 
+        .how-it-works-section {
+            padding: 100px 20px;
+            background: var(--bg-color-1);
         }
-        
-        .lightbox.active { 
-            display: flex; 
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            gap: 40px;
         }
-        
-        .lightbox-content { 
-            position: relative; 
-            max-width: 90%; 
-            max-height: 90%; 
+
+        .step {
+            display: flex;
+            gap: 30px;
+            align-items: start;
         }
-        
-        .lightbox-close { 
-            position: absolute; 
-            top: -50px; 
-            right: 0; 
-            background: var(--color-primary); 
-            color: white; 
-            border: none; 
-            font-size: 2rem; 
-            width: 50px; 
-            height: 50px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
+
+        .step-number {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primary), #ff4444);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 10px 30px rgba(197, 34, 31, 0.4);
         }
-        
-        .lightbox-close:hover { 
-            background: var(--color-secondary); 
-            transform: rotate(90deg); 
+
+        .step-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
         }
-        
-        .lightbox-image { 
-            max-width: 100%; 
-            max-height: 85vh; 
-            border-radius: 10px; 
-            box-shadow: 0 0 50px rgba(255,215,0,0.5); 
+
+        .step-content p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.7;
         }
 
         /* ============================================ */
-        /* PREÇOS */
+        /* FOOTER */
         /* ============================================ */
-        .pricing { 
-            background: linear-gradient(135deg, var(--bg-color-2) 0%, var(--bg-color-1) 50%, var(--bg-color-3) 100%); 
+        footer {
+            background: var(--bg-color-2);
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .pricing-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 3rem; 
-            max-width: 1000px; 
-            margin: 0 auto; 
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        .pricing-card { 
-            background: rgba(26,26,26,0.9); 
-            padding: 3rem; 
-            border-radius: 25px; 
-            border: 3px solid transparent; 
-            transition: all 0.4s ease; 
-            position: relative; 
-            overflow: hidden; 
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
         }
-        
-        .pricing-card::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent)); 
-            opacity: 0; 
-            transition: opacity 0.4s ease; 
-            z-index: -1; 
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
-        
-        .pricing-card:hover { 
-            transform: translateY(-15px); 
-            border-color: var(--color-secondary); 
-            box-shadow: 0 25px 50px rgba(255,215,0,0.4); 
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        
-        .pricing-card:hover::before { 
-            opacity: 0.1; 
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
         }
-        
-        .pricing-badge { 
-            display: inline-block; 
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
-            color: white; 
-            padding: 0.5rem 1.5rem; 
-            border-radius: 50px; 
-            font-weight: 800; 
-            font-size: 0.9rem; 
-            margin-bottom: 1.5rem; 
-        }
-        
-        .pricing-title { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 2rem; 
-            color: var(--color-secondary); 
-            margin-bottom: 1rem; 
-        }
-        
-        .pricing-price { 
-            font-size: 3.5rem; 
-            font-weight: 900; 
-            color: white; 
-            margin-bottom: 0.5rem; 
-        }
-        
-        .pricing-price::before { 
-            content: '$'; 
-            font-size: 2rem; 
-            vertical-align: super; 
-        }
-        
-        .pricing-period { 
-            color: #b0b0b0; 
-            margin-bottom: 2rem; 
-            font-size: 0.95rem; 
-        }
-        
-        .pricing-features { 
-            list-style: none; 
-            margin-bottom: 2.5rem; 
-        }
-        
-        .pricing-features li { 
-            padding: 0.8rem 0; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            color: #e0e0e0; 
-        }
-        
-        .pricing-features li::before { 
-            content: '✓'; 
-            color: var(--color-accent); 
-            font-weight: bold; 
-            margin-right: 1rem; 
-            font-size: 1.2rem; 
-        }
-        
-        .btn { 
-            display: inline-block; 
-            padding: 1.2rem 3rem; 
-            border-radius: 50px; 
-            font-weight: 800; 
-            font-size: 1.1rem; 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-            text-align: center; 
-            cursor: pointer; 
-        }
-        
-        .btn-primary { 
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
-            color: white; 
-        }
-        
-        .btn-primary:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 15px 35px rgba(255,215,0,0.5); 
+
+        .footer-copyright {
+            color: #6b7280;
+            margin-top: 30px;
+            font-size: 0.95rem;
         }
 
         /* ============================================ */
-        /* RODAPÉ */
-        /* ============================================ */
-        .footer { 
-            background: #0a0a0a; 
-            padding: 3rem 2rem; 
-            text-align: center; 
-            border-top: 2px solid rgba(255,215,0,0.2); 
-        }
-        
-        .footer p { 
-            color: #b0b0b0; 
-            margin-bottom: 1rem; 
-        }
-        
-        .footer-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 2rem; 
-            margin-top: 1.5rem; 
-        }
-        
-        .footer-links a { 
-            color: var(--color-secondary); 
-            text-decoration: none; 
-            transition: color 0.3s ease; 
-        }
-        
-        .footer-links a:hover { 
-            color: white; 
-        }
-
-        /* ============================================ */
-        /* RESPONSIVIDADE */
-        /* ============================================ */
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-        }
-
-        /* ============================================ */
-        /* MODAIS PARA TERMS E PRIVACY */
+        /* MODAL STYLES */
         /* ============================================ */
         .modal {
             display: none;
@@ -608,7 +533,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 10001;
             overflow-y: auto;
             padding: 2rem;
@@ -619,9 +544,9 @@
         }
         
         .modal-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 2rem auto;
-            background: rgba(26,26,26,0.95);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(15, 20, 25, 0.95));
             padding: 3rem;
             border-radius: 20px;
             border: 2px solid var(--color-secondary);
@@ -630,626 +555,610 @@
         
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 20px;
+            right: 20px;
             background: var(--color-primary);
             color: white;
             border: none;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            line-height: 1;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .modal-close:hover {
             background: var(--color-secondary);
+            color: #000;
             transform: rotate(90deg);
         }
         
         .modal-content h1 {
             color: var(--color-secondary);
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
+            margin-bottom: 1rem;
         }
         
-        .modal-content .update-date {
-            text-align: center;
-            color: #b0b0b0;
-            font-size: 0.9rem;
+        .update-date {
+            color: #9ca3af;
+            font-size: 0.95rem;
             margin-bottom: 2rem;
         }
         
         .modal-content h2 {
-            color: var(--color-secondary);
+            color: var(--color-accent);
             font-size: 1.5rem;
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
         
         .modal-content p {
-            margin-bottom: 1rem;
-            color: #d0d0d0;
+            color: #e0e0e0;
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
         
         .modal-content ul {
+            color: #e0e0e0;
+            line-height: 1.8;
             margin-left: 2rem;
             margin-bottom: 1rem;
         }
         
         .modal-content li {
             margin-bottom: 0.5rem;
-            color: #d0d0d0;
         }
         
         .modal-content strong {
             color: var(--color-secondary);
         }
+        
+        .modal-content a {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+
+        .modal-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================ */
+        /* SNOWFLAKES ANIMATION */
+        /* ============================================ */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            user-select: none;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+        
+        .snowflake:nth-child(1) { left: 5%; font-size: 1.2em; animation-duration: 8s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 12%; font-size: 1.5em; animation-duration: 11s; animation-delay: 1s; }
+        .snowflake:nth-child(3) { left: 18%; font-size: 0.9em; animation-duration: 9s; animation-delay: 2s; }
+        .snowflake:nth-child(4) { left: 25%; font-size: 1.3em; animation-duration: 10s; animation-delay: 0.5s; }
+        .snowflake:nth-child(5) { left: 32%; font-size: 1em; animation-duration: 12s; animation-delay: 1.5s; }
+        .snowflake:nth-child(6) { left: 40%; font-size: 1.4em; animation-duration: 9.5s; animation-delay: 0.8s; }
+        .snowflake:nth-child(7) { left: 48%; font-size: 1.1em; animation-duration: 10.5s; animation-delay: 2s; }
+        .snowflake:nth-child(8) { left: 55%; font-size: 1.6em; animation-duration: 11.5s; animation-delay: 1.2s; }
+        .snowflake:nth-child(9) { left: 63%; font-size: 0.95em; animation-duration: 8.5s; animation-delay: 0.3s; }
+        .snowflake:nth-child(10) { left: 70%; font-size: 1.35em; animation-duration: 12.5s; animation-delay: 1.8s; }
+        .snowflake:nth-child(11) { left: 77%; font-size: 1.15em; animation-duration: 9.8s; animation-delay: 0.6s; }
+        .snowflake:nth-child(12) { left: 84%; font-size: 1.25em; animation-duration: 10.8s; animation-delay: 2.3s; }
+        .snowflake:nth-child(13) { left: 91%; font-size: 1.05em; animation-duration: 11.3s; animation-delay: 1.3s; }
+        .snowflake:nth-child(14) { left: 96%; font-size: 1.45em; animation-duration: 9.3s; animation-delay: 0.9s; }
+        .snowflake:nth-child(15) { left: 8%; font-size: 1.2em; animation-duration: 13s; animation-delay: 2.5s; }
+
+        /* ============================================ */
+        /* RESPONSIVE DESIGN */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .modal-content {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Alerta de Proteção -->
-    <div class="protection-alert" id="protectionAlert">
-        <div class="protection-alert-content">
-            <div class="protection-alert-icon">⚠️</div>
-            <h2>Protected Content!</h2>
-            <p>This content is protected by international copyright laws.</p>
-            <p>Copy, download, or screenshot attempts are monitored and recorded.</p>
-            <div class="tracking-info">
-                <strong>Your access has been logged:</strong><br>
-                IP: <span id="fakeIP">XXX.XXX.XXX.XXX</span><br>
-                Tracking ID: <span id="fakeTrackingID">XXXXXXXXXXXX</span><br>
-                Date/Time: <span id="timestamp"></span>
+
+<!-- SNOWFLAKES -->
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">✨ 10 Professional Categories | 6 Languages | 1800+ Phrases</div>
+        
+        <h1>Create Stunning Holiday Cards<br>For Any Professional</h1>
+        
+        <p class="hero-subtitle">
+            From healthcare to beauty, business to education — personalize premium holiday cards in minutes with our AI-powered tool. 40 beautiful images + unlimited custom uploads.
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">🎁 Get Full Access - $49</a>
+            <a href="Postflix_DEMO.html" target="_blank" class="btn btn-secondary">🎨 Try Free Demo</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stat-box">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Professional Categories</div>
+            <div class="stat-description">Beauty • Business • Dental • Education • Fitness • General • Healthcare • Hospitality • Legal • Veterinary</div>
+        </div>
+        
+        <div class="stat-box">
+            <div class="stat-number">1800</div>
+            <div class="stat-label">Personalized Phrases</div>
+            <div class="stat-description">180 unique phrases per category, professionally crafted for your industry</div>
+        </div>
+        
+        <div class="stat-box">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Languages</div>
+            <div class="stat-description">English, Spanish, Portuguese, French, German, Italian</div>
+        </div>
+        
+        <div class="stat-box">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Premium Images</div>
+            <div class="stat-description">Plus unlimited custom image uploads</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+    <h2 class="section-title">Why Postflix.ai?</h2>
+    <p class="section-subtitle">Everything you need to create professional holiday greetings in minutes</p>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3 class="feature-title">Easy Customization</h3>
+            <p class="feature-description">Choose from 18 colors, adjust fonts, sizes, and styles. Add your logo with drag-and-drop simplicity.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3 class="feature-title">Multi-Language Support</h3>
+            <p class="feature-description">Reach international clients with professionally translated phrases in 6 languages. One click to switch.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">100% Privacy</h3>
+            <p class="feature-description">Works completely offline. Your images and text never leave your device. No servers, no tracking.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Lightning Fast</h3>
+            <p class="feature-description">Create professional cards in under 3 minutes. No design experience needed.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">💼</div>
+            <h3 class="feature-title">Commercial License</h3>
+            <p class="feature-description">Full rights to use for your business, practice, or company. Send to unlimited clients.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3 class="feature-title">Works Everywhere</h3>
+            <p class="feature-description">Desktop, tablet, or mobile. Modern browser required. No apps to install.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES SECTION -->
+<section class="categories-section">
+    <h2 class="section-title">Built For Your Industry</h2>
+    <p class="section-subtitle">Professionally crafted phrases for every professional segment</p>
+    
+    <div class="categories-grid">
+        <div class="category-tag">💅 Beauty & Spa</div>
+        <div class="category-tag">💼 Business</div>
+        <div class="category-tag">🦷 Dental</div>
+        <div class="category-tag">📚 Education</div>
+        <div class="category-tag">💪 Fitness</div>
+        <div class="category-tag">✨ General</div>
+        <div class="category-tag">⚕️ Healthcare</div>
+        <div class="category-tag">🏨 Hospitality</div>
+        <div class="category-tag">⚖️ Legal</div>
+        <div class="category-tag">🐾 Veterinary</div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works-section">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Create professional cards in 3 simple steps</p>
+    
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Choose Your Category & Language</h3>
+                <p>Select your professional segment from 10 options and pick your preferred language from 6 available translations.</p>
             </div>
-            <p style="font-size: 0.95rem;">Please respect the creator's copyright.</p>
-            <button onclick="closeProtectionAlert()">I Understand</button>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Pick Image & Personalize</h3>
+                <p>Choose from 40 premium images or upload your own. Add one of 180 professionally crafted phrases for your industry, customize colors, fonts, and add your logo.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Download & Share</h3>
+                <p>Click download and get a high-quality image ready to send via email, WhatsApp, social media, or print. Unlimited downloads included.</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Flocos de Neve -->
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-    </div>
-
-    <!-- Seção Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 id="heroTitle"></h1>
-            <p class="hero-subtitle" id="heroSubtitle"></p>
-            <p class="hero-description" id="heroDescription"></p>
+<!-- PRICING SECTION -->
+<section class="pricing-section">
+    <h2 class="section-title">Choose Your Package</h2>
+    <p class="section-subtitle">One-time payment. No subscriptions. No hidden fees.</p>
+    
+    <div class="pricing-container">
+        <div class="pricing-card popular">
+            <div class="pricing-badge">🎄 HOLIDAY SPECIAL</div>
+            <h3 class="pricing-title">Christmas Package</h3>
+            <div class="pricing-price">$49</div>
+            <div class="pricing-period">Valid until Dec 31, 2025</div>
+            <ul class="pricing-features">
+                <li>40 Premium Holiday Images</li>
+                <li>1800 Professional Phrases</li>
+                <li>10 Industry Categories</li>
+                <li>6 Languages</li>
+                <li>AI Customization Tool</li>
+                <li>Unlimited Custom Uploads</li>
+                <li>Commercial License</li>
+                <li>Access until Dec 31, 2025</li>
+            </ul>
+            <a href="#" class="btn btn-primary">🎁 Get Christmas Package</a>
         </div>
-    </section>
-
-    <!-- Recursos -->
-    <section class="section">
-        <h2 class="section-title">What's Included</h2>
-        <p class="section-subtitle">Everything you need for the perfect holiday greeting</p>
-        <div class="features-grid" id="featuresGrid"></div>
-    </section>
-
-    <!-- Galeria -->
-    <section class="gallery section">
-        <h2 class="section-title">Image Gallery</h2>
-        <p class="section-subtitle" id="gallerySubtitle"></p>
-        <div class="gallery-grid" id="galleryGrid"></div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">×</button>
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        
+        <div class="pricing-card">
+            <div class="pricing-badge">♾️ BEST VALUE</div>
+            <h3 class="pricing-title">Lifetime Access</h3>
+            <div class="pricing-price">$99</div>
+            <div class="pricing-period">Lifetime tool access</div>
+            <ul class="pricing-features">
+                <li>Everything in Christmas Package</li>
+                <li>PLUS: Lifetime tool access</li>
+                <li>Future seasonal image updates</li>
+                <li>Easter, Mother's Day, etc.</li>
+                <li>New categories as added</li>
+                <li>Priority support</li>
+                <li>One-time payment</li>
+                <li>Never expires</li>
+            </ul>
+            <a href="#" class="btn btn-primary">🚀 Get Lifetime Access</a>
         </div>
     </div>
+</section>
 
-    <!-- Preços -->
-    <section class="pricing section">
-        <h2 class="section-title">Choose Your Plan</h2>
-        <p class="section-subtitle" id="pricingSubtitle"></p>
-        <div class="pricing-grid" id="pricingGrid"></div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-        <p id="footerText"></p>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">✨ Postflix.ai</div>
+        <p style="color: #9ca3af; max-width: 600px; margin: 0 auto 30px;">
+            Professional holiday card creator for businesses and professionals. Create stunning personalized cards in minutes.
+        </p>
+        
         <div class="footer-links">
-            <a href="#" onclick="openModal('termsModal'); return false;">Terms</a>
-            <a href="#" onclick="openModal('privacyModal'); return false;">Privacy</a>
+            <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>
+            <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a>
         </div>
-        <p style="margin-top:2rem;font-size:0.9rem;" id="footerNote"></p>
-    </footer>
-
-    <!-- Modal Terms -->
-    <div class="modal" id="termsModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('termsModal')">×</button>
-            <h1>Terms of Service</h1>
-            <p class="update-date">Last Updated: November 2025</p>
-            
-            <h2>1. Agreement to Terms</h2>
-            <p>By accessing and using Holiday Postflix services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this service.</p>
-            
-            <h2>2. License to Use</h2>
-            <p>Upon purchase, you are granted a <strong>non-exclusive, non-transferable license</strong> to use the holiday images provided. This license includes:</p>
-            <ul>
-                <li>Personal use for greeting cards, social media posts, and personal communications</li>
-                <li>Commercial use for business marketing, client communications, and promotional materials</li>
-                <li>The right to download and save images for the duration specified in your purchase</li>
-            </ul>
-            
-            <h2>3. Restrictions</h2>
-            <p>You may <strong>NOT</strong>:</p>
-            <ul>
-                <li>Resell, redistribute, or share the images with third parties</li>
-                <li>Claim ownership or authorship of the images</li>
-                <li>Use the images in any way that violates copyright laws</li>
-                <li>Create derivative works intended for resale without explicit permission</li>
-                <li>Bypass or attempt to bypass any security measures protecting the content</li>
-            </ul>
-            
-            <h2>4. Payment and Refunds</h2>
-            <p>All purchases are <strong>one-time payments</strong> with no recurring charges. Due to the digital nature of the product, <strong>refunds are not available</strong> once access has been granted. Please review all information carefully before purchasing.</p>
-            
-            <h2>5. Access Period</h2>
-            <p>Your access to the images is valid through the date specified in your purchase plan. After this period, access may be revoked unless otherwise stated.</p>
-            
-            <h2>6. Intellectual Property</h2>
-            <p>All images are AI-generated and owned by Holiday Postflix. The images are protected by international copyright laws. You acquire a license to use the images, but not ownership of the intellectual property.</p>
-            
-            <h2>7. Disclaimer of Warranties</h2>
-            <p>The service and images are provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the service will be uninterrupted, secure, or error-free.</p>
-            
-            <h2>8. Limitation of Liability</h2>
-            <p>Holiday Postflix shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service.</p>
-            
-            <h2>9. Changes to Terms</h2>
-            <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Your continued use of the service after changes constitutes acceptance of the modified terms.</p>
-            
-            <h2>10. Contact Information</h2>
-            <p>For questions about these Terms of Service, please contact us at: <strong>postflix@gmail.com</strong></p>
+        
+        <div class="footer-copyright">
+            © 2025 Postflix.ai. All rights reserved.
         </div>
     </div>
+</footer>
 
-    <!-- Modal Privacy -->
-    <div class="modal" id="privacyModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('privacyModal')">×</button>
-            <h1>Privacy Policy</h1>
-            <p class="update-date">Last Updated: November 2025</p>
-            
-            <h2>1. Introduction</h2>
-            <p>At Holiday Postflix, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services.</p>
-            
-            <h2>2. Information We Collect</h2>
-            <p>We may collect the following types of information:</p>
-            <ul>
-                <li><strong>Payment Information:</strong> Processed securely through our payment provider (Gumroad). We do not store your credit card details.</li>
-                <li><strong>Email Address:</strong> Used for sending purchase confirmations and access links.</li>
-                <li><strong>Usage Data:</strong> Basic analytics about how you interact with our website (page views, time spent, etc.).</li>
-                <li><strong>IP Address:</strong> Collected for security purposes and fraud prevention.</li>
-            </ul>
-            
-            <h2>3. How We Use Your Information</h2>
-            <p>We use the collected information for the following purposes:</p>
-            <ul>
-                <li>To process your purchases and provide access to images</li>
-                <li>To send you important updates about your purchase</li>
-                <li>To improve our services and user experience</li>
-                <li>To prevent fraud and ensure security</li>
-                <li>To comply with legal obligations</li>
-            </ul>
-            
-            <h2>4. Information Sharing</h2>
-            <p>We <strong>DO NOT sell, trade, or rent</strong> your personal information to third parties. We may share information only in the following circumstances:</p>
-            <ul>
-                <li><strong>Payment Processing:</strong> With Gumroad for payment processing</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                <li><strong>Service Providers:</strong> With trusted partners who help operate our service (all bound by confidentiality agreements)</li>
-            </ul>
-            
-            <h2>5. Data Security</h2>
-            <p>We implement industry-standard security measures to protect your personal information, including:</p>
-            <ul>
-                <li>Secure SSL/TLS encryption for all data transmission</li>
-                <li>Regular security audits and updates</li>
-                <li>Restricted access to personal data</li>
-                <li>Secure payment processing through trusted providers</li>
-            </ul>
-            
-            <h2>6. Cookies and Tracking</h2>
-            <p>We may use cookies and similar tracking technologies to enhance your experience. You can control cookie settings through your browser preferences.</p>
-            
-            <h2>7. Your Rights</h2>
-            <p>You have the right to:</p>
-            <ul>
-                <li>Access the personal information we hold about you</li>
-                <li>Request correction of inaccurate information</li>
-                <li>Request deletion of your personal data (subject to legal requirements)</li>
-                <li>Opt-out of marketing communications</li>
-                <li>Withdraw consent where processing is based on consent</li>
-            </ul>
-            
-            <h2>8. Data Retention</h2>
-            <p>We retain your personal information only for as long as necessary to provide our services and comply with legal obligations. Purchase records may be kept for accounting and tax purposes.</p>
-            
-            <h2>9. Children's Privacy</h2>
-            <p>Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children.</p>
-            
-            <h2>10. International Data Transfers</h2>
-            <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place for such transfers.</p>
-            
-            <h2>11. Changes to Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page with an updated date.</p>
-            
-            <h2>12. Contact Us</h2>
-            <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at: <strong>postflix@gmail.com</strong></p>
-        </div>
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal" id="privacyModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('privacyModal')">×</button>
+        <h1>Privacy Policy</h1>
+        <p class="update-date">Last Updated: November 2025</p>
+        
+        <h2>1. Information We Collect</h2>
+        <p>Postflix.ai is committed to protecting your privacy. When you purchase our Holiday Cards product, we collect minimal information necessary to process your transaction through our payment processor (Gumroad).</p>
+        
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information collected solely for:</p>
+        <ul>
+            <li>Processing your purchase and delivering the product</li>
+            <li>Sending download links and access credentials</li>
+            <li>Providing customer support when requested</li>
+            <li>Notifying you of seasonal updates (Lifetime Access only)</li>
+        </ul>
+        
+        <h2>3. Data Security</h2>
+        <p>Your images and personalization work are processed entirely in your browser. We do not store, collect, or have access to any images you upload or text you add to the cards. All personalization happens locally on your device.</p>
+        
+        <h2>4. Third-Party Services</h2>
+        <p>We use Gumroad as our payment processor. Their privacy policy governs the information they collect during checkout. We do not store your payment information.</p>
+        
+        <h2>5. Cookies and Tracking</h2>
+        <p>Our landing page may use basic analytics to understand visitor behavior. No personal information is tracked without your consent.</p>
+        
+        <h2>6. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+            <li>Request information about data we hold</li>
+            <li>Request deletion of your information</li>
+            <li>Opt-out of marketing communications</li>
+        </ul>
+        
+        <h2>7. Children's Privacy</h2>
+        <p>Our services are not intended for children under 13. We do not knowingly collect information from children.</p>
+        
+        <h2>8. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+        
+        <h2>9. Contact Us</h2>
+        <p>For privacy-related questions, contact us at: <a href="mailto:postflix.ai@gmail.com">postflix.ai@gmail.com</a></p>
     </div>
+</div>
 
-    <script>
-        // ============================================
-        // CONFIGURAÇÃO - EDITE AQUI!
-        // ============================================
+<!-- TERMS OF SERVICE MODAL -->
+<div class="modal" id="termsModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('termsModal')">×</button>
+        <h1>Terms of Service</h1>
+        <p class="update-date">Last Updated: November 2025</p>
         
-        const CONFIG = {
-            theme: {
-                holiday: "Christmas",
-                emoji: "🎄",
-                year: "2025",
-                validUntil: "January 31, 2026"
-            },
-
-            colors: {
-                primary: "#c5221f",
-                secondary: "#ffd700",
-                accent: "#166534",
-                background1: "#0f1419",
-                background2: "#1a0e0e",
-                background3: "#0e1a0e"
-            },
-
-            titles: {
-                main: "Christmas Postflix",
-                subtitle: "120 Premium Holiday Images",
-                description: "Create stunning personalized Christmas greetings in seconds. Choose from 120 premium AI-generated holiday images. Perfect for businesses, influencers, and anyone spreading holiday cheer!"
-            },
-
-            images: {
-                total: 120,
-                baseUrl: "https://postflix.github.io/christmas-images/",
-                prefix: "christmas-",
-                extension: ".png",
-                categories: [
-                    "Winter Landscape",
-                    "Holiday Treats",
-                    "Religious Scene",
-                    "Holiday Lights",
-                    "Festive Decor"
-                ]
-            },
-
-            features: [
-                {
-                    icon: "🖼️",
-                    title: "120 Premium Images",
-                    description: "Professionally designed Christmas images in various categories: winter landscapes, festive treats, religious scenes, and more."
-                },
-                {
-                    icon: "🌍",
-                    title: "High Quality",
-                    description: "All images are professionally crafted in high resolution, perfect for digital use and sharing on social media."
-                },
-                {
-                    icon: "⏰",
-                    title: "Valid Until Jan 31",
-                    description: "Full access through the entire holiday season and New Year 2026 celebrations."
-                },
-                {
-                    icon: "💎",
-                    title: "Commercial Use",
-                    description: "Use for personal or business purposes. Perfect for businesses, influencers, and professionals."
-                },
-                {
-                    icon: "📱",
-                    title: "Instant Download",
-                    description: "Get immediate access to all images after purchase. No waiting, start creating right away."
-                },
-                {
-                    icon: "🎨",
-                    title: "Multiple Categories",
-                    description: "Diverse collection covering winter scenes, treats, decorations, and traditional holiday imagery."
-                }
-            ],
-
-            pricing: {
-                sectionSubtitle: "One-time payment. No subscriptions.",
-                plans: [
-                    {
-                        badge: "🎁 EARLY BIRD",
-                        title: "Early Access",
-                        price: "9.90",
-                        period: "Available until November 30, 2025",
-                        features: [
-                            "120 Premium Holiday Images",
-                            "High-Resolution Downloads",
-                            "Multiple Categories",
-                            "Valid until January 31, 2026",
-                            "Commercial Use Allowed",
-                            "Instant Access"
-                        ],
-                        buyLink: "https://gumroad.com/your-product-link"
-                    },
-                    {
-                        badge: "⭐ STANDARD",
-                        title: "Standard Access",
-                        price: "14.90",
-                        period: "Available until December 22, 2025",
-                        features: [
-                            "120 Premium Holiday Images",
-                            "High-Resolution Downloads",
-                            "Multiple Categories",
-                            "Valid until January 31, 2026",
-                            "Commercial Use Allowed",
-                            "Instant Access"
-                        ],
-                        buyLink: "https://gumroad.com/your-product-link"
-                    }
-                ]
-            },
-
-            footer: {
-                text: "Christmas Postflix © 2025 - Create Beautiful Holiday Greetings",
-                note: "All images are AI-generated and optimized for digital use. Valid through January 31, 2026.",
-                contactEmail: "postflix@gmail.com"
-            }
-        };
-
-        // ============================================
-        // FUNÇÕES DE PROTEÇÃO
-        // ============================================
+        <h2>1. Agreement to Terms</h2>
+        <p>By purchasing and using Postflix.ai Holiday Cards, you agree to these Terms of Service. If you do not agree, please do not use our products.</p>
         
-        function generateFakeIP() {
-            return Array.from({length: 4}, () => Math.floor(Math.random() * 256)).join('.');
-        }
-
-        function generateFakeTrackingID() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            return Array.from({length: 12}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        }
-
-        function showProtectionAlert() {
-            document.getElementById('fakeIP').textContent = generateFakeIP();
-            document.getElementById('fakeTrackingID').textContent = generateFakeTrackingID();
-            document.getElementById('timestamp').textContent = new Date().toLocaleString('pt-BR');
-            document.getElementById('protectionAlert').classList.add('active');
-        }
-
-        function closeProtectionAlert() {
-            document.getElementById('protectionAlert').classList.remove('active');
-        }
-
-        document.addEventListener('contextmenu', e => {
-            e.preventDefault();
-            showProtectionAlert();
-            return false;
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.keyCode == 123 || 
-                (e.ctrlKey && e.shiftKey && e.keyCode == 73) ||
-                (e.ctrlKey && e.shiftKey && e.keyCode == 74) ||
-                (e.ctrlKey && e.keyCode == 85) ||
-                (e.ctrlKey && e.keyCode == 83) ||
-                (e.ctrlKey && e.keyCode == 80)) {
-                e.preventDefault();
-                showProtectionAlert();
-                return false;
-            }
-            
-            if ((e.ctrlKey || e.metaKey) && (e.keyCode == 67 || e.keyCode == 88)) {
-                const sel = window.getSelection();
-                if (sel.toString().length > 0) {
-                    e.preventDefault();
-                    showProtectionAlert();
-                    return false;
-                }
-            }
-        });
-
-        document.addEventListener('dragstart', e => {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-                showProtectionAlert();
-                return false;
-            }
-        });
-
-        document.addEventListener('keyup', e => {
-            if (e.key === 'PrintScreen') {
-                showProtectionAlert();
-            }
-        });
-
-        // ============================================
-        // APLICAR CORES DO TEMA
-        // ============================================
+        <h2>2. Product Description</h2>
+        <p>You are purchasing a digital product that includes:</p>
+        <ul>
+            <li>40 premium holiday images (Christmas Package)</li>
+            <li>Web-based AI personalization tool</li>
+            <li>1800 professional phrases across 10 categories in 6 languages</li>
+            <li>Logo addition tool</li>
+            <li>Unlimited custom image upload capability</li>
+            <li>Full commercial license</li>
+        </ul>
         
-        function applyThemeColors() {
-            const root = document.documentElement;
-            root.style.setProperty('--color-primary', CONFIG.colors.primary);
-            root.style.setProperty('--color-secondary', CONFIG.colors.secondary);
-            root.style.setProperty('--color-accent', CONFIG.colors.accent);
-            root.style.setProperty('--bg-color-1', CONFIG.colors.background1);
-            root.style.setProperty('--bg-color-2', CONFIG.colors.background2);
-            root.style.setProperty('--bg-color-3', CONFIG.colors.background3);
-        }
-
-        // ============================================
-        // ATUALIZAR CONTEÚDO DA PÁGINA
-        // ============================================
+        <h2>3. Package Options</h2>
+        <p><strong>Christmas Package ($49):</strong> Access to tool and Christmas images valid until December 31, 2025.</p>
+        <p><strong>Lifetime Access ($99):</strong> Lifetime access to the customization tool. Includes future seasonal image updates (Easter, Mother's Day, etc.) at no additional cost.</p>
         
-        function updateHeroSection() {
-            document.getElementById('heroTitle').innerHTML = `${CONFIG.theme.emoji} ${CONFIG.titles.main}`;
-            document.getElementById('heroSubtitle').textContent = CONFIG.titles.subtitle;
-            document.getElementById('heroDescription').textContent = CONFIG.titles.description;
-            document.title = `${CONFIG.theme.emoji} ${CONFIG.titles.main}`;
-        }
+        <h2>4. License Grant</h2>
+        <p>Upon purchase, you receive a <strong>non-exclusive, non-transferable license</strong> to use the images and tools. This license includes:</p>
+        <ul>
+            <li>Personal use for holiday greetings and communications</li>
+            <li>Commercial use for your business, practice, clinic, or company</li>
+            <li>Right to customize images with the provided tools</li>
+            <li>Right to add your own logos and branding</li>
+            <li>Right to send to unlimited recipients</li>
+        </ul>
+        
+        <h2>5. Restrictions</h2>
+        <p>You may NOT:</p>
+        <ul>
+            <li>Resell, redistribute, or share the original images or tool</li>
+            <li>Claim ownership of the AI-generated images</li>
+            <li>Use images for illegal or unethical purposes</li>
+            <li>Remove or obscure copyright notices</li>
+            <li>Share your access credentials with others</li>
+            <li>Reverse engineer or modify the tool's source code</li>
+        </ul>
+        
+        <h2>6. Digital Product - No Refunds</h2>
+        <p><strong>IMPORTANT:</strong> This is a digital product delivered instantly upon purchase. Due to the nature of digital goods, <strong>we do not offer refunds</strong> once access has been granted and download links have been provided.</p>
+        <p>We encourage you to try our free demo before purchasing to ensure the product meets your needs.</p>
+        
+        <h2>7. Copyright & Intellectual Property</h2>
+        <p>All images are AI-generated and owned by Postflix.ai. They are protected by international copyright laws. You receive a license to use, but not ownership of, the intellectual property.</p>
+        
+        <h2>8. Technical Requirements</h2>
+        <p>The personalization tool requires a modern web browser (Chrome, Firefox, Safari, or Edge). Works on desktop, tablet, and mobile devices. We are not responsible for compatibility issues with outdated browsers or systems.</p>
+        
+        <h2>9. Updates and Modifications</h2>
+        <p><strong>Lifetime Access holders:</strong> Will receive seasonal image updates (Easter, Mother's Day, Father's Day, etc.) at no additional cost. Updates will be announced via email.</p>
+        <p><strong>Christmas Package holders:</strong> Access ends December 31, 2025. Can upgrade to Lifetime Access at any time for the difference in price.</p>
+        
+        <h2>10. Limitation of Liability</h2>
+        <p>Postflix.ai is provided "as is" without warranties of any kind. We are not liable for any indirect, incidental, or consequential damages arising from your use of our products.</p>
+        
+        <h2>11. Support & Contact</h2>
+        <p>For questions, issues, or support requests, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:postflix.ai@gmail.com">postflix.ai@gmail.com</a></p>
+        <p>We aim to respond to all inquiries within 48 business hours.</p>
+        
+        <h2>12. Changes to Terms</h2>
+        <p>We reserve the right to modify these terms at any time. Continued use of the product after changes constitutes acceptance of the updated terms.</p>
+        
+        <h2>13. Governing Law</h2>
+        <p>These terms are governed by applicable international digital commerce laws. Any disputes will be resolved through binding arbitration.</p>
+    </div>
+</div>
 
-        function generateFeatures() {
-            const grid = document.getElementById('featuresGrid');
-            grid.innerHTML = '';
-            
-            CONFIG.features.forEach(feature => {
-                const card = document.createElement('div');
-                card.className = 'feature-card';
-                card.innerHTML = `
-                    <div class="feature-icon">${feature.icon}</div>
-                    <h3 class="feature-title">${feature.title}</h3>
-                    <p class="feature-description">${feature.description}</p>
-                `;
-                grid.appendChild(card);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ============================================
+// MODAL FUNCTIONS
+// ============================================
+function openModal(modalId) {
+    console.log('Opening modal:', modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Modal opened successfully');
+    } else {
+        console.error('Modal not found:', modalId);
+    }
+}
+
+function closeModal(modalId) {
+    console.log('Closing modal:', modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close modal when clicking outside
+document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal(modal.id);
+        }
+    });
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+            closeModal(modal.id);
+        });
+    }
+});
+
+// ============================================
+// PROTECTION SYSTEM
+// ============================================
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123 || 
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+        (e.ctrlKey && e.shiftKey && e.keyCode === 74) ||
+        (e.ctrlKey && e.keyCode === 85) ||
+        (e.ctrlKey && e.keyCode === 83)) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// ============================================
+// SMOOTH SCROLL
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
+    });
+});
+</script>
 
-        function generateGallery() {
-            const gallery = document.getElementById('galleryGrid');
-            gallery.innerHTML = '';
-            
-            for (let i = 1; i <= CONFIG.images.total; i++) {
-                const num = String(i).padStart(3, '0');
-                
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.onclick = () => openLightbox(num);
-                item.innerHTML = `
-                    <img src="${CONFIG.images.baseUrl}${CONFIG.images.prefix}${num}${CONFIG.images.extension}" 
-                         alt="${CONFIG.theme.holiday} Image ${i}" 
-                         loading="lazy">
-                `;
-                gallery.appendChild(item);
-            }
-            
-            document.getElementById('gallerySubtitle').textContent = 
-                `Click any image to preview (showing ${CONFIG.images.total} premium images)`;
-        }
-
-        function generatePricing() {
-            const grid = document.getElementById('pricingGrid');
-            grid.innerHTML = '';
-            
-            CONFIG.pricing.plans.forEach(plan => {
-                const card = document.createElement('div');
-                card.className = 'pricing-card';
-                
-                const features = plan.features.map(f => `<li>${f}</li>`).join('');
-                
-                card.innerHTML = `
-                    <div class="pricing-badge">${plan.badge}</div>
-                    <h3 class="pricing-title">${plan.title}</h3>
-                    <div class="pricing-price">${plan.price}</div>
-                    <p class="pricing-period">${plan.period}</p>
-                    <ul class="pricing-features">${features}</ul>
-                    <a href="${plan.buyLink}" class="btn btn-primary">
-                        ${CONFIG.theme.emoji} Buy Now - $${plan.price}
-                    </a>
-                `;
-                grid.appendChild(card);
-            });
-            
-            document.getElementById('pricingSubtitle').textContent = 
-                `${CONFIG.pricing.sectionSubtitle} Use until ${CONFIG.theme.validUntil}`;
-        }
-
-        function updateFooter() {
-            document.getElementById('footerText').innerHTML = 
-                `${CONFIG.theme.emoji} ${CONFIG.footer.text}`;
-            document.getElementById('footerNote').textContent = CONFIG.footer.note;
-        }
-
-        // ============================================
-        // LIGHTBOX
-        // ============================================
-        
-        function openLightbox(num) {
-            document.getElementById('lightboxImage').src = 
-                `${CONFIG.images.baseUrl}${CONFIG.images.prefix}${num}${CONFIG.images.extension}`;
-            document.getElementById('lightbox').classList.add('active');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
-
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-                closeProtectionAlert();
-                closeAllModals();
-            }
-        });
-
-        // ============================================
-        // MODAIS
-        // ============================================
-        
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function closeAllModals() {
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.classList.remove('active');
-            });
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Fechar modal clicando fora
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                closeAllModals();
-            }
-        });
-
-        // ============================================
-        // INICIALIZAÇÃO
-        // ============================================
-        
-        function init() {
-            applyThemeColors();
-            updateHeroSection();
-            generateFeatures();
-            generateGallery();
-            generatePricing();
-            updateFooter();
-            
-            console.log('%c⚠️ COPYRIGHT PROTECTED', 'color:#c5221f;font-size:24px;font-weight:bold');
-            console.log('%cThis content is protected by international copyright laws.', 'color:#ffd700;font-size:14px');
-        }
-
-        init();
-    </script>
 </body>
 </html>

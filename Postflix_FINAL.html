@@ -1,0 +1,3274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postflix.ai - Customization Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Courier+New&family=Georgia&family=Inter:wght@400;600;700;800&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a2e0a 0%, #1a0f0f 50%, #0a2e0a 100%);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '❄️';
+    position: fixed;
+    top: -50px;
+    left: 10%;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: snowfall 15s linear infinite;
+}
+
+body::after {
+    content: '⭐';
+    position: fixed;
+    top: -50px;
+    right: 15%;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    animation: snowfall 20s linear infinite;
+    animation-delay: 5s;
+}
+
+@keyframes snowfall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 30px 0;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 0 40px rgba(34, 197, 94, 0.4);
+    background: linear-gradient(90deg, #dc2626, #22c55e, #fbbf24, #dc2626);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: christmasGlow 3s ease-in-out infinite;
+}
+
+@keyframes christmasGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.main-wrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: rgba(26, 26, 26, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3), 0 0 50px rgba(34, 197, 94, 0.2);
+    border: 2px solid rgba(220, 38, 38, 0.3);
+}
+
+.preview {
+    position: sticky;
+    top: 20px;
+    flex-shrink: 0;
+    width: 450px;
+    height: 562px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a1a1a;
+    border: 3px solid #dc2626;
+    box-shadow: 0 10px 40px rgba(220, 38, 38, 0.5), 0 0 60px rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 1100px) {
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .container {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .preview {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+.control-group {
+    padding: 15px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: rgba(34, 197, 94, 0.05);
+}
+
+label {
+    font-weight: 600;
+    color: #22c55e;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+input[type="text"], input[type="file"], input[type="password"], select, textarea {
+    background: #282828;
+    border: 1px solid #3a3a3a;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+    border-color: #dc2626;
+    outline: none;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+}
+
+input[type="file"] {
+    cursor: pointer;
+    background: #222;
+}
+
+select option {
+    background-color: #282828;
+    color: #fff;
+}
+
+button {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    margin-top: 10px;
+}
+
+button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    line-height: 1.4;
+    padding: 10px 15px;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-shadow: 0 0 15px rgba(220, 38, 38, 0.8), 0 0 20px rgba(34, 197, 94, 0.5);
+    transition: font-size 0.2s, font-family 0.2s, font-weight 0.2s, font-style 0.2s;
+    max-width: 90%;
+}
+
+.text-overlay.dragging {
+    cursor: grabbing;
+}
+
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(9, 30px);
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-swatch.active { 
+    border-color: #22c55e;
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+    border-color: #22c55e;
+}
+
+.style-checks {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    color: #e0e0e0;
+}
+
+.style-checks label {
+    font-weight: 400;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.style-checks input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.segment-selector {
+    margin-bottom: 15px;
+}
+
+.segment-selector select {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.language-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.lang-btn {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    background: #282828;
+    border: 2px solid #3a3a3a;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    filter: grayscale(80%);
+    opacity: 0.6;
+}
+
+.lang-btn:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    filter: grayscale(0%);
+    opacity: 1;
+    border-color: #22c55e;
+    background: #1a3a1a;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+.filtered-phrases-output {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.phrase-item {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background: rgba(34, 197, 94, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    transition: background 0.2s, transform 0.1s;
+    border-left: 4px solid #dc2626;
+}
+
+.phrase-item:hover {
+    background: rgba(34, 197, 94, 0.2);
+    transform: translateX(3px);
+    border-left-color: #22c55e;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.message.error {
+    background: rgba(220, 38, 38, 0.2);
+    border: 1px solid #dc2626;
+    color: #ff6b6b;
+}
+
+.message.success {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid #22c55e;
+    color: #22c55e;
+}
+
+.message.warning {
+    background: rgba(251, 191, 36, 0.2);
+    border: 1px solid #fbbf24;
+    color: #fbbf24;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.download-btn {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.download-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+.christmas-note {
+    text-align: center;
+    color: #22c55e;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* PROTECTION MODAL STYLES */
+#protectionModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    display: flex; /* Password protection ACTIVE */
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a, #0a2e0a);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid #dc2626;
+    box-shadow: 0 0 50px rgba(220, 38, 38, 0.5), 0 0 100px rgba(34, 197, 94, 0.3);
+}
+
+.modal-content h2 {
+    color: #22c55e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.modal-content input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    width: 100%;
+}
+
+#errorBlock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+#errorBlock div {
+    text-align: center;
+    color: #dc2626;
+    font-size: 1.5rem;
+    padding: 40px;
+    max-width: 600px;
+}
+
+.app-content {
+    display: none; /* Hidden until password is correct */
+}
+</style>
+</head>
+<body>
+
+<!-- PROTECTION MODAL -->
+<div id="protectionModal">
+  <div class="modal-content">
+    <h2>🔐 Access Required</h2>
+    <p style="color: #e0e0e0; margin-bottom: 20px;">Enter your access password</p>
+    <input type="password" id="passwordInput" placeholder="Password" autocomplete="off" />
+    <div id="passwordError" class="message error" style="display: none;"></div>
+    <button id="submitPassword">🎄 Access</button>
+  </div>
+</div>
+
+<!-- ERROR BLOCK -->
+<div id="errorBlock">
+  <div id="errorMessage"></div>
+</div>
+
+<!-- MAIN APP -->
+<div class="app-content">
+
+<h1>✨ Postflix.ai - Customization Tool ✨</h1>
+
+<div class="main-wrapper">
+  <div class="container">
+  
+    <div class="control-group">
+      <label for="backgroundInput">Background Image:</label>
+      <input type="file" id="backgroundInput" accept="image/*" style="display:none;">
+      <button type="button" id="customFileBtn" style="width:100%; background:#282828; color:#fff; border:1px solid #3a3a3a; cursor:pointer; font-weight:400; margin-top:0;">Choose File</button>
+      <span id="fileName" style="display:block; margin-top:8px; font-size:0.85rem; color:#888;">No file chosen</span>
+      <div id="imageMessage"></div>
+    </div>
+
+    <div class="control-group">
+      <label for="textInput">Post Text:</label>
+      <input type="text" id="textInput" placeholder="Type your post text" maxlength="200">
+
+      <label style="margin-top:15px;">Text Color:</label>
+      <div class="color-palette" id="colorPalette"></div>
+      
+      <label style="margin-top:15px;">Font:</label>
+      <select id="fontSelect">
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="'Georgia', serif">Georgia</option>
+          <option value="'Inter', sans-serif">Inter</option>
+          <option value="'Lato', sans-serif">Lato</option>
+          <option value="'Montserrat', sans-serif">Montserrat</option>
+          <option value="'Oswald', sans-serif">Oswald</option>
+          <option value="'Pacifico', cursive">Pacifico</option>
+          <option value="'Playfair Display', serif">Playfair Display</option>
+          <option value="'Poppins', sans-serif">Poppins</option>
+          <option value="'Roboto', sans-serif">Roboto</option>
+      </select>
+
+      <label style="margin-top:15px;">Style:</label>
+      <div class="style-checks">
+        <label><input type="checkbox" id="boldCheck"> Bold</label>
+        <label><input type="checkbox" id="italicCheck"> Italic</label>
+      </div>
+      
+      <label style="margin-top:15px;">Font Size:</label>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <input type="range" id="fontSizeSlider" min="16" max="60" value="28" style="flex:1; cursor:pointer;">
+        <span id="fontSizeValue" style="color:#22c55e; font-weight:600; min-width:45px;">28px</span>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label>📋 Select Category:</label>
+      <div class="segment-selector">
+        <select id="segmentSelect">
+          <option value="beauty">Beauty</option>
+          <option value="business">Business</option>
+          <option value="dental">Dental</option>
+          <option value="education">Education</option>
+          <option value="fitness">Fitness</option>
+          <option value="general">General</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="hospitality">Hospitality</option>
+          <option value="legal">Legal</option>
+          <option value="veterinary">Veterinary</option>
+        </select>
+      </div>
+      
+      <label style="margin-top:15px;">🎅 Select Language:</label>
+      <p class="christmas-note">Choose your segment and language to see 30 festive phrases!</p>
+      
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="en" title="English">🇺🇸</button>
+        <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+        <button class="lang-btn" data-lang="pt" title="Português">🇧🇷</button>
+        <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+        <button class="lang-btn" data-lang="it" title="Italiano">🇮🇹</button>
+        <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+      </div>
+      
+      <div id="filteredPhrasesOutput" class="filtered-phrases-output"></div>
+    </div>
+
+    <button id="downloadBtn" class="download-btn">🎁 Download Image</button>
+    <div id="downloadMessage"></div>
+  </div>
+
+  <div class="preview" id="previewArea">
+    <img id="previewImage" src="" alt="Preview">
+    <div class="text-overlay" id="previewText"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ============================================
+// COPYRIGHT PROTECTION SYSTEM
+// ============================================
+(function() {
+    'use strict';
+    
+    // COPYRIGHT WARNINGS
+    console.log('%c⚠️ COPYRIGHT PROTECTED - UNAUTHORIZED ACCESS WILL BE PROSECUTED', 'color: #dc2626; font-size: 20px; font-weight: bold; text-shadow: 0 0 10px #dc2626;');
+    console.log('%c⚠️ THIS CODE IS PROTECTED BY INTELLECTUAL PROPERTY LAW', 'color: #dc2626; font-size: 16px; font-weight: bold;');
+    console.log('%c⚠️ ANY ATTEMPT TO COPY, MODIFY OR DISTRIBUTE WILL BE LEGALLY PURSUED', 'color: #dc2626; font-size: 16px; font-weight: bold;');
+    
+    // PROTECTION CONFIG (OBFUSCATED)
+    const _0xconfig = {
+        d: atob('cG9zdGZsaXguZ2l0aHViLmlv'),
+        p: atob('SG9DYTIwMjY='),
+        e: new Date('2026-01-31T23:59:59')
+    };
+    
+    // DOMAIN CHECK
+    function checkDomain() {
+        const h = window.location.hostname;
+        const protocol = window.location.protocol;
+        // Allow file:// protocol for local testing
+        if (protocol === 'file:') {
+            return true;
+        }
+        if (h !== _0xconfig.d && h !== 'localhost' && h !== '127.0.0.1' && h !== '') {
+            showError('🚫 Unauthorized access from this domain.');
+            return false;
+        }
+        return true;
+    }
+    
+    // EXPIRATION CHECK
+    function checkExpiration() {
+        const now = new Date();
+        if (now > _0xconfig.e) {
+            showError('⏰ This access expired on January 31, 2026.<br>Contact us to renew.');
+            return false;
+        }
+        return true;
+    }
+    
+    // PASSWORD CHECK
+    function checkPassword(input) {
+        return input === _0xconfig.p;
+    }
+    
+    // SHOW ERROR BLOCK
+    function showError(msg) {
+        const block = document.getElementById('errorBlock');
+        const msgEl = document.getElementById('errorMessage');
+        msgEl.innerHTML = msg;
+        block.style.display = 'flex';
+        document.getElementById('protectionModal').style.display = 'none';
+    }
+    
+    // UNLOCK APP
+    function unlockApp() {
+        document.getElementById('protectionModal').style.display = 'none';
+        document.querySelector('.app-content').style.display = 'block';
+    }
+    
+    // DEVTOOLS DETECTION
+    let devtoolsOpen = false;
+    const threshold = 160;
+    
+    function detectDevTools() {
+        if (window.outerWidth - window.innerWidth > threshold || 
+            window.outerHeight - window.innerHeight > threshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                console.log('%c⚠️ COPYRIGHT PROTECTED - UNAUTHORIZED ACCESS WILL BE PROSECUTED', 'color: #dc2626; font-size: 24px; font-weight: bold;');
+                setTimeout(() => {
+                    window.close();
+                    window.location.href = 'about:blank';
+                }, 100);
+            }
+        }
+    }
+    
+    setInterval(detectDevTools, 1000);
+    
+    // KEYBOARD SHORTCUTS BLOCKER
+    document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            console.log('%c⚠️ COPYRIGHT PROTECTED', 'color: #dc2626; font-size: 20px; font-weight: bold;');
+            return false;
+        }
+        // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+J
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+U
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+S
+        if (e.ctrlKey && e.keyCode === 83) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // RIGHT CLICK BLOCKER
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // COPY/CUT BLOCKER (except inputs)
+    document.addEventListener('copy', function(e) {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    document.addEventListener('cut', function(e) {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // DRAG BLOCKER
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // PASSWORD SUBMIT
+    document.getElementById('submitPassword').addEventListener('click', function() {
+        const input = document.getElementById('passwordInput').value;
+        const errorEl = document.getElementById('passwordError');
+        
+        if (checkPassword(input)) {
+            if (checkDomain() && checkExpiration()) {
+                unlockApp();
+            }
+        } else {
+            errorEl.textContent = '❌ Incorrect password. Please try again.';
+            errorEl.style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+        }
+    });
+    
+    // ENTER KEY SUBMIT
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            document.getElementById('submitPassword').click();
+        }
+    });
+    
+    // INITIAL CHECKS
+    if (!checkDomain() || !checkExpiration()) {
+        return;
+    }
+})();
+
+// ============================================
+// PHRASES DATABASE - LOADED FROM EXTERNAL JSON
+// ============================================
+let currentSegment = 'beauty';
+let currentLanguage = 'en';
+
+// All phrases embedded in the file
+const allPhrases = {
+  "beauty": {
+    "en": [
+      "Wishing you a holiday season full of glow, elegance and confidence.",
+      "May your days shine bright with beauty, joy and radiant moments.",
+      "Wishing you festive moments of self-care and radiant energy.",
+      "May your holidays bring transformation, confidence and happiness.",
+      "Wishing you bright days filled with glow, charm and inspiration.",
+      "May your season sparkle with elegance, beauty and joyful moments.",
+      "Wishing you radiant energy and confidence throughout the festive season.",
+      "May your holidays be filled with shine, warmth and self-care.",
+      "Wishing you glowing moments, beautiful experiences and joyful days.",
+      "May your festive season bring elegance, confidence and inner glow.",
+      "Wishing you moments of beauty, joy and radiant self-expression.",
+      "May your holidays sparkle with radiant energy and happiness.",
+      "Wishing you a season full of confidence, glow and inspiration.",
+      "May your festive days be bright, elegant and full of beauty.",
+      "Wishing you self-care, radiant moments and joyful celebrations.",
+      "May your holidays shine with transformation, elegance and cheer.",
+      "Wishing you bright energy, radiant confidence and happy moments.",
+      "May your season be filled with glow, charm and memorable days.",
+      "Wishing you elegance, beauty and joyful moments all season long.",
+      "May your holidays bring confidence, shine and radiant experiences.",
+      "Wishing you a festive season of glow, happiness and inspiration.",
+      "May your days be full of beauty, radiant moments and joy.",
+      "Wishing you transformation, confidence and cheerful celebrations.",
+      "May your holidays sparkle with elegance, charm and bright energy.",
+      "Wishing you radiant moments, joy and self-care throughout the season.",
+      "May your festive season bring glow, confidence and memorable beauty.",
+      "Wishing you elegance, bright energy and joyful holiday moments.",
+      "May your holidays be full of shine, radiance and happy experiences.",
+      "Wishing you confidence, beauty and radiant moments this season.",
+      "May your season glow with transformation, charm and joyful celebrations."
+    ],
+    "es": [
+      "Te deseamos unas vacaciones llenas de brillo, elegancia y confianza.",
+      "Que tus días brillen con belleza, alegría y momentos radiantes.",
+      "Te deseamos momentos festivos de cuidado personal y energía radiante.",
+      "Que tus vacaciones traigan transformación, confianza y felicidad.",
+      "Te deseamos días brillantes llenos de encanto, brillo e inspiración.",
+      "Que tu temporada brille con elegancia, belleza y momentos alegres.",
+      "Te deseamos energía radiante y confianza durante toda la temporada festiva.",
+      "Que tus vacaciones estén llenas de brillo, calidez y autocuidado.",
+      "Te deseamos momentos radiantes, experiencias bellas y días alegres.",
+      "Que tu temporada festiva traiga elegancia, confianza y brillo interior.",
+      "Te deseamos momentos de belleza, alegría y expresión radiante de ti mismo.",
+      "Que tus vacaciones brillen con energía radiante y felicidad.",
+      "Te deseamos una temporada llena de confianza, brillo e inspiración.",
+      "Que tus días festivos sean brillantes, elegantes y llenos de belleza.",
+      "Te deseamos autocuidado, momentos radiantes y celebraciones alegres.",
+      "Que tus vacaciones brillen con transformación, elegancia y alegría.",
+      "Te deseamos energía brillante, confianza radiante y momentos felices.",
+      "Que tu temporada esté llena de brillo, encanto y días memorables.",
+      "Te deseamos elegancia, belleza y momentos alegres durante toda la temporada.",
+      "Que tus vacaciones traigan confianza, brillo y experiencias radiantes.",
+      "Te deseamos una temporada festiva de brillo, felicidad e inspiración.",
+      "Que tus días estén llenos de belleza, momentos radiantes y alegría.",
+      "Te deseamos transformación, confianza y celebraciones alegres.",
+      "Que tus vacaciones brillen con elegancia, encanto y energía brillante.",
+      "Te deseamos momentos radiantes, alegría y autocuidado durante la temporada.",
+      "Que tu temporada festiva traiga brillo, confianza y belleza memorable.",
+      "Te deseamos elegancia, energía brillante y momentos alegres de vacaciones.",
+      "Que tus vacaciones estén llenas de brillo, resplandor y experiencias felices.",
+      "Te deseamos confianza, belleza y momentos radiantes esta temporada.",
+      "Que tu temporada brille con transformación, encanto y celebraciones alegres."
+    ],
+    "pt": [
+      "Desejamos a você um período de festas cheio de brilho, elegância e confiança.",
+      "Que seus dias brilhem com beleza, alegria e momentos radiantes.",
+      "Desejamos momentos festivos de autocuidado e energia radiante.",
+      "Que suas férias tragam transformação, confiança e felicidade.",
+      "Desejamos dias brilhantes cheios de charme, brilho e inspiração.",
+      "Que sua temporada brilhe com elegância, beleza e momentos alegres.",
+      "Desejamos energia radiante e confiança durante toda a temporada festiva.",
+      "Que suas férias estejam cheias de brilho, calor e autocuidado.",
+      "Desejamos momentos radiantes, experiências bonitas e dias alegres.",
+      "Que sua temporada festiva traga elegância, confiança e brilho interior.",
+      "Desejamos momentos de beleza, alegria e expressão radiante de si mesmo.",
+      "Que suas férias brilhem com energia radiante e felicidade.",
+      "Desejamos uma temporada cheia de confiança, brilho e inspiração.",
+      "Que seus dias festivos sejam brilhantes, elegantes e cheios de beleza.",
+      "Desejamos autocuidado, momentos radiantes e celebrações alegres.",
+      "Que suas férias brilhem com transformação, elegância e alegria.",
+      "Desejamos energia brilhante, confiança radiante e momentos felizes.",
+      "Que sua temporada esteja cheia de brilho, charme e dias memoráveis.",
+      "Desejamos elegância, beleza e momentos alegres durante toda a temporada.",
+      "Que suas férias tragam confiança, brilho e experiências radiantes.",
+      "Desejamos uma temporada festiva de brilho, felicidade e inspiração.",
+      "Que seus dias estejam cheios de beleza, momentos radiantes e alegria.",
+      "Desejamos transformação, confiança e celebrações alegres.",
+      "Que suas férias brilhem com elegância, charme e energia brilhante.",
+      "Desejamos momentos radiantes, alegria e autocuidado durante a temporada.",
+      "Que sua temporada festiva traga brilho, confiança e beleza memorável.",
+      "Desejamos elegância, energia brilhante e momentos alegres de férias.",
+      "Que suas férias estejam cheias de brilho, radiância e experiências felizes.",
+      "Desejamos confiança, beleza e momentos radiantes nesta temporada.",
+      "Que sua temporada brilhe com transformação, charme e celebrações alegres."
+    ],
+    "fr": [
+      "Nous vous souhaitons une saison de fêtes pleine d'éclat, d'élégance et de confiance.",
+      "Que vos jours brillent de beauté, de joie et de moments radieux.",
+      "Nous vous souhaitons des moments festifs de soins personnels et d'énergie radiante.",
+      "Que vos vacances apportent transformation, confiance et bonheur.",
+      "Nous vous souhaitons des jours lumineux remplis d'éclat, de charme et d'inspiration.",
+      "Que votre saison scintille d'élégance, de beauté et de moments joyeux.",
+      "Nous vous souhaitons énergie radiante et confiance pendant toute la saison festive.",
+      "Que vos vacances soient remplies d'éclat, de chaleur et de soins personnels.",
+      "Nous vous souhaitons des moments radieux, de belles expériences et des jours joyeux.",
+      "Que votre saison festive apporte élégance, confiance et éclat intérieur.",
+      "Nous vous souhaitons des moments de beauté, de joie et d'expression radiante de soi.",
+      "Que vos vacances brillent d'énergie radiante et de bonheur.",
+      "Nous vous souhaitons une saison pleine de confiance, d'éclat et d'inspiration.",
+      "Que vos jours festifs soient lumineux, élégants et pleins de beauté.",
+      "Nous vous souhaitons soins personnels, moments radieux et célébrations joyeuses.",
+      "Que vos vacances brillent de transformation, d'élégance et de gaieté.",
+      "Nous vous souhaitons énergie brillante, confiance radiante et moments heureux.",
+      "Que votre saison soit remplie d'éclat, de charme et de jours mémorables.",
+      "Nous vous souhaitons élégance, beauté et moments joyeux tout au long de la saison.",
+      "Que vos vacances apportent confiance, éclat et expériences radieuses.",
+      "Nous vous souhaitons une saison festive d'éclat, de bonheur et d'inspiration.",
+      "Que vos jours soient remplis de beauté, de moments radieux et de joie.",
+      "Nous vous souhaitons transformation, confiance et célébrations joyeuses.",
+      "Que vos vacances brillent d'élégance, de charme et d'énergie éclatante.",
+      "Nous vous souhaitons des moments radieux, de joie et de soins personnels tout au long de la saison.",
+      "Que votre saison festive apporte éclat, confiance et beauté mémorable.",
+      "Nous vous souhaitons élégance, énergie brillante et moments joyeux de vacances.",
+      "Que vos vacances soient pleines d'éclat, de radiance et d'expériences heureuses.",
+      "Nous vous souhaitons confiance, beauté et moments radieux cette saison.",
+      "Que votre saison brille de transformation, de charme et de célébrations joyeuses."
+    ],
+    "de": [
+      "Wir wünschen Ihnen eine Feiertagssaison voller Glanz, Eleganz und Selbstvertrauen.",
+      "Mögen Ihre Tage mit Schönheit, Freude und strahlenden Momenten leuchten.",
+      "Wir wünschen Ihnen festliche Momente der Selbstpflege und strahlender Energie.",
+      "Mögen Ihre Feiertage Transformation, Vertrauen und Glück bringen.",
+      "Wir wünschen Ihnen helle Tage voller Glanz, Charme und Inspiration.",
+      "Möge Ihre Saison mit Eleganz, Schönheit und fröhlichen Momenten funkeln.",
+      "Wir wünschen Ihnen strahlende Energie und Selbstvertrauen während der gesamten festlichen Saison.",
+      "Mögen Ihre Feiertage voller Glanz, Wärme und Selbstpflege sein.",
+      "Wir wünschen Ihnen strahlende Momente, schöne Erlebnisse und fröhliche Tage.",
+      "Möge Ihre festliche Saison Eleganz, Vertrauen und inneren Glanz bringen.",
+      "Wir wünschen Ihnen Momente der Schönheit, Freude und strahlenden Selbstausdruck.",
+      "Mögen Ihre Feiertage mit strahlender Energie und Glück funkeln.",
+      "Wir wünschen Ihnen eine Saison voller Selbstvertrauen, Glanz und Inspiration.",
+      "Mögen Ihre festlichen Tage hell, elegant und voller Schönheit sein.",
+      "Wir wünschen Ihnen Selbstpflege, strahlende Momente und fröhliche Feiern.",
+      "Mögen Ihre Feiertage mit Transformation, Eleganz und Freude glänzen.",
+      "Wir wünschen Ihnen helle Energie, strahlendes Selbstvertrauen und glückliche Momente.",
+      "Möge Ihre Saison voller Glanz, Charme und unvergesslicher Tage sein.",
+      "Wir wünschen Ihnen Eleganz, Schönheit und fröhliche Momente die ganze Saison über.",
+      "Mögen Ihre Feiertage Selbstvertrauen, Glanz und strahlende Erlebnisse bringen.",
+      "Wir wünschen Ihnen eine festliche Saison voller Glanz, Freude und Inspiration.",
+      "Mögen Ihre Tage voller Schönheit, strahlender Momente und Freude sein.",
+      "Wir wünschen Ihnen Transformation, Selbstvertrauen und fröhliche Feiern.",
+      "Mögen Ihre Feiertage mit Eleganz, Charme und heller Energie funkeln.",
+      "Wir wünschen Ihnen strahlende Momente, Freude und Selbstpflege während der gesamten Saison.",
+      "Möge Ihre festliche Saison Glanz, Selbstvertrauen und unvergessliche Schönheit bringen.",
+      "Wir wünschen Ihnen Eleganz, helle Energie und fröhliche Feiertagsmomente.",
+      "Mögen Ihre Feiertage voller Glanz, Strahlen und glücklicher Erlebnisse sein.",
+      "Wir wünschen Ihnen Selbstvertrauen, Schönheit und strahlende Momente in dieser Saison.",
+      "Möge Ihre Saison mit Transformation, Charme und fröhlichen Feiern glänzen."
+    ],
+    "it": [
+      "Ti auguriamo una stagione festiva piena di splendore, eleganza e fiducia.",
+      "Che i tuoi giorni brillino di bellezza, gioia e momenti radianti.",
+      "Ti auguriamo momenti festivi di cura di te e energia radiante.",
+      "Che le tue vacanze portino trasformazione, fiducia e felicità.",
+      "Ti auguriamo giorni luminosi pieni di splendore, fascino e ispirazione.",
+      "Che la tua stagione risplenda di eleganza, bellezza e momenti gioiosi.",
+      "Ti auguriamo energia radiante e fiducia durante tutta la stagione festiva.",
+      "Che le tue vacanze siano piene di splendore, calore e cura di te.",
+      "Ti auguriamo momenti radiosi, esperienze belle e giorni felici.",
+      "Che la tua stagione festiva porti eleganza, fiducia e splendore interiore.",
+      "Ti auguriamo momenti di bellezza, gioia e espressione radiante di te stesso.",
+      "Che le tue vacanze brillino di energia radiante e felicità.",
+      "Ti auguriamo una stagione piena di fiducia, splendore e ispirazione.",
+      "Che i tuoi giorni festivi siano luminosi, eleganti e pieni di bellezza.",
+      "Ti auguriamo cura di te, momenti radiosi e celebrazioni gioiose.",
+      "Che le tue vacanze brillino di trasformazione, eleganza e allegria.",
+      "Ti auguriamo energia brillante, fiducia radiante e momenti felici.",
+      "Che la tua stagione sia piena di splendore, fascino e giorni memorabili.",
+      "Ti auguriamo eleganza, bellezza e momenti gioiosi per tutta la stagione.",
+      "Che le tue vacanze portino fiducia, splendore ed esperienze radianti.",
+      "Ti auguriamo una stagione festiva di splendore, felicità e ispirazione.",
+      "Che i tuoi giorni siano pieni di bellezza, momenti radianti e gioia.",
+      "Ti auguriamo trasformazione, fiducia e celebrazioni gioiose.",
+      "Che le tue vacanze brillino di eleganza, fascino e energia luminosa.",
+      "Ti auguriamo momenti radianti, gioia e cura di te durante tutta la stagione.",
+      "Che la tua stagione festiva porti splendore, fiducia e bellezza memorabile.",
+      "Ti auguriamo eleganza, energia luminosa e momenti gioiosi di vacanza.",
+      "Che le tue vacanze siano piene di splendore, radianza ed esperienze felici.",
+      "Ti auguriamo fiducia, bellezza e momenti radianti in questa stagione.",
+      "Che la tua stagione risplenda di trasformazione, fascino e celebrazioni gioiose."
+    ]
+  },
+  "business": {
+    "en": [
+      "Wishing you a season of peace, clarity and positive resolutions.",
+      "May your holidays bring confidence, protection and reassurance.",
+      "Wishing you calm days, guidance and fair outcomes this festive season.",
+      "May this season bring clarity, security and peaceful moments for you.",
+      "Wishing you trust, confidence and meaningful resolutions this Christmas.",
+      "May your holidays be filled with guidance, fairness and peace.",
+      "Wishing you protection, clarity and successful outcomes this season.",
+      "May your season bring reassurance, confidence and harmony in all matters.",
+      "Wishing you fair decisions, calm days and peace throughout the holidays.",
+      "May your holidays be secure, bright and full of clarity.",
+      "Wishing you trust, guidance and positive outcomes this festive season.",
+      "May your season bring peace, confidence and meaningful results.",
+      "Wishing you calm, clarity and protection for you and your loved ones.",
+      "May your holidays bring reassurance, fairness and confidence.",
+      "Wishing you successful outcomes, trust and peaceful moments this season.",
+      "May this season bring guidance, clarity and harmony to your days.",
+      "Wishing you confidence, peace and meaningful resolutions this Christmas.",
+      "May your holidays be full of protection, clarity and calm.",
+      "Wishing you reassurance, trust and successful outcomes this season.",
+      "May your season bring fair resolutions, confidence and harmony.",
+      "Wishing you clarity, guidance and peace throughout the festive days.",
+      "May your holidays be secure, fair and full of meaningful results.",
+      "Wishing you confidence, calm and successful resolutions this season.",
+      "May this festive season bring protection, trust and clarity to you.",
+      "Wishing you guidance, reassurance and joyful peace this holiday.",
+      "May your holidays bring harmony, clarity and confidence in all matters.",
+      "Wishing you protection, trust and calm moments throughout the season.",
+      "May your season be filled with successful resolutions and peace.",
+      "Wishing you clarity, confidence and guidance for joyful holidays.",
+      "May your holidays bring fair outcomes, reassurance and serenity."
+    ],
+    "es": [
+      "Que esta temporada te traiga paz, claridad y resoluciones positivas.",
+      "Que tus fiestas estén llenas de confianza, protección y tranquilidad.",
+      "Te deseo días calmados, orientación y decisiones justas en estas fiestas.",
+      "Que esta temporada te brinde claridad, seguridad y momentos de paz.",
+      "Te deseo confianza, guía y resoluciones significativas esta Navidad.",
+      "Que tus fiestas estén llenas de justicia, orientación y armonía.",
+      "Te deseo protección, claridad y resultados exitosos en esta temporada.",
+      "Que tu temporada traiga tranquilidad, confianza y equilibrio en todo.",
+      "Te deseo decisiones justas, días tranquilos y paz durante las fiestas.",
+      "Que tus fiestas sean seguras, brillantes y llenas de claridad.",
+      "Te deseo guía, confianza y resultados positivos en esta temporada.",
+      "Que tu temporada esté llena de paz, confianza y resultados valiosos.",
+      "Te deseo calma, claridad y protección para ti y tus seres queridos.",
+      "Que tus fiestas traigan tranquilidad, justicia y confianza.",
+      "Te deseo resultados exitosos, confianza y momentos de paz.",
+      "Que esta temporada te brinde claridad, guía y armonía.",
+      "Te deseo confianza, paz y resoluciones significativas esta Navidad.",
+      "Que tus fiestas sean llenas de protección, claridad y serenidad.",
+      "Te deseo tranquilidad, confianza y resultados positivos esta temporada.",
+      "Que tu temporada traiga resoluciones justas, confianza y armonía.",
+      "Te deseo claridad, guía y paz durante estos días festivos.",
+      "Que tus fiestas sean seguras, justas y llenas de buenos resultados.",
+      "Te deseo confianza, calma y resoluciones exitosas esta temporada.",
+      "Que esta temporada te brinde protección, equilibrio y claridad.",
+      "Te deseo orientación, tranquilidad y paz en estas fiestas.",
+      "Que tus fiestas traigan armonía, claridad y confianza.",
+      "Te deseo protección, confianza y momentos de calma esta temporada.",
+      "Que tu temporada esté llena de resoluciones exitosas y paz.",
+      "Te deseo claridad, confianza y guía para unas fiestas alegres.",
+      "Que tus fiestas te brinden resultados justos, tranquilidad y serenidad."
+    ],
+    "pt": [
+      "Desejo a você uma temporada de paz, clareza e boas resoluções.",
+      "Que suas festas tragam confiança, proteção e tranquilidade.",
+      "Desejo dias calmos, orientação e decisões justas neste período.",
+      "Que esta temporada traga clareza, segurança e momentos de paz.",
+      "Desejo confiança, proteção e resoluções significativas neste Natal.",
+      "Que suas festas sejam cheias de justiça, harmonia e orientação.",
+      "Desejo proteção, clareza e resultados positivos nesta temporada.",
+      "Que sua temporada traga tranquilidade, confiança e equilíbrio.",
+      "Desejo decisões justas, dias tranquilos e muita paz nestas festas.",
+      "Que suas festas sejam seguras, iluminadas e cheias de clareza.",
+      "Desejo confiança, orientação e resultados positivos neste período.",
+      "Que sua temporada traga paz, confiança e resultados valiosos.",
+      "Desejo calma, clareza e proteção para você e sua família.",
+      "Que suas festas tragam tranquilidade, justiça e confiança.",
+      "Desejo resultados positivos, confiança e momentos de paz.",
+      "Que esta temporada traga clareza, orientação e harmonia.",
+      "Desejo confiança, paz e resoluções significativas neste Natal.",
+      "Que suas festas sejam cheias de proteção, clareza e serenidade.",
+      "Desejo tranquilidade, confiança e bons resultados nesta temporada.",
+      "Que sua temporada traga decisões justas, confiança e equilíbrio.",
+      "Desejo clareza, orientação e paz ao longo dos dias festivos.",
+      "Que suas festas sejam seguras, justas e repletas de bons resultados.",
+      "Desejo confiança, serenidade e resoluções positivas nesta época.",
+      "Que esta temporada traga proteção, harmonia e clareza para você.",
+      "Desejo orientação, tranquilidade e paz neste período especial.",
+      "Que suas festas tragam harmonia, clareza e confiança.",
+      "Desejo proteção, confiança e momentos de calma nesta temporada.",
+      "Que sua temporada seja cheia de resoluções positivas e paz.",
+      "Desejo clareza, confiança e orientação para festas ainda melhores.",
+      "Que suas festas tragam decisões justas, tranquilidade e serenidade."
+    ],
+    "fr": [
+      "Je vous souhaite une saison de paix, de clarté et de bonnes résolutions.",
+      "Que vos fêtes soient remplies de confiance, de protection et de sérénité.",
+      "Je vous souhaite des jours calmes, des conseils avisés et des décisions justes.",
+      "Que cette saison vous apporte clarté, sécurité et moments paisibles.",
+      "Je vous souhaite confiance, protection et résolutions positives pour Noël.",
+      "Que vos fêtes soient marquées par l’équité, l’harmonie et la guidance.",
+      "Je vous souhaite protection, clarté et résultats positifs cette saison.",
+      "Que cette saison vous apporte confiance, équilibre et tranquillité.",
+      "Je vous souhaite des décisions justes, des jours paisibles et beaucoup de sérénité.",
+      "Que vos fêtes soient sécurisées, lumineuses et pleines de clarté.",
+      "Je vous souhaite confiance, guidance et résultats positifs.",
+      "Que votre saison soit remplie de paix, de confiance et de résultats enrichissants.",
+      "Je vous souhaite calme, clarté et protection pour vous et vos proches.",
+      "Que vos fêtes vous apportent tranquillité, justice et confiance.",
+      "Je vous souhaite réussite, confiance et moments paisibles cette saison.",
+      "Que cette saison vous apporte clarté, guidance et harmonie.",
+      "Je vous souhaite confiance, paix et résolutions positives pour Noël.",
+      "Que vos fêtes soient remplies de protection, de clarté et de sérénité.",
+      "Je vous souhaite tranquillité, confiance et résultats positifs.",
+      "Que cette saison vous apporte décisions justes, équilibre et confiance.",
+      "Je vous souhaite clarté, guidance et paix durant toute la saison festive.",
+      "Que vos fêtes soient sûres, justes et pleines de succès.",
+      "Je vous souhaite confiance, calme et résolutions réussies.",
+      "Que cette saison vous apporte protection, équilibre et clarté.",
+      "Je vous souhaite guidance, réconfort et paix.",
+      "Que vos fêtes vous apportent harmonie, clarté et confiance.",
+      "Je vous souhaite protection, confiance et moments de sérénité.",
+      "Que votre saison soit remplie de résolutions réussies et de paix.",
+      "Je vous souhaite clarté, confiance et guidance pour de belles fêtes.",
+      "Que vos fêtes vous apportent équité, tranquillité et sérénité."
+    ],
+    "de": [
+      "Ich wünsche Ihnen eine Zeit voller Frieden, Klarheit und guter Entscheidungen.",
+      "Möge Ihre Feiertage Vertrauen, Schutz und Sicherheit bringen.",
+      "Ich wünsche Ihnen ruhige Tage, Orientierung und faire Entscheidungen.",
+      "Möge diese Jahreszeit Ihnen Klarheit, Sicherheit und friedliche Momente schenken.",
+      "Ich wünsche Ihnen Vertrauen, Schutz und bedeutungsvolle Lösungen.",
+      "Möge Ihre Festzeit von Fairness, Harmonie und guter Führung geprägt sein.",
+      "Ich wünsche Ihnen Schutz, Klarheit und positive Ergebnisse.",
+      "Möge Ihre Saison Sicherheit, Vertrauen und Ausgeglichenheit bringen.",
+      "Ich wünsche Ihnen faire Entscheidungen, ruhige Tage und Frieden.",
+      "Mögen Ihre Feiertage sicher, hell und voller Klarheit sein.",
+      "Ich wünsche Ihnen Vertrauen, Orientierung und positive Resultate.",
+      "Möge Ihre Saison voller Frieden, Vertrauen und wertvoller Ergebnisse sein.",
+      "Ich wünsche Ihnen Ruhe, Klarheit und Schutz für Sie und Ihre Familie.",
+      "Mögen Ihre Feiertage Ruhe, Fairness und Vertrauen bringen.",
+      "Ich wünsche Ihnen positive Ergebnisse, Vertrauen und friedliche Momente.",
+      "Möge diese Saison Klarheit, Führung und Harmonie schenken.",
+      "Ich wünsche Ihnen Vertrauen, Frieden und gute Lösungen.",
+      "Mögen Ihre Feiertage voller Schutz, Klarheit und Gelassenheit sein.",
+      "Ich wünsche Ihnen Ruhe, Vertrauen und erfolgreiche Ergebnisse.",
+      "Möge Ihre Saison faire Entscheidungen, Harmonie und Vertrauen bringen.",
+      "Ich wünsche Ihnen Klarheit, Führung und Frieden in dieser Zeit.",
+      "Mögen Ihre Feiertage sicher, gerecht und erfolgreich sein.",
+      "Ich wünsche Ihnen Vertrauen, Ruhe und gelungene Lösungen.",
+      "Möge diese Zeit Schutz, Harmonie und Klarheit bringen.",
+      "Ich wünsche Ihnen Orientierung, Sicherheit und Frieden.",
+      "Mögen Ihre Feiertage Harmonie, Klarheit und Vertrauen schenken.",
+      "Ich wünsche Ihnen Schutz, Vertrauen und ruhige Momente.",
+      "Möge Ihre Saison voller guter Ergebnisse und Frieden sein.",
+      "Ich wünsche Ihnen Klarheit, Vertrauen und Orientierung.",
+      "Mögen Ihre Feiertage faire Lösungen, Ruhe und Gelassenheit bringen."
+    ],
+    "it": [
+      "Ti auguro una stagione di pace, chiarezza e buone decisioni.",
+      "Che le tue feste portino fiducia, protezione e serenità.",
+      "Ti auguro giorni tranquilli, buona guida e decisioni eque.",
+      "Che questa stagione ti porti chiarezza, sicurezza e momenti di pace.",
+      "Ti auguro fiducia, protezione e decisioni significative questo Natale.",
+      "Che le tue feste siano piene di giustizia, armonia e buona guida.",
+      "Ti auguro protezione, chiarezza e risultati positivi.",
+      "Che la tua stagione porti equilibrio, fiducia e serenità.",
+      "Ti auguro decisioni eque, giorni tranquilli e pace.",
+      "Che le tue feste siano sicure, luminose e piene di chiarezza.",
+      "Ti auguro fiducia, guida e risultati positivi.",
+      "Che la tua stagione sia piena di pace, fiducia e risultati appaganti.",
+      "Ti auguro calma, chiarezza e protezione per te e la tua famiglia.",
+      "Che le tue feste portino serenità, giustizia e fiducia.",
+      "Ti auguro risultati positivi, fiducia e momenti di pace.",
+      "Che questa stagione ti porti chiarezza, guida e armonia.",
+      "Ti auguro fiducia, pace e buone decisioni questo Natale.",
+      "Che le tue feste siano piene di protezione, chiarezza e serenità.",
+      "Ti auguro tranquillità, fiducia e risultati positivi.",
+      "Che la tua stagione porti decisioni eque, armonia e fiducia.",
+      "Ti auguro chiarezza, guida e pace in questo periodo festivo.",
+      "Che le tue feste siano sicure, giuste e ricche di buoni risultati.",
+      "Ti auguro fiducia, calma e risoluzioni positive.",
+      "Che questa stagione porti protezione, armonia e chiarezza.",
+      "Ti auguro guida, serenità e pace.",
+      "Che le tue feste portino armonia, chiarezza e fiducia.",
+      "Ti auguro protezione, fiducia e momenti di serenità.",
+      "Che la tua stagione sia piena di risultati positivi e pace.",
+      "Ti auguro chiarezza, fiducia e buona guida.",
+      "Che le tue feste portino decisioni giuste, serenità e tranquillità."
+    ]
+  },
+  "dental": {
+    "en": [
+      "Wishing you a season filled with radiant smiles and joyful moments.",
+      "May your holidays bring confidence and beautiful results every day.",
+      "Wishing you healthy smiles and happiness throughout this festive season.",
+      "May this season transform your days with brightness and joy.",
+      "Wishing you confidence, radiant smiles and peaceful holiday moments.",
+      "May your Christmas sparkle with beautiful results and bright smiles.",
+      "Wishing you joyful smiles and happiness that lights up your days.",
+      "May this festive season bring healthy smiles and lasting confidence.",
+      "Wishing you bright smiles, happy moments and cheerful days ahead.",
+      "May your holidays shine with confidence, radiant smiles and joy.",
+      "Wishing you a season full of transformations and beautiful results.",
+      "May your days be filled with healthy smiles and festive happiness.",
+      "Wishing you confidence, radiant moments and joyful holiday cheer.",
+      "May your Christmas be bright, cheerful and full of beautiful smiles.",
+      "Wishing you radiant smiles and happiness in every moment this season.",
+      "May your holidays bring confidence, joy and cheerful transformations.",
+      "Wishing you healthy smiles and peaceful moments with loved ones.",
+      "May your season be filled with brightness, smiles and positive energy.",
+      "Wishing you confidence, radiant results and joyful celebrations.",
+      "May your Christmas be full of happiness, healthy smiles and cheer.",
+      "Wishing you bright smiles, confidence and memorable holiday moments.",
+      "May this season transform your days with joy, beauty and smiles.",
+      "Wishing you radiant smiles, happiness and a wonderful festive season.",
+      "May your holidays bring beautiful results and joyful memories.",
+      "Wishing you confidence, cheerful smiles and a season full of joy.",
+      "May your Christmas sparkle with healthy smiles and peaceful moments.",
+      "Wishing you joy, bright smiles and unforgettable holiday moments.",
+      "May this festive season fill your days with radiant smiles and cheer.",
+      "Wishing you beautiful results, confidence and happiness this season.",
+      "May your holidays be filled with healthy smiles and joyful celebrations."
+    ],
+    "es": [
+      "Te deseo una temporada llena de sonrisas radiantes y momentos felices.",
+      "Que tus fiestas traigan confianza y resultados hermosos cada día.",
+      "Te deseo sonrisas saludables y felicidad durante toda la temporada.",
+      "Que esta temporada transforme tus días con luz y alegría.",
+      "Te deseo confianza, sonrisas radiantes y momentos de paz.",
+      "Que tu Navidad brille con hermosos resultados y sonrisas brillantes.",
+      "Te deseo sonrisas alegres y felicidad que ilumine tus días.",
+      "Que esta temporada traiga sonrisas saludables y confianza duradera.",
+      "Te deseo sonrisas brillantes, momentos felices y días alegres.",
+      "Que tus fiestas brillen con confianza, sonrisas radiantes y alegría.",
+      "Te deseo una temporada llena de transformaciones y bellos resultados.",
+      "Que tus días estén llenos de sonrisas saludables y felicidad festiva.",
+      "Te deseo confianza, momentos radiantes y alegría navideña.",
+      "Que tu Navidad sea brillante, alegre y llena de hermosas sonrisas.",
+      "Te deseo sonrisas radiantes y felicidad en cada momento.",
+      "Que tus fiestas traigan confianza, alegría y bonitas transformaciones.",
+      "Te deseo sonrisas saludables y momentos de paz con tus seres queridos.",
+      "Que tu temporada esté llena de brillo, sonrisas y buena energía.",
+      "Te deseo confianza, resultados radiantes y celebraciones alegres.",
+      "Que tu Navidad esté llena de felicidad, sonrisas saludables y alegría.",
+      "Te deseo sonrisas brillantes, confianza y momentos inolvidables.",
+      "Que esta temporada transforme tus días con alegría, belleza y sonrisas.",
+      "Te deseo sonrisas radiantes, felicidad y una temporada maravillosa.",
+      "Que tus fiestas traigan hermosos resultados y recuerdos felices.",
+      "Te deseo confianza, sonrisas alegres y una temporada llena de alegría.",
+      "Que tu Navidad brille con sonrisas saludables y momentos de paz.",
+      "Te deseo alegría, sonrisas brillantes y momentos inolvidables.",
+      "Que esta temporada llene tus días de sonrisas radiantes y alegría.",
+      "Te deseo hermosos resultados, confianza y felicidad en esta temporada.",
+      "Que tus fiestas estén llenas de sonrisas saludables y celebraciones alegres."
+    ],
+    "pt": [
+      "Desejo a você uma temporada cheia de sorrisos radiantes e momentos felizes.",
+      "Que suas festas tragam confiança e resultados lindos todos os dias.",
+      "Desejo sorrisos saudáveis e felicidade durante toda a temporada.",
+      "Que esta época transforme seus dias com luz e alegria.",
+      "Desejo confiança, sorrisos radiantes e momentos de paz.",
+      "Que seu Natal brilhe com belos resultados e sorrisos iluminados.",
+      "Desejo sorrisos alegres e felicidade que ilumine seus dias.",
+      "Que esta temporada traga sorrisos saudáveis e confiança duradoura.",
+      "Desejo sorrisos brilhantes, momentos felizes e dias alegres.",
+      "Que suas festas brilhem com confiança, sorrisos radiantes e alegria.",
+      "Desejo uma temporada cheia de transformações e belos resultados.",
+      "Que seus dias sejam repletos de sorrisos saudáveis e felicidade festiva.",
+      "Desejo confiança, momentos radiantes e alegria natalina.",
+      "Que seu Natal seja brilhante, alegre e cheio de belos sorrisos.",
+      "Desejo sorrisos radiantes e felicidade em cada momento desta temporada.",
+      "Que suas festas tragam confiança, alegria e transformações positivas.",
+      "Desejo sorrisos saudáveis e momentos de paz ao lado de quem você ama.",
+      "Que sua temporada seja cheia de brilho, sorrisos e energia positiva.",
+      "Desejo confiança, resultados radiantes e celebrações alegres.",
+      "Que seu Natal seja cheio de felicidade, sorrisos saudáveis e alegria.",
+      "Desejo sorrisos brilhantes, confiança e momentos inesquecíveis.",
+      "Que esta temporada transforme seus dias com alegria, beleza e sorrisos.",
+      "Desejo sorrisos radiantes, felicidade e uma temporada maravilhosa.",
+      "Que suas festas tragam belos resultados e boas lembranças.",
+      "Desejo confiança, sorrisos alegres e uma temporada cheia de alegria.",
+      "Que seu Natal brilhe com sorrisos saudáveis e momentos de paz.",
+      "Desejo alegria, sorrisos brilhantes e momentos inesquecíveis.",
+      "Que esta temporada encha seus dias de sorrisos radiantes e alegria.",
+      "Desejo belos resultados, confiança e felicidade nesta temporada.",
+      "Que suas festas sejam cheias de sorrisos saudáveis e celebrações alegres."
+    ],
+    "fr": [
+      "Je vous souhaite une saison pleine de sourires radieux et de moments joyeux.",
+      "Que vos fêtes apportent confiance et de beaux résultats chaque jour.",
+      "Je vous souhaite des sourires sains et du bonheur durant cette saison.",
+      "Que cette période illumine vos journées de joie et de clarté.",
+      "Je vous souhaite confiance, sourires éclatants et moments paisibles.",
+      "Que votre Noël scintille de beaux résultats et de sourires lumineux.",
+      "Je vous souhaite des sourires joyeux et un bonheur qui illumine vos jours.",
+      "Que cette saison apporte des sourires sains et une confiance durable.",
+      "Je vous souhaite des sourires brillants, des moments heureux et des journées pleines de joie.",
+      "Que vos fêtes brillent de confiance, de sourires radieux et de bonheur.",
+      "Je vous souhaite une saison pleine de transformations et de beaux résultats.",
+      "Que vos journées soient remplies de sourires sains et de bonheur festif.",
+      "Je vous souhaite confiance, moments lumineux et joie des fêtes.",
+      "Que votre Noël soit lumineux, joyeux et rempli de beaux sourires.",
+      "Je vous souhaite des sourires éclatants et du bonheur à chaque instant.",
+      "Que vos fêtes apportent confiance, joie et transformations positives.",
+      "Je vous souhaite des sourires sains et des moments paisibles en famille.",
+      "Que votre saison soit remplie de lumière, de sourires et d’énergie positive.",
+      "Je vous souhaite confiance, résultats éclatants et célébrations joyeuses.",
+      "Que votre Noël soit plein de bonheur, de sourires sains et de joie.",
+      "Je vous souhaite des sourires lumineux, confiance et moments inoubliables.",
+      "Que cette saison transforme vos journées avec joie, beauté et sourires.",
+      "Je vous souhaite sourires éclatants, bonheur et une merveilleuse saison festive.",
+      "Que vos fêtes apportent de beaux résultats et de précieux souvenirs.",
+      "Je vous souhaite confiance, sourires joyeux et une saison pleine de bonheur.",
+      "Que votre Noël scintille de sourires sains et de moments paisibles.",
+      "Je vous souhaite joie, sourires lumineux et moments inoubliables.",
+      "Que cette saison remplisse vos journées de sourires radieux et de joie.",
+      "Je vous souhaite de beaux résultats, confiance et bonheur pour cette saison.",
+      "Que vos fêtes soient remplies de sourires sains et de célébrations joyeuses."
+    ],
+    "de": [
+      "Ich wünsche Ihnen eine Saison voller strahlender Lächeln und glücklicher Momente.",
+      "Möge Ihre Festzeit Ihnen Selbstvertrauen und schöne Ergebnisse bringen.",
+      "Ich wünsche Ihnen gesundes Lächeln und Glück während dieser festlichen Zeit.",
+      "Möge diese Saison Ihre Tage mit Helligkeit und Freude erfüllen.",
+      "Ich wünsche Ihnen Selbstvertrauen, strahlende Lächeln und friedliche Momente.",
+      "Möge Ihr Weihnachten mit schönen Ergebnissen und strahlenden Lächeln funkeln.",
+      "Ich wünsche Ihnen fröhliche Lächeln und Glück, das Ihre Tage erhellt.",
+      "Möge diese Saison gesundes Lächeln und dauerhaftes Selbstvertrauen bringen.",
+      "Ich wünsche Ihnen strahlende Lächeln, glückliche Momente und freudige Tage.",
+      "Möge Ihre Festzeit mit Selbstvertrauen, strahlenden Lächeln und Freude leuchten.",
+      "Ich wünsche Ihnen eine Saison voller Veränderungen und schöner Ergebnisse.",
+      "Möge Ihre Tage voller gesundem Lächeln und festlicher Freude sein.",
+      "Ich wünsche Ihnen Selbstvertrauen, strahlende Momente und festliche Fröhlichkeit.",
+      "Möge Ihr Weihnachten hell, fröhlich und voller schöner Lächeln sein.",
+      "Ich wünsche Ihnen strahlende Lächeln und Glück in jedem Moment dieser Saison.",
+      "Möge Ihre Festzeit Selbstvertrauen, Freude und positive Veränderungen bringen.",
+      "Ich wünsche Ihnen gesundes Lächeln und friedliche Momente mit Ihren Liebsten.",
+      "Möge Ihre Saison voller Helligkeit, Lächeln und positiver Energie sein.",
+      "Ich wünsche Ihnen Selbstvertrauen, strahlende Ergebnisse und freudige Feiern.",
+      "Möge Ihr Weihnachten voller Glück, gesundem Lächeln und Fröhlichkeit sein.",
+      "Ich wünsche Ihnen strahlende Lächeln, Selbstvertrauen und unvergessliche Momente.",
+      "Möge diese Saison Ihre Tage mit Freude, Schönheit und Lächeln verwandeln.",
+      "Ich wünsche Ihnen strahlende Lächeln, Glück und eine wundervolle Festzeit.",
+      "Möge Ihre Festzeit schöne Ergebnisse und glückliche Erinnerungen bringen.",
+      "Ich wünsche Ihnen Selbstvertrauen, fröhliche Lächeln und eine Saison voller Freude.",
+      "Möge Ihr Weihnachten mit gesundem Lächeln und friedlichen Momenten funkeln.",
+      "Ich wünsche Ihnen Freude, strahlende Lächeln und unvergessliche Momente.",
+      "Möge diese Saison Ihre Tage mit strahlenden Lächeln und Fröhlichkeit füllen.",
+      "Ich wünsche Ihnen schöne Ergebnisse, Selbstvertrauen und Glück in dieser Saison.",
+      "Möge Ihre Festzeit voller gesundem Lächeln und fröhlichen Feiern sein."
+    ],
+    "it": [
+      "Ti auguro una stagione piena di sorrisi radiosi e momenti felici.",
+      "Che le tue feste portino fiducia e splendidi risultati ogni giorno.",
+      "Ti auguro sorrisi sani e felicità per tutta la stagione.",
+      "Che questa stagione illumini le tue giornate con gioia e luce.",
+      "Ti auguro fiducia, sorrisi luminosi e momenti di pace.",
+      "Che il tuo Natale brilli con splendidi risultati e sorrisi luminosi.",
+      "Ti auguro sorrisi gioiosi e felicità che illumina le tue giornate.",
+      "Che questa stagione porti sorrisi sani e fiducia duratura.",
+      "Ti auguro sorrisi luminosi, momenti felici e giorni pieni di allegria.",
+      "Che le tue feste brillino di fiducia, sorrisi radiosi e gioia.",
+      "Ti auguro una stagione piena di trasformazioni e splendidi risultati.",
+      "Che le tue giornate siano piene di sorrisi sani e felicità festiva.",
+      "Ti auguro fiducia, momenti luminosi e gioia natalizia.",
+      "Che il tuo Natale sia luminoso, allegro e pieno di splendidi sorrisi.",
+      "Ti auguro sorrisi radiosi e felicità in ogni momento della stagione.",
+      "Che le tue feste portino fiducia, gioia e trasformazioni positive.",
+      "Ti auguro sorrisi sani e momenti di pace accanto ai tuoi cari.",
+      "Che la tua stagione sia piena di luce, sorrisi ed energia positiva.",
+      "Ti auguro fiducia, risultati splendidi e celebrazioni gioiose.",
+      "Che il tuo Natale sia pieno di felicità, sorrisi sani e allegria.",
+      "Ti auguro sorrisi luminosi, fiducia e momenti indimenticabili.",
+      "Che questa stagione trasformi le tue giornate con gioia, bellezza e sorrisi.",
+      "Ti auguro sorrisi radiosi, felicità e una splendida stagione festiva.",
+      "Che le tue feste portino risultati bellissimi e ricordi felici.",
+      "Ti auguro fiducia, sorrisi allegri e una stagione piena di gioia.",
+      "Che il tuo Natale brilli con sorrisi sani e momenti di pace.",
+      "Ti auguro gioia, sorrisi luminosi e momenti indimenticabili.",
+      "Che questa stagione riempia le tue giornate di sorrisi radiosi e allegria.",
+      "Ti auguro splendidi risultati, fiducia e felicità in questa stagione.",
+      "Che le tue feste siano piene di sorrisi sani e celebrazioni gioiose."
+    ]
+  },
+  "education": {
+    "en": [
+      "Wishing you a season full of learning, growth and joyful discoveries.",
+      "May your holidays inspire curiosity, knowledge and bright ideas.",
+      "Wishing you moments of inspiration and meaningful achievements this season.",
+      "May your days be filled with learning, joy and future possibilities.",
+      "Wishing you growth, discovery and exciting educational experiences.",
+      "May this season bring new knowledge, insight and rewarding moments.",
+      "Wishing you curiosity, achievement and joyful learning opportunities.",
+      "May your holidays inspire creativity, growth and meaningful progress.",
+      "Wishing you knowledge, exploration and memorable festive experiences.",
+      "May your season be filled with inspiration, learning and bright ideas.",
+      "Wishing you moments of discovery, curiosity and academic success.",
+      "May your holidays bring growth, insight and joyful achievements.",
+      "Wishing you knowledge, motivation and meaningful progress this season.",
+      "May your season inspire learning, curiosity and bright opportunities.",
+      "Wishing you educational growth, achievement and memorable experiences.",
+      "May your holidays bring new ideas, learning and inspiration.",
+      "Wishing you curiosity, insight and accomplishments to celebrate.",
+      "May your season be filled with knowledge, growth and motivation.",
+      "Wishing you moments of learning, achievement and joyful discoveries.",
+      "May your holidays inspire creativity, insight and rewarding progress.",
+      "Wishing you bright ideas, learning opportunities and memorable moments.",
+      "May your season bring growth, curiosity and meaningful achievements.",
+      "Wishing you exploration, inspiration and joyful academic experiences.",
+      "May your holidays be full of learning, achievement and bright insights.",
+      "Wishing you knowledge, creativity and moments to celebrate this season.",
+      "May your season inspire curiosity, learning and rewarding outcomes.",
+      "Wishing you growth, insight and joyful discoveries this holiday season.",
+      "May your holidays bring motivation, knowledge and memorable achievements.",
+      "Wishing you educational progress, curiosity and bright celebrations.",
+      "May your season be filled with learning, inspiration and future possibilities."
+    ],
+    "es": [
+      "Te deseo una temporada llena de aprendizaje, crecimiento y descubrimientos alegres.",
+      "Que tus fiestas inspiren curiosidad, conocimiento e ideas brillantes.",
+      "Te deseo momentos de inspiración y logros significativos esta temporada.",
+      "Que tus días estén llenos de aprendizaje, alegría y posibilidades futuras.",
+      "Te deseo crecimiento, descubrimiento y experiencias educativas emocionantes.",
+      "Que esta temporada traiga nuevo conocimiento, comprensión y momentos gratificantes.",
+      "Te deseo curiosidad, logros y oportunidades de aprendizaje alegre.",
+      "Que tus fiestas inspiren creatividad, crecimiento y progreso significativo.",
+      "Te deseo conocimiento, exploración y experiencias festivas memorables.",
+      "Que tu temporada esté llena de inspiración, aprendizaje e ideas brillantes.",
+      "Te deseo momentos de descubrimiento, curiosidad y éxito académico.",
+      "Que tus fiestas traigan crecimiento, comprensión y logros alegres.",
+      "Te deseo conocimiento, motivación y progreso significativo esta temporada.",
+      "Que tu temporada inspire aprendizaje, curiosidad y oportunidades brillantes.",
+      "Te deseo crecimiento educativo, logros y experiencias memorables.",
+      "Que tus fiestas traigan nuevas ideas, aprendizaje e inspiración.",
+      "Te deseo curiosidad, comprensión y logros para celebrar.",
+      "Que tu temporada esté llena de conocimiento, crecimiento y motivación.",
+      "Te deseo momentos de aprendizaje, logros y descubrimientos alegres.",
+      "Que tus fiestas inspiren creatividad, comprensión y progreso gratificante.",
+      "Te deseo ideas brillantes, oportunidades de aprendizaje y momentos memorables.",
+      "Que tu temporada traiga crecimiento, curiosidad y logros significativos.",
+      "Te deseo exploración, inspiración y experiencias académicas alegres.",
+      "Que tus fiestas estén llenas de aprendizaje, logros e ideas brillantes.",
+      "Te deseo conocimiento, creatividad y momentos para celebrar esta temporada.",
+      "Que tu temporada inspire curiosidad, aprendizaje y resultados gratificantes.",
+      "Te deseo crecimiento, comprensión y descubrimientos alegres esta temporada.",
+      "Que tus fiestas traigan motivación, conocimiento y logros memorables.",
+      "Te deseo progreso educativo, curiosidad y celebraciones brillantes.",
+      "Que tu temporada esté llena de aprendizaje, inspiración y posibilidades futuras."
+    ],
+    "pt": [
+      "Desejando a você uma temporada cheia de aprendizado, crescimento e descobertas alegres.",
+      "Que suas festas inspirem curiosidade, conhecimento e ideias brilhantes.",
+      "Desejando momentos de inspiração e conquistas significativas nesta temporada.",
+      "Que seus dias sejam recheados de aprendizado, alegria e possibilidades futuras.",
+      "Desejando crescimento, descoberta e experiências educacionais empolgantes.",
+      "Que esta temporada traga novos conhecimentos, insights e momentos gratificantes.",
+      "Desejando curiosidade, conquistas e oportunidades de aprendizado alegre.",
+      "Que suas festas inspirem criatividade, crescimento e progresso significativo.",
+      "Desejando conhecimento, exploração e experiências festivas memoráveis.",
+      "Que sua temporada seja cheia de inspiração, aprendizado e ideias brilhantes.",
+      "Desejando momentos de descobertas, curiosidade e sucesso acadêmico.",
+      "Que suas festas tragam crescimento, insights e conquistas alegres.",
+      "Desejando conhecimento, motivação e progresso significativo nesta temporada.",
+      "Que sua temporada inspire aprendizado, curiosidade e oportunidades brilhantes.",
+      "Desejando crescimento educacional, conquistas e experiências memoráveis.",
+      "Que suas festas tragam novas ideias, aprendizado e inspiração.",
+      "Desejando curiosidade, insights e conquistas para celebrar.",
+      "Que sua temporada seja repleta de conhecimento, crescimento e motivação.",
+      "Desejando momentos de aprendizado, conquistas e descobertas alegres.",
+      "Que suas festas inspirem criatividade, insights e progresso gratificante.",
+      "Desejando ideias brilhantes, oportunidades de aprendizado e momentos memoráveis.",
+      "Que sua temporada traga crescimento, curiosidade e conquistas significativas.",
+      "Desejando exploração, inspiração e experiências acadêmicas alegres.",
+      "Que suas festas sejam cheias de aprendizado, conquistas e insights brilhantes.",
+      "Desejando conhecimento, criatividade e momentos de celebração nesta temporada.",
+      "Que sua temporada inspire curiosidade, aprendizado e resultados gratificantes.",
+      "Desejando crescimento, insights e descobertas alegres nesta temporada.",
+      "Que suas festas tragam motivação, conhecimento e conquistas memoráveis.",
+      "Desejando progresso educacional, curiosidade e celebrações brilhantes.",
+      "Que sua temporada seja cheia de aprendizado, inspiração e possibilidades futuras."
+    ],
+    "fr": [
+      "Je vous souhaite une saison pleine d’apprentissage, de croissance et de belles découvertes.",
+      "Que vos fêtes inspirent curiosité, connaissance et idées lumineuses.",
+      "Je vous souhaite des moments d’inspiration et de belles réussites cette saison.",
+      "Que vos journées soient remplies d’apprentissage, de joie et de possibilités futures.",
+      "Je vous souhaite croissance, découverte et expériences éducatives passionnantes.",
+      "Que cette saison apporte de nouveaux savoirs, des éclairages et des moments enrichissants.",
+      "Je vous souhaite curiosité, réussites et opportunités d’apprentissage joyeuses.",
+      "Que vos fêtes inspirent créativité, croissance et progrès significatifs.",
+      "Je vous souhaite connaissance, exploration et expériences festives mémorables.",
+      "Que votre saison soit pleine d’inspiration, d’apprentissage et d’idées lumineuses.",
+      "Je vous souhaite des moments de découverte, de curiosité et de réussite académique.",
+      "Que vos fêtes apportent croissance, éclairages et réussites joyeuses.",
+      "Je vous souhaite connaissance, motivation et progrès significatifs cette saison.",
+      "Que votre saison inspire apprentissage, curiosité et opportunités lumineuses.",
+      "Je vous souhaite croissance éducative, réussites et expériences mémorables.",
+      "Que vos fêtes apportent de nouvelles idées, de l’apprentissage et de l’inspiration.",
+      "Je vous souhaite curiosité, éclairages et réussites à célébrer.",
+      "Que votre saison soit remplie de savoir, de croissance et de motivation.",
+      "Je vous souhaite des moments d’apprentissage, de réussite et de belles découvertes.",
+      "Que vos fêtes inspirent créativité, éclairages et progrès gratifiants.",
+      "Je vous souhaite idées lumineuses, opportunités d’apprentissage et moments mémorables.",
+      "Que votre saison apporte croissance, curiosité et réussites significatives.",
+      "Je vous souhaite exploration, inspiration et expériences académiques joyeuses.",
+      "Que vos fêtes soient pleines d’apprentissage, de réussites et d’éclairages brillants.",
+      "Je vous souhaite savoir, créativité et moments de célébration cette saison.",
+      "Que votre saison inspire curiosité, apprentissage et résultats gratifiants.",
+      "Je vous souhaite croissance, éclairages et belles découvertes cette saison.",
+      "Que vos fêtes apportent motivation, savoir et réussites mémorables.",
+      "Je vous souhaite progrès éducatif, curiosité et célébrations lumineuses.",
+      "Que votre saison soit pleine d’apprentissage, d’inspiration et de possibilités futures."
+    ],
+    "de": [
+      "Ich wünsche Ihnen eine Saison voller Lernen, Wachstum und freudiger Entdeckungen.",
+      "Möge Ihre Feiertage Neugier, Wissen und helle Ideen inspirieren.",
+      "Ich wünsche Ihnen inspirierende Momente und bedeutende Erfolge in dieser Saison.",
+      "Mögen Ihre Tage voller Lernen, Freude und zukünftiger Möglichkeiten sein.",
+      "Ich wünsche Ihnen Wachstum, Entdeckungen und spannende Lernerlebnisse.",
+      "Möge diese Saison neues Wissen, Einsicht und bereichernde Momente bringen.",
+      "Ich wünsche Ihnen Neugier, Erfolge und freudige Lernchancen.",
+      "Mögen Ihre Feiertage Kreativität, Wachstum und bedeutenden Fortschritt inspirieren.",
+      "Ich wünsche Ihnen Wissen, Erkundung und unvergessliche Festtagserlebnisse.",
+      "Möge Ihre Saison voller Inspiration, Lernen und heller Ideen sein.",
+      "Ich wünsche Ihnen Momente der Entdeckung, Neugier und akademischen Erfolgs.",
+      "Mögen Ihre Feiertage Wachstum, Einsicht und freudige Erfolge bringen.",
+      "Ich wünsche Ihnen Wissen, Motivation und bedeutenden Fortschritt in dieser Saison.",
+      "Möge Ihre Saison Lernen, Neugier und strahlende Möglichkeiten inspirieren.",
+      "Ich wünsche Ihnen Bildungswachstum, Erfolge und unvergessliche Erlebnisse.",
+      "Mögen Ihre Feiertage neue Ideen, Lernen und Inspiration bringen.",
+      "Ich wünsche Ihnen Neugier, Einsichten und Erfolge zum Feiern.",
+      "Möge Ihre Saison voll Wissen, Wachstum und Motivation sein.",
+      "Ich wünsche Ihnen Momente des Lernens, Erfolge und freudige Entdeckungen.",
+      "Mögen Ihre Feiertage Kreativität, Einsicht und lohnenden Fortschritt inspirieren.",
+      "Ich wünsche Ihnen helle Ideen, Lernchancen und unvergessliche Momente.",
+      "Möge Ihre Saison Wachstum, Neugier und bedeutende Erfolge bringen.",
+      "Ich wünsche Ihnen Erkundung, Inspiration und freudige akademische Erlebnisse.",
+      "Mögen Ihre Feiertage voller Lernen, Erfolge und heller Einsichten sein.",
+      "Ich wünsche Ihnen Wissen, Kreativität und Momente zum Feiern in dieser Saison.",
+      "Möge Ihre Saison Neugier, Lernen und lohnende Ergebnisse inspirieren.",
+      "Ich wünsche Ihnen Wachstum, Einsichten und freudige Entdeckungen in dieser Saison.",
+      "Mögen Ihre Feiertage Motivation, Wissen und unvergessliche Erfolge bringen.",
+      "Ich wünsche Ihnen Bildungsfortschritt, Neugier und strahlende Feiern.",
+      "Möge Ihre Saison voller Lernen, Inspiration und zukünftiger Möglichkeiten sein."
+    ],
+    "it": [
+      "Ti auguro una stagione piena di apprendimento, crescita e scoperte gioiose.",
+      "Che le tue festività ispirino curiosità, conoscenza e idee brillanti.",
+      "Ti auguro momenti di ispirazione e risultati significativi in questa stagione.",
+      "Che i tuoi giorni siano pieni di apprendimento, gioia e possibilità future.",
+      "Ti auguro crescita, scoperta ed esperienze educative entusiasmanti.",
+      "Che questa stagione porti nuove conoscenze, intuizioni e momenti gratificanti.",
+      "Ti auguro curiosità, risultati e opportunità di apprendimento gioiose.",
+      "Che le tue festività ispirino creatività, crescita e progresso significativo.",
+      "Ti auguro conoscenza, esplorazione ed esperienze festive memorabili.",
+      "Che la tua stagione sia piena di ispirazione, apprendimento e idee brillanti.",
+      "Ti auguro momenti di scoperta, curiosità e successo accademico.",
+      "Che le tue festività portino crescita, intuizioni e risultati gioiosi.",
+      "Ti auguro conoscenza, motivazione e progresso significativo in questa stagione.",
+      "Che la tua stagione ispiri apprendimento, curiosità e opportunità brillanti.",
+      "Ti auguro crescita educativa, risultati ed esperienze memorabili.",
+      "Che le tue festività portino nuove idee, apprendimento e ispirazione.",
+      "Ti auguro curiosità, intuizioni e risultati da celebrare.",
+      "Che la tua stagione sia piena di conoscenza, crescita e motivazione.",
+      "Ti auguro momenti di apprendimento, successi e scoperte gioiose.",
+      "Che le tue festività ispirino creatività, intuizioni e progresso gratificante.",
+      "Ti auguro idee brillanti, opportunità di apprendimento e momenti memorabili.",
+      "Che la tua stagione porti crescita, curiosità e risultati significativi.",
+      "Ti auguro esplorazione, ispirazione ed esperienze accademiche gioiose.",
+      "Che le tue festività siano piene di apprendimento, risultati e intuizioni brillanti.",
+      "Ti auguro conoscenza, creatività e momenti da celebrare in questa stagione.",
+      "Che la tua stagione ispiri curiosità, apprendimento e risultati gratificanti.",
+      "Ti auguro crescita, intuizioni e gioiose scoperte in questa stagione.",
+      "Che le tue festività portino motivazione, conoscenza e risultati memorabili.",
+      "Ti auguro progresso educativo, curiosità e celebrazioni brillanti.",
+      "Che la tua stagione sia piena di apprendimento, ispirazione e possibilità future."
+    ]
+  },
+  "fitness": {
+    "en": [
+      "Wishing you energy, strength and balance throughout this holiday season.",
+      "May your days be filled with vitality, focus and motivating moments.",
+      "Wishing you discipline, wellness and renewed goals this festive season.",
+      "May your holidays bring powerful routines, rest and healthy progress.",
+      "Wishing you balance, endurance and joyful movement this Christmas.",
+      "May this season strengthen your body, mind and daily momentum.",
+      "Wishing you energy, clarity and motivation for a strong new year.",
+      "May your holiday season be filled with healthy habits and renewed focus.",
+      "Wishing you consistent progress, confidence and energized days ahead.",
+      "May your days shine with strength, vitality and positive discipline.",
+      "Wishing you motivation, balance and meaningful fitness wins this season.",
+      "May your holidays inspire strength, wellness and powerful routines.",
+      "Wishing you clarity, endurance and joyful activity this Christmas.",
+      "May your season be filled with energy, recovery and healthy motivation.",
+      "Wishing you strength, balance and exciting milestones this festive season.",
+      "May your holidays bring inspiration, movement and renewed energy.",
+      "Wishing you focus, vitality and long-lasting progress this Christmas.",
+      "May your season be active, uplifting and full of healthy momentum.",
+      "Wishing you wellness, strength and energizing moments this season.",
+      "May your holidays fuel your goals with balance, health and motivation.",
+      "Wishing you endurance, clarity and joyful movement this Christmas.",
+      "May your season bring strength, consistency and renewed discipline.",
+      "Wishing you vitality, motivation and healthy habits throughout the holidays.",
+      "May your days be filled with uplifting routines and powerful progress.",
+      "Wishing you renewed strength, balanced energy and joyful activity.",
+      "May your holidays bring wellness, inspiration and healthy determination.",
+      "Wishing you focus, stamina and motivating victories this season.",
+      "May this season support your goals with energy, clarity and discipline.",
+      "Wishing you empowering routines, steady progress and joyful strength.",
+      "May your festive season be filled with wellness, movement and renewed vitality."
+    ],
+    "es": [
+      "Te deseamos energía, fuerza y equilibrio durante toda esta temporada navideña.",
+      "Que tus días estén llenos de vitalidad, enfoque y momentos motivadores.",
+      "Te deseamos disciplina, bienestar y metas renovadas esta temporada festiva.",
+      "Que tus vacaciones traigan rutinas poderosas, descanso y progreso saludable.",
+      "Te deseamos equilibrio, resistencia y movimiento alegre esta Navidad.",
+      "Que esta temporada fortalezca tu cuerpo, mente y tu impulso diario.",
+      "Te deseamos energía, claridad y motivación para un año nuevo fuerte.",
+      "Que tus fiestas estén llenas de hábitos saludables y enfoque renovado.",
+      "Te deseamos progreso constante, confianza y días llenos de energía.",
+      "Que tus días brillen con fuerza, vitalidad y disciplina positiva.",
+      "Te deseamos motivación, equilibrio y logros significativos en fitness esta temporada.",
+      "Que tus vacaciones inspiren fuerza, bienestar y rutinas poderosas.",
+      "Te deseamos claridad, resistencia y actividad alegre esta Navidad.",
+      "Que tu temporada esté llena de energía, recuperación y motivación saludable.",
+      "Te deseamos fuerza, equilibrio y hitos emocionantes esta temporada festiva.",
+      "Que tus vacaciones traigan inspiración, movimiento y energía renovada.",
+      "Te deseamos enfoque, vitalidad y progreso duradero esta Navidad.",
+      "Que tu temporada esté activa, motivadora y llena de impulso saludable.",
+      "Te deseamos bienestar, fuerza y momentos energizantes esta temporada.",
+      "Que tus vacaciones impulsen tus metas con equilibrio, salud y motivación.",
+      "Te deseamos resistencia, claridad y movimiento alegre esta Navidad.",
+      "Que tu temporada traiga fuerza, consistencia y disciplina renovada.",
+      "Te deseamos vitalidad, motivación y hábitos saludables durante las fiestas.",
+      "Que tus días estén llenos de rutinas estimulantes y progreso poderoso.",
+      "Te deseamos fuerza renovada, energía equilibrada y actividad alegre.",
+      "Que tus vacaciones traigan bienestar, inspiración y determinación saludable.",
+      "Te deseamos enfoque, resistencia y victorias motivadoras esta temporada.",
+      "Que esta temporada apoye tus metas con energía, claridad y disciplina.",
+      "Te deseamos rutinas empoderadoras, progreso constante y fuerza alegre.",
+      "Que tu temporada festiva esté llena de bienestar, movimiento y energía renovada."
+    ],
+    "pt": [
+      "Desejamos a você energia, força e equilíbrio durante toda esta temporada de festas.",
+      "Que seus dias sejam cheios de vitalidade, foco e momentos motivadores.",
+      "Desejamos disciplina, bem-estar e metas renovadas nesta temporada festiva.",
+      "Que suas férias tragam rotinas poderosas, descanso e progresso saudável.",
+      "Desejamos equilíbrio, resistência e movimento alegre neste Natal.",
+      "Que esta temporada fortaleça seu corpo, mente e impulso diário.",
+      "Desejamos energia, clareza e motivação para um ano novo forte.",
+      "Que suas festas estejam cheias de hábitos saudáveis e foco renovado.",
+      "Desejamos progresso constante, confiança e dias cheios de energia.",
+      "Que seus dias brilhem com força, vitalidade e disciplina positiva.",
+      "Desejamos motivação, equilíbrio e conquistas significativas em fitness nesta temporada.",
+      "Que suas férias inspirem força, bem-estar e rotinas poderosas.",
+      "Desejamos clareza, resistência e atividade alegre neste Natal.",
+      "Que sua temporada esteja cheia de energia, recuperação e motivação saudável.",
+      "Desejamos força, equilíbrio e marcos emocionantes nesta temporada festiva.",
+      "Que suas férias tragam inspiração, movimento e energia renovada.",
+      "Desejamos foco, vitalidade e progresso duradouro neste Natal.",
+      "Que sua temporada esteja ativa, motivadora e cheia de impulso saudável.",
+      "Desejamos bem-estar, força e momentos energizantes nesta temporada.",
+      "Que suas férias impulsionem suas metas com equilíbrio, saúde e motivação.",
+      "Desejamos resistência, clareza e movimento alegre neste Natal.",
+      "Que sua temporada traga força, consistência e disciplina renovada.",
+      "Desejamos vitalidade, motivação e hábitos saudáveis durante as festas.",
+      "Que seus dias estejam cheios de rotinas estimulantes e progresso poderoso.",
+      "Desejamos força renovada, energia equilibrada e atividade alegre.",
+      "Que suas férias tragam bem-estar, inspiração e determinação saudável.",
+      "Desejamos foco, resistência e vitórias motivadoras nesta temporada.",
+      "Que esta temporada apoie suas metas com energia, clareza e disciplina.",
+      "Desejamos rotinas fortalecedoras, progresso constante e força alegre.",
+      "Que sua temporada festiva esteja cheia de bem-estar, movimento e energia renovada."
+    ],
+    "fr": [
+      "Nous vous souhaitons énergie, force et équilibre tout au long de cette saison de fêtes.",
+      "Que vos jours soient remplis de vitalité, de concentration et de moments motivants.",
+      "Nous vous souhaitons discipline, bien-être et objectifs renouvelés cette saison festive.",
+      "Que vos vacances apportent des routines puissantes, du repos et des progrès sains.",
+      "Nous vous souhaitons équilibre, endurance et mouvement joyeux ce Noël.",
+      "Que cette saison renforce votre corps, votre esprit et votre élan quotidien.",
+      "Nous vous souhaitons énergie, clarté et motivation pour une nouvelle année forte.",
+      "Que votre saison des fêtes soit remplie d'habitudes saines et de concentration renouvelée.",
+      "Nous vous souhaitons progrès constants, confiance et journées pleines d'énergie.",
+      "Que vos jours brillent de force, vitalité et discipline positive.",
+      "Nous vous souhaitons motivation, équilibre et succès significatifs en fitness cette saison.",
+      "Que vos vacances inspirent force, bien-être et routines puissantes.",
+      "Nous vous souhaitons clarté, endurance et activité joyeuse ce Noël.",
+      "Que votre saison soit remplie d'énergie, de récupération et de motivation saine.",
+      "Nous vous souhaitons force, équilibre et étapes passionnantes cette saison festive.",
+      "Que vos vacances apportent inspiration, mouvement et énergie renouvelée.",
+      "Nous vous souhaitons concentration, vitalité et progrès durable ce Noël.",
+      "Que votre saison soit active, stimulante et pleine d'élan sain.",
+      "Nous vous souhaitons bien-être, force et moments énergisants cette saison.",
+      "Que vos vacances alimentent vos objectifs avec équilibre, santé et motivation.",
+      "Nous vous souhaitons endurance, clarté et mouvement joyeux ce Noël.",
+      "Que votre saison apporte force, cohérence et discipline renouvelée.",
+      "Nous vous souhaitons vitalité, motivation et habitudes saines tout au long des fêtes.",
+      "Que vos jours soient remplis de routines stimulantes et de progrès puissants.",
+      "Nous vous souhaitons force renouvelée, énergie équilibrée et activité joyeuse.",
+      "Que vos vacances apportent bien-être, inspiration et détermination saine.",
+      "Nous vous souhaitons concentration, endurance et victoires motivantes cette saison.",
+      "Que cette saison soutienne vos objectifs avec énergie, clarté et discipline.",
+      "Nous vous souhaitons routines motivantes, progrès constants et force joyeuse.",
+      "Que votre saison festive soit remplie de bien-être, de mouvement et d'énergie renouvelée."
+    ],
+    "de": [
+      "Wir wünschen Ihnen Energie, Kraft und Balance während dieser festlichen Saison.",
+      "Mögen Ihre Tage voller Vitalität, Fokus und motivierender Momente sein.",
+      "Wir wünschen Ihnen Disziplin, Wohlbefinden und erneuerte Ziele in dieser festlichen Saison.",
+      "Mögen Ihre Feiertage kraftvolle Routinen, Ruhe und gesunden Fortschritt bringen.",
+      "Wir wünschen Ihnen Balance, Ausdauer und freudige Bewegung zu Weihnachten.",
+      "Möge diese Saison Ihren Körper, Geist und täglichen Schwung stärken.",
+      "Wir wünschen Ihnen Energie, Klarheit und Motivation für ein starkes neues Jahr.",
+      "Möge Ihre Feiertagssaison voller gesunder Gewohnheiten und erneuertem Fokus sein.",
+      "Wir wünschen Ihnen stetigen Fortschritt, Vertrauen und energiegeladene Tage.",
+      "Mögen Ihre Tage mit Kraft, Vitalität und positiver Disziplin strahlen.",
+      "Wir wünschen Ihnen Motivation, Balance und bedeutende Fitnesserfolge in dieser Saison.",
+      "Mögen Ihre Feiertage Stärke, Wohlbefinden und kraftvolle Routinen inspirieren.",
+      "Wir wünschen Ihnen Klarheit, Ausdauer und freudige Aktivitäten zu Weihnachten.",
+      "Möge Ihre Saison voller Energie, Erholung und gesunder Motivation sein.",
+      "Wir wünschen Ihnen Kraft, Balance und aufregende Meilensteine in dieser festlichen Saison.",
+      "Mögen Ihre Feiertage Inspiration, Bewegung und erneuerte Energie bringen.",
+      "Wir wünschen Ihnen Fokus, Vitalität und dauerhaften Fortschritt zu Weihnachten.",
+      "Möge Ihre Saison aktiv, aufbauend und voller gesunder Dynamik sein.",
+      "Wir wünschen Ihnen Wohlbefinden, Kraft und energiegeladene Momente in dieser Saison.",
+      "Mögen Ihre Feiertage Ihre Ziele mit Balance, Gesundheit und Motivation beflügeln.",
+      "Wir wünschen Ihnen Ausdauer, Klarheit und freudige Bewegung zu Weihnachten.",
+      "Möge Ihre Saison Kraft, Beständigkeit und erneuerte Disziplin bringen.",
+      "Wir wünschen Ihnen Vitalität, Motivation und gesunde Gewohnheiten während der Feiertage.",
+      "Mögen Ihre Tage voller anregender Routinen und kraftvollem Fortschritt sein.",
+      "Wir wünschen Ihnen erneuerte Stärke, ausgewogene Energie und freudige Aktivitäten.",
+      "Mögen Ihre Feiertage Wohlbefinden, Inspiration und gesunde Entschlossenheit bringen.",
+      "Wir wünschen Ihnen Fokus, Ausdauer und motivierende Erfolge in dieser Saison.",
+      "Möge diese Saison Ihre Ziele mit Energie, Klarheit und Disziplin unterstützen.",
+      "Wir wünschen Ihnen stärkende Routinen, stetigen Fortschritt und freudige Kraft.",
+      "Möge Ihre festliche Saison voller Wohlbefinden, Bewegung und erneuerter Energie sein."
+    ],
+    "it": [
+      "Ti auguriamo energia, forza e equilibrio durante tutta questa stagione festiva.",
+      "Che i tuoi giorni siano pieni di vitalità, concentrazione e momenti motivanti.",
+      "Ti auguriamo disciplina, benessere e obiettivi rinnovati in questa stagione festiva.",
+      "Che le tue vacanze portino routine potenti, riposo e progressi sani.",
+      "Ti auguriamo equilibrio, resistenza e movimento gioioso questo Natale.",
+      "Che questa stagione rafforzi il tuo corpo, la tua mente e il tuo slancio quotidiano.",
+      "Ti auguriamo energia, chiarezza e motivazione per un nuovo anno forte.",
+      "Che la tua stagione festiva sia piena di abitudini sane e concentrazione rinnovata.",
+      "Ti auguriamo progressi costanti, fiducia e giorni pieni di energia.",
+      "Che i tuoi giorni brillino di forza, vitalità e disciplina positiva.",
+      "Ti auguriamo motivazione, equilibrio e successi significativi nel fitness in questa stagione.",
+      "Che le tue vacanze ispirino forza, benessere e routine potenti.",
+      "Ti auguriamo chiarezza, resistenza e attività gioiosa questo Natale.",
+      "Che la tua stagione sia piena di energia, recupero e motivazione sana.",
+      "Ti auguriamo forza, equilibrio e traguardi emozionanti in questa stagione festiva.",
+      "Che le tue vacanze portino ispirazione, movimento ed energia rinnovata.",
+      "Ti auguriamo concentrazione, vitalità e progressi duraturi questo Natale.",
+      "Che la tua stagione sia attiva, stimolante e piena di slancio salutare.",
+      "Ti auguriamo benessere, forza e momenti energizzanti in questa stagione.",
+      "Che le tue vacanze alimentino i tuoi obiettivi con equilibrio, salute e motivazione.",
+      "Ti auguriamo resistenza, chiarezza e movimento gioioso questo Natale.",
+      "Che la tua stagione porti forza, coerenza e disciplina rinnovata.",
+      "Ti auguriamo vitalità, motivazione e abitudini salutari durante le feste.",
+      "Che i tuoi giorni siano pieni di routine stimolanti e progressi potenti.",
+      "Ti auguriamo forza rinnovata, energia equilibrata e attività gioiosa.",
+      "Che le tue vacanze portino benessere, ispirazione e determinazione salutare.",
+      "Ti auguriamo concentrazione, resistenza e vittorie motivanti in questa stagione.",
+      "Che questa stagione supporti i tuoi obiettivi con energia, chiarezza e disciplina.",
+      "Ti auguriamo routine potenzianti, progressi costanti e forza gioiosa.",
+      "Che la tua stagione festiva sia piena di benessere, movimento ed energia rinnovata."
+    ]
+  },
+  "general": {
+    "en": [
+      "Wishing you joy, peace and warmth throughout this holiday season.",
+      "May your holidays be filled with laughter, love and happy memories.",
+      "Wishing you a season of happiness, comfort and meaningful moments.",
+      "May your days be bright, your heart light and your holidays joyful.",
+      "Wishing you festive cheer, cozy moments and joyful celebrations.",
+      "May your holiday season be full of love, laughter and peace.",
+      "Wishing you warm moments, happy memories and joyful gatherings.",
+      "May your Christmas be bright, cheerful and full of special moments.",
+      "Wishing you a joyful holiday season and a happy, peaceful new year.",
+      "May your days be filled with warmth, love and holiday magic.",
+      "Wishing you peace, happiness and joy throughout the festive season.",
+      "May your holidays bring laughter, love and cherished memories.",
+      "Wishing you bright days, cozy nights and moments of true joy.",
+      "May your season be filled with happiness, warmth and cheerful moments.",
+      "Wishing you joyful celebrations, loving memories and holiday cheer.",
+      "May your holidays sparkle with laughter, love and festive joy.",
+      "Wishing you happiness, peace and cozy moments with loved ones.",
+      "May your Christmas be filled with joy, warmth and heartfelt moments.",
+      "Wishing you cheerful holidays, laughter and lasting memories.",
+      "May your days be merry, your heart light and your season bright.",
+      "Wishing you moments of joy, love and meaningful celebrations.",
+      "May your holiday season be peaceful, happy and full of magic.",
+      "Wishing you bright celebrations, warm gatherings and cheerful days.",
+      "May your Christmas bring happiness, love and cherished memories.",
+      "Wishing you joy, laughter and warmth throughout the festive season.",
+      "May your holidays be full of love, peace and delightful moments.",
+      "Wishing you bright days, joyful nights and meaningful memories.",
+      "May your season be merry, your heart happy and your days bright.",
+      "Wishing you festive cheer, cozy moments and joyful celebrations.",
+      "May your holidays be filled with warmth, happiness and love."
+    ],
+    "es": [
+      "Te deseo alegría, paz y calidez en esta temporada festiva.",
+      "Que tus fiestas estén llenas de risas, amor y lindos recuerdos.",
+      "Te deseo una temporada de felicidad, comodidad y momentos especiales.",
+      "Que tus días sean brillantes, tu corazón ligero y tus fiestas alegres.",
+      "Te deseo alegría festiva, momentos acogedores y celebraciones felices.",
+      "Que tu temporada navideña esté llena de amor, risas y paz.",
+      "Te deseo momentos cálidos, recuerdos felices y reuniones alegres.",
+      "Que tu Navidad sea brillante, alegre y llena de momentos especiales.",
+      "Te deseo unas fiestas llenas de alegría y un año nuevo lleno de paz.",
+      "Que tus días estén llenos de calidez, amor y magia navideña.",
+      "Te deseo paz, felicidad y alegría durante toda la temporada.",
+      "Que tus fiestas traigan risas, amor y recuerdos inolvidables.",
+      "Te deseo días luminosos, noches acogedoras y momentos de verdadera alegría.",
+      "Que tu temporada esté llena de felicidad, calidez y buenos momentos.",
+      "Te deseo celebraciones alegres, recuerdos amorosos y un ambiente festivo.",
+      "Que tus fiestas brillen con risas, amor y alegría navideña.",
+      "Te deseo felicidad, paz y momentos acogedores con tus seres queridos.",
+      "Que tu Navidad esté llena de alegría, calidez y momentos sinceros.",
+      "Te deseo unas fiestas alegres, risas y recuerdos duraderos.",
+      "Que tus días sean felices, tu corazón ligero y tu temporada brillante.",
+      "Te deseo momentos de alegría, amor y celebraciones significativas.",
+      "Que tu temporada festiva sea pacífica, feliz y llena de magia.",
+      "Te deseo celebraciones brillantes, reuniones cálidas y días alegres.",
+      "Que tu Navidad traiga felicidad, amor y recuerdos preciados.",
+      "Te deseo alegría, risas y calidez durante toda la temporada.",
+      "Que tus fiestas estén llenas de amor, paz y momentos encantadores.",
+      "Te deseo días brillantes, noches alegres y recuerdos especiales.",
+      "Que tu temporada sea alegre, tu corazón feliz y tus días brillantes.",
+      "Te deseo alegría festiva, momentos acogedores y celebraciones felices.",
+      "Que tus fiestas estén llenas de calidez, felicidad y amor."
+    ],
+    "pt": [
+      "Desejando a você alegria, paz e aconchego nesta temporada.",
+      "Que suas festas sejam cheias de risos, amor e boas lembranças.",
+      "Desejando uma temporada de felicidade, conforto e momentos especiais.",
+      "Que seus dias sejam brilhantes, seu coração leve e suas festas alegres.",
+      "Desejando alegria festiva, momentos aconchegantes e celebrações felizes.",
+      "Que sua temporada de festas seja cheia de amor, risos e paz.",
+      "Desejando momentos quentes, boas memórias e encontros alegres.",
+      "Que seu Natal seja brilhante, alegre e cheio de momentos especiais.",
+      "Desejando uma temporada feliz e um ano novo cheio de paz.",
+      "Que seus dias sejam cheios de amor, aconchego e magia.",
+      "Desejando paz, felicidade e muita alegria nas festas.",
+      "Que suas festas tragam risos, amor e memórias inesquecíveis.",
+      "Desejando dias iluminados, noites aconchegantes e momentos de alegria.",
+      "Que sua temporada seja cheia de felicidade, aconchego e boas lembranças.",
+      "Desejando celebrações alegres, memórias especiais e muito espírito natalino.",
+      "Que suas festas brilhem com risos, amor e alegria.",
+      "Desejando felicidade, paz e momentos aconchegantes com quem você ama.",
+      "Que seu Natal seja cheio de alegria, calor e momentos sinceros.",
+      "Desejando festas alegres, risos e lembranças duradouras.",
+      "Que seus dias sejam felizes, seu coração leve e sua temporada iluminada.",
+      "Desejando momentos de amor, alegria e celebrações especiais.",
+      "Que sua temporada seja calma, feliz e cheia de magia.",
+      "Desejando festas brilhantes, encontros acolhedores e dias cheios de alegria.",
+      "Que seu Natal traga felicidade, amor e boas lembranças.",
+      "Desejando alegria, risos e aconchego durante toda a temporada.",
+      "Que suas festas sejam cheias de amor, paz e momentos encantadores.",
+      "Desejando dias luminosos, noites felizes e memórias especiais.",
+      "Que sua temporada seja alegre, seu coração feliz e seus dias iluminados.",
+      "Desejando espírito festivo, momentos aconchegantes e celebrações animadas.",
+      "Que suas festas sejam cheias de calor, alegria e amor."
+    ],
+    "fr": [
+      "Je vous souhaite joie, paix et chaleur en cette saison festive.",
+      "Que vos fêtes soient remplies de rires, d’amour et de bons souvenirs.",
+      "Je vous souhaite une saison de bonheur, de réconfort et de moments précieux.",
+      "Que vos journées soient lumineuses, votre cœur léger et vos fêtes joyeuses.",
+      "Je vous souhaite une ambiance festive, des moments chaleureux et de belles célébrations.",
+      "Que votre saison de fêtes soit pleine d’amour, de rires et de paix.",
+      "Je vous souhaite des moments chaleureux, des souvenirs heureux et des rencontres joyeuses.",
+      "Que votre Noël soit lumineux, joyeux et rempli de moments spéciaux.",
+      "Je vous souhaite une saison joyeuse et une nouvelle année paisible.",
+      "Que vos journées soient remplies de chaleur, d’amour et de magie.",
+      "Je vous souhaite paix, bonheur et joie tout au long de la saison.",
+      "Que vos fêtes apportent rires, amour et souvenirs précieux.",
+      "Je vous souhaite des journées lumineuses, des soirées chaleureuses et des instants de vraie joie.",
+      "Que votre saison soit remplie de bonheur, de chaleur et de bons moments.",
+      "Je vous souhaite de joyeuses célébrations, de beaux souvenirs et un bel esprit festif.",
+      "Que vos fêtes brillent de rires, d’amour et de joie.",
+      "Je vous souhaite bonheur, paix et doux moments avec vos proches.",
+      "Que votre Noël soit rempli de joie, de chaleur et de moments sincères.",
+      "Je vous souhaite des fêtes joyeuses, des rires et des souvenirs durables.",
+      "Que vos journées soient joyeuses, votre cœur léger et votre saison brillante.",
+      "Je vous souhaite des moments d’amour, de joie et de belles célébrations.",
+      "Que votre saison soit paisible, heureuse et pleine de magie.",
+      "Je vous souhaite des fêtes lumineuses, des rencontres chaleureuses et des journées joyeuses.",
+      "Que votre Noël apporte bonheur, amour et souvenirs précieux.",
+      "Je vous souhaite joie, rires et chaleur tout au long des fêtes.",
+      "Que vos fêtes soient pleines d’amour, de paix et de doux moments.",
+      "Je vous souhaite des journées lumineuses, des soirées joyeuses et de beaux souvenirs.",
+      "Que votre saison soit joyeuse, votre cœur heureux et vos journées brillantes.",
+      "Je vous souhaite esprit festif, douceur et belles célébrations.",
+      "Que vos fêtes soient remplies de chaleur, de bonheur et d’amour."
+    ],
+    "de": [
+      "Ich wünsche dir Freude, Frieden und Wärme in dieser festlichen Jahreszeit.",
+      "Möge deine Feiertage voller Lachen, Liebe und schöner Erinnerungen sein.",
+      "Ich wünsche dir eine Saison voller Glück, Geborgenheit und bedeutungsvoller Momente.",
+      "Mögen deine Tage hell, dein Herz leicht und deine Feiertage fröhlich sein.",
+      "Ich wünsche dir festliche Stimmung, gemütliche Augenblicke und schöne Feiern.",
+      "Möge deine Weihnachtszeit voller Liebe, Lachen und Frieden sein.",
+      "Ich wünsche dir warme Momente, glückliche Erinnerungen und fröhliche Zusammenkünfte.",
+      "Möge dein Weihnachten hell, fröhlich und voller besonderer Momente sein.",
+      "Ich wünsche dir eine fröhliche Weihnachtszeit und ein friedliches neues Jahr.",
+      "Mögen deine Tage voller Wärme, Liebe und Weihnachtszauber sein.",
+      "Ich wünsche dir Frieden, Glück und Freude in dieser Saison.",
+      "Mögen deine Feiertage Lachen, Liebe und unvergessliche Erinnerungen bringen.",
+      "Ich wünsche dir helle Tage, gemütliche Nächte und echte Freude.",
+      "Möge deine Saison voller Glück, Wärme und schöner Momente sein.",
+      "Ich wünsche dir fröhliche Feiern, liebevolle Erinnerungen und festliche Stimmung.",
+      "Möge deine Weihnachtszeit mit Lachen, Liebe und Freude erstrahlen.",
+      "Ich wünsche dir Glück, Frieden und gemütliche Momente mit deinen Lieben.",
+      "Möge dein Weihnachten voller Freude, Wärme und herzlichen Momenten sein.",
+      "Ich wünsche dir fröhliche Feiertage, Lachen und bleibende Erinnerungen.",
+      "Möge dein Herz leicht, deine Tage fröhlich und deine Saison hell sein.",
+      "Ich wünsche dir Momente voller Liebe, Freude und bedeutungsvoller Feiern.",
+      "Möge deine Saison friedlich, glücklich und voller Magie sein.",
+      "Ich wünsche dir helle Feiern, warme Begegnungen und fröhliche Tage.",
+      "Möge dein Weihnachten Glück, Liebe und schöne Erinnerungen bringen.",
+      "Ich wünsche dir Freude, Lachen und Wärme in dieser festlichen Zeit.",
+      "Möge deine Feiertage voller Liebe, Frieden und zauberhafter Momente sein.",
+      "Ich wünsche dir helle Tage, fröhliche Nächte und schöne Erinnerungen.",
+      "Möge deine Saison fröhlich, dein Herz glücklich und deine Tage hell sein.",
+      "Ich wünsche dir festliche Freude, gemütliche Augenblicke und schöne Feiern.",
+      "Möge deine Feiertage voller Wärme, Glück und Liebe sein."
+    ],
+    "it": [
+      "Ti auguro gioia, pace e calore in questa stagione festiva.",
+      "Che le tue feste siano piene di risate, amore e bei ricordi.",
+      "Ti auguro una stagione di felicità, conforto e momenti speciali.",
+      "Che i tuoi giorni siano luminosi, il tuo cuore leggero e le tue feste gioiose.",
+      "Ti auguro spirito festivo, momenti accoglienti e celebrazioni felici.",
+      "Che la tua stagione natalizia sia piena di amore, risate e pace.",
+      "Ti auguro momenti caldi, ricordi felici e incontri gioiosi.",
+      "Che il tuo Natale sia luminoso, allegro e pieno di momenti speciali.",
+      "Ti auguro una stagione gioiosa e un nuovo anno pieno di pace.",
+      "Che i tuoi giorni siano pieni di calore, amore e magia.",
+      "Ti auguro pace, felicità e tanta gioia in questa stagione.",
+      "Che le tue feste portino risate, amore e ricordi indimenticabili.",
+      "Ti auguro giorni luminosi, notti accoglienti e momenti di vera gioia.",
+      "Che la tua stagione sia piena di felicità, calore e bei momenti.",
+      "Ti auguro celebrazioni gioiose, ricordi speciali e tanta atmosfera festiva.",
+      "Che le tue feste brillino di risate, amore e gioia.",
+      "Ti auguro felicità, pace e momenti accoglienti con i tuoi cari.",
+      "Che il tuo Natale sia pieno di gioia, calore e momenti sinceri.",
+      "Ti auguro feste allegre, risate e ricordi duraturi.",
+      "Che i tuoi giorni siano felici, il tuo cuore leggero e la tua stagione luminosa.",
+      "Ti auguro momenti di amore, gioia e celebrazioni speciali.",
+      "Che la tua stagione sia serena, felice e piena di magia.",
+      "Ti auguro feste luminose, incontri calorosi e giorni felici.",
+      "Che il tuo Natale porti felicità, amore e bei ricordi.",
+      "Ti auguro gioia, risate e calore per tutta la stagione.",
+      "Che le tue feste siano piene di amore, pace e momenti incantevoli.",
+      "Ti auguro giorni luminosi, notti gioiose e ricordi speciali.",
+      "Che la tua stagione sia allegra, il tuo cuore felice e i tuoi giorni luminosi.",
+      "Ti auguro spirito festivo, momenti accoglienti e celebrazioni felici.",
+      "Che le tue feste siano piene di calore, felicità e amore."
+    ]
+  },
+  "healthcare": {
+    "en": [
+      "Wishing you renewed health and peaceful moments this holiday season.",
+      "May your days be filled with care, comfort and brighter tomorrows.",
+      "Wishing you strength, wellness and calm throughout the festive season.",
+      "May your holidays bring healing, gratitude and joyful moments ahead.",
+      "Wishing you care, comfort and hope for a healthy new year.",
+      "May your days be full of wellness, calm and gentle restoration.",
+      "Wishing you gratitude for your journey and brighter days to come.",
+      "May your holiday season be filled with healing and meaningful rest.",
+      "Wishing you peaceful days, renewed energy and warm moments with loved ones.",
+      "May your wellness grow and your heart stay light this festive season.",
+      "Wishing you care, support and moments of true comfort this Christmas.",
+      "May your holidays bring strength, healing and joyful memories.",
+      "Wishing you restoration, calm and a healthy start to the new year.",
+      "May your days be filled with gratitude, wellness and hope for tomorrow.",
+      "Wishing you renewed energy, peace of mind and healing moments ahead.",
+      "May this season bring you comfort, health and heartfelt joy.",
+      "Wishing you wellness, calm and hope as the year comes to a close.",
+      "May your holidays be bright, peaceful and full of healing moments.",
+      "Wishing you strength, gratitude and serene days this festive season.",
+      "May your health flourish and your heart feel light this Christmas.",
+      "Wishing you gentle care, meaningful rest and moments of true peace.",
+      "May your season be filled with wellness, recovery and quiet joy.",
+      "Wishing you comfort, calm and healthful days with loved ones near.",
+      "May your holidays restore energy, hope and inner balance for you.",
+      "Wishing you strength, peaceful moments and renewed vitality this season.",
+      "May your health grow and your days shine with care and gratitude.",
+      "Wishing you healing, calm and meaningful time with family this Christmas.",
+      "May your festive season bring wellness, hope and cherished memories.",
+      "Wishing you comfort, gratitude and a healthy, joyful new year ahead.",
+      "May this season fill your days with care, calm and renewed optimism."
+    ],
+    "es": [
+      "Te deseo salud renovada y momentos de paz en esta temporada festiva.",
+      "Que tus días estén llenos de cuidado, consuelo y mañanas más brillantes.",
+      "Te deseo fortaleza, bienestar y calma durante estas fiestas.",
+      "Que tus vacaciones traigan sanación, gratitud y momentos alegres.",
+      "Te deseo cuidado, consuelo y esperanza para un año nuevo saludable.",
+      "Que tus días estén llenos de bienestar, calma y suave restauración.",
+      "Te deseo gratitud por tu camino y días más luminosos por venir.",
+      "Que esta temporada esté llena de sanación y descanso significativo.",
+      "Te deseo días tranquilos, energía renovada y momentos cálidos con tus seres queridos.",
+      "Que tu bienestar crezca y tu corazón se mantenga ligero esta temporada.",
+      "Te deseo cuidado, apoyo y momentos de verdadero consuelo esta Navidad.",
+      "Que tus fiestas traigan fuerza, sanación y recuerdos felices.",
+      "Te deseo restauración, calma y un comienzo de año saludable.",
+      "Que tus días estén llenos de gratitud, bienestar y esperanza para el mañana.",
+      "Te deseo energía renovada, paz mental y momentos de sanación.",
+      "Que esta temporada te traiga consuelo, salud y alegría sincera.",
+      "Te deseo bienestar, calma y esperanza al cerrar el año.",
+      "Que tus fiestas sean brillantes, pacíficas y llenas de momentos de sanación.",
+      "Te deseo fortaleza, gratitud y días serenos en esta temporada.",
+      "Que tu salud florezca y tu corazón se sienta ligero esta Navidad.",
+      "Te deseo cuidado suave, descanso significativo y verdadera paz.",
+      "Que tu temporada esté llena de bienestar, recuperación y alegría tranquila.",
+      "Te deseo consuelo, calma y días saludables cerca de quienes amas.",
+      "Que tus fiestas restauren energía, esperanza y equilibrio interior.",
+      "Te deseo fuerza, momentos de paz y vitalidad renovada.",
+      "Que tu salud crezca y tus días brillen con cuidado y gratitud.",
+      "Te deseo sanación, calma y tiempo significativo en familia.",
+      "Que tu temporada festiva traiga bienestar, esperanza y recuerdos valiosos.",
+      "Te deseo consuelo, gratitud y un año nuevo saludable y alegre.",
+      "Que esta temporada llene tus días de cuidado, calma y optimismo renovado."
+    ],
+    "pt": [
+      "Desejo a você saúde renovada e momentos de paz neste fim de ano.",
+      "Que seus dias sejam cheios de cuidado, conforto e novos horizontes.",
+      "Desejo força, bem-estar e calma durante toda a temporada festiva.",
+      "Que suas festas tragam cura, gratidão e momentos de alegria.",
+      "Desejo cuidado, conforto e esperança para um ano novo saudável.",
+      "Que seus dias sejam repletos de bem-estar, calma e restauração suave.",
+      "Desejo gratidão pela sua jornada e dias mais luminosos pela frente.",
+      "Que seu fim de ano seja cheio de cura e descanso significativo.",
+      "Desejo dias tranquilos, energia renovada e momentos calorosos com quem você ama.",
+      "Que seu bem-estar cresça e seu coração permaneça leve nesta temporada.",
+      "Desejo cuidado, apoio e momentos de verdadeiro conforto neste Natal.",
+      "Que suas festas tragam força, cura e boas lembranças.",
+      "Desejo restauração, calma e um início de ano saudável.",
+      "Que seus dias sejam repletos de gratidão, bem-estar e esperança pelo amanhã.",
+      "Desejo energia renovada, paz de espírito e momentos de cura.",
+      "Que esta temporada lhe traga conforto, saúde e alegria genuína.",
+      "Desejo bem-estar, calma e esperança ao encerrar o ano.",
+      "Que suas festas sejam iluminadas, tranquilas e cheias de cura.",
+      "Desejo força, gratidão e dias serenos nesta temporada.",
+      "Que sua saúde floresça e seu coração fique leve neste Natal.",
+      "Desejo cuidado gentil, descanso verdadeiro e momentos de paz.",
+      "Que sua temporada seja cheia de bem-estar, recuperação e alegria calma.",
+      "Desejo conforto, tranquilidade e dias saudáveis ao lado de quem você ama.",
+      "Que suas festas restaurem energia, esperança e equilíbrio interior.",
+      "Desejo força, serenidade e vitalidade renovada neste fim de ano.",
+      "Que sua saúde cresça e seus dias brilhem com cuidado e gratidão.",
+      "Desejo cura, calma e tempo especial em família neste Natal.",
+      "Que sua temporada traga bem-estar, esperança e boas memórias.",
+      "Desejo conforto, gratidão e um ano novo saudável e alegre.",
+      "Que esta temporada preencha seus dias com cuidado, calma e otimismo renovado."
+    ],
+    "fr": [
+      "Je vous souhaite une santé renouvelée et des moments de paix en cette saison.",
+      "Que vos journées soient remplies de soin, de réconfort et de lendemains plus lumineux.",
+      "Je vous souhaite force, bien-être et calme pendant les fêtes.",
+      "Que vos fêtes apportent guérison, gratitude et moments joyeux.",
+      "Je vous souhaite soin, réconfort et espoir pour une nouvelle année en bonne santé.",
+      "Que vos journées soient remplies de bien-être, de calme et de douce restauration.",
+      "Je vous souhaite gratitude pour votre parcours et des jours plus clairs à venir.",
+      "Que votre saison soit remplie de guérison et de repos significatif.",
+      "Je vous souhaite des jours paisibles, une énergie renouvelée et des moments chaleureux.",
+      "Que votre bien-être grandisse et que votre cœur reste léger en cette saison.",
+      "Je vous souhaite soin, soutien et véritables moments de réconfort ce Noël.",
+      "Que vos fêtes apportent force, guérison et souvenirs joyeux.",
+      "Je vous souhaite restauration, calme et un début d'année sain.",
+      "Que vos journées soient remplies de gratitude, de bien-être et d’espoir.",
+      "Je vous souhaite énergie renouvelée, paix intérieure et moments de guérison.",
+      "Que cette saison vous apporte réconfort, santé et joie sincère.",
+      "Je vous souhaite bien-être, calme et espoir en cette fin d'année.",
+      "Que vos fêtes soient lumineuses, paisibles et pleines de guérison.",
+      "Je vous souhaite force, gratitude et journées sereines.",
+      "Que votre santé s’épanouisse et que votre cœur soit léger ce Noël.",
+      "Je vous souhaite douceur, repos véritable et moments de paix.",
+      "Que votre saison soit remplie de bien-être, de récupération et de joie tranquille.",
+      "Je vous souhaite confort, calme et journées en santé auprès des vôtres.",
+      "Que vos fêtes restaurent énergie, espoir et équilibre intérieur.",
+      "Je vous souhaite force, sérénité et vitalité renouvelée.",
+      "Que votre santé grandisse et que vos journées brillent de gratitude.",
+      "Je vous souhaite guérison, calme et moments familiaux significatifs.",
+      "Que votre saison apporte bien-être, espoir et souvenirs précieux.",
+      "Je vous souhaite confort, gratitude et une nouvelle année saine et joyeuse.",
+      "Que cette saison remplisse vos journées de soin, de calme et d’un optimisme renouvelé."
+    ],
+    "de": [
+      "Ich wünsche Ihnen erneuerte Gesundheit und friedliche Momente in dieser Festzeit.",
+      "Möge Ihre Zeit voller Fürsorge, Trost und hoffnungsvoller Tage sein.",
+      "Ich wünsche Ihnen Stärke, Wohlbefinden und Ruhe in dieser Saison.",
+      "Möge Ihre Weihnachtszeit Heilung, Dankbarkeit und Freude bringen.",
+      "Ich wünsche Ihnen Fürsorge, Trost und Hoffnung für ein gesundes neues Jahr.",
+      "Mögen Ihre Tage voller Wohlbefinden, Ruhe und sanfter Erholung sein.",
+      "Ich wünsche Ihnen Dankbarkeit für Ihren Weg und hellere Tage voraus.",
+      "Möge Ihre Festzeit voller Heilung und bedeutsamer Erholung sein.",
+      "Ich wünsche Ihnen friedliche Tage, neue Energie und warme Momente.",
+      "Möge Ihr Wohlbefinden wachsen und Ihr Herz leicht bleiben.",
+      "Ich wünsche Ihnen Fürsorge, Unterstützung und echten Trost zu Weihnachten.",
+      "Möge Ihre Festzeit Stärke, Heilung und schöne Erinnerungen bringen.",
+      "Ich wünsche Ihnen Erholung, Ruhe und einen gesunden Jahresbeginn.",
+      "Mögen Ihre Tage voller Dankbarkeit, Wohlbefinden und Hoffnung sein.",
+      "Ich wünsche Ihnen erneuerte Energie, inneren Frieden und heilende Momente.",
+      "Möge diese Saison Ihnen Trost, Gesundheit und echte Freude bringen.",
+      "Ich wünsche Ihnen Wohlbefinden, Ruhe und Hoffnung zum Jahresende.",
+      "Möge Ihre Weihnachtszeit hell, friedlich und voller Heilung sein.",
+      "Ich wünsche Ihnen Stärke, Dankbarkeit und ruhige Tage.",
+      "Möge Ihre Gesundheit gedeihen und Ihr Herz leicht sein.",
+      "Ich wünsche Ihnen sanfte Fürsorge, bedeutsame Erholung und wahre Ruhe.",
+      "Möge Ihre Saison voller Wohlbefinden, Genesung und stiller Freude sein.",
+      "Ich wünsche Ihnen Trost, Ruhe und gesunde Tage mit Ihren Liebsten.",
+      "Möge Ihre Festzeit Energie, Hoffnung und innere Balance wiederherstellen.",
+      "Ich wünsche Ihnen Stärke, friedliche Momente und neue Vitalität.",
+      "Möge Ihre Gesundheit wachsen und Ihre Tage vor Dankbarkeit strahlen.",
+      "Ich wünsche Ihnen Heilung, Ruhe und wertvolle Familienmomente.",
+      "Möge Ihre Saison Wohlbefinden, Hoffnung und geschätzte Erinnerungen bringen.",
+      "Ich wünsche Ihnen Trost, Dankbarkeit und ein gesundes, glückliches neues Jahr.",
+      "Möge diese Saison Ihre Tage mit Fürsorge, Ruhe und erneuertem Optimismus füllen."
+    ],
+    "it": [
+      "Ti auguro salute rinnovata e momenti di pace in questa stagione.",
+      "Che i tuoi giorni siano pieni di cura, conforto e nuove speranze.",
+      "Ti auguro forza, benessere e calma durante le feste.",
+      "Che le tue vacanze portino guarigione, gratitudine e gioia.",
+      "Ti auguro cura, conforto e speranza per un nuovo anno in salute.",
+      "Che i tuoi giorni siano pieni di benessere, calma e dolce ripresa.",
+      "Ti auguro gratitudine per il tuo percorso e giorni più luminosi.",
+      "Che la tua stagione sia piena di guarigione e riposo significativo.",
+      "Ti auguro giorni sereni, energia rinnovata e momenti caldi con i tuoi cari.",
+      "Che il tuo benessere cresca e il tuo cuore resti leggero.",
+      "Ti auguro cura, sostegno e vero conforto questo Natale.",
+      "Che le tue feste portino forza, guarigione e felici ricordi.",
+      "Ti auguro ripresa, calma e un inizio d'anno in salute.",
+      "Che i tuoi giorni siano pieni di gratitudine, benessere e speranza.",
+      "Ti auguro energia rinnovata, serenità e momenti di guarigione.",
+      "Che questa stagione ti porti conforto, salute e gioia sincera.",
+      "Ti auguro benessere, calma e speranza alla fine dell'anno.",
+      "Che le tue feste siano luminose, serene e piene di guarigione.",
+      "Ti auguro forza, gratitudine e giorni tranquilli.",
+      "Che la tua salute prosperi e il tuo cuore sia leggero.",
+      "Ti auguro cura gentile, riposo significativo e pace vera.",
+      "Che la tua stagione sia piena di benessere, recupero e gioia tranquilla.",
+      "Ti auguro conforto, calma e giorni in salute vicino ai tuoi cari.",
+      "Che le tue feste ristabiliscano energia, speranza ed equilibrio interiore.",
+      "Ti auguro forza, serenità e vitalità rinnovata.",
+      "Che la tua salute cresca e i tuoi giorni brillino di gratitudine.",
+      "Ti auguro guarigione, calma e tempo prezioso in famiglia.",
+      "Che la tua stagione porti benessere, speranza e ricordi cari.",
+      "Ti auguro conforto, gratitudine e un nuovo anno sano e felice.",
+      "Che questa stagione riempia i tuoi giorni di cura, calma e ottimismo rinnovato."
+    ]
+  },
+  "healthcare": {
+    "en": [
+      "Wishing you renewed health and peaceful moments this holiday season.",
+      "May your days be filled with care, comfort and brighter tomorrows.",
+      "Wishing you strength, wellness and calm throughout the festive season.",
+      "May your holidays bring healing, gratitude and joyful moments ahead.",
+      "Wishing you care, comfort and hope for a healthy new year.",
+      "May your days be full of wellness, calm and gentle restoration.",
+      "Wishing you gratitude for your journey and brighter days to come.",
+      "May your holiday season be filled with healing and meaningful rest.",
+      "Wishing you peaceful days, renewed energy and warm moments with loved ones.",
+      "May your wellness grow and your heart stay light this festive season.",
+      "Wishing you care, support and moments of true comfort this Christmas.",
+      "May your holidays bring strength, healing and joyful memories.",
+      "Wishing you restoration, calm and a healthy start to the new year.",
+      "May your days be filled with gratitude, wellness and hope for tomorrow.",
+      "Wishing you renewed energy, peace of mind and healing moments ahead.",
+      "May this season bring you comfort, health and heartfelt joy.",
+      "Wishing you wellness, calm and hope as the year comes to a close.",
+      "May your holidays be bright, peaceful and full of healing moments.",
+      "Wishing you strength, gratitude and serene days this festive season.",
+      "May your health flourish and your heart feel light this Christmas.",
+      "Wishing you gentle care, meaningful rest and moments of true peace.",
+      "May your season be filled with wellness, recovery and quiet joy.",
+      "Wishing you comfort, calm and healthful days with loved ones near.",
+      "May your holidays restore energy, hope and inner balance for you.",
+      "Wishing you strength, peaceful moments and renewed vitality this season.",
+      "May your health grow and your days shine with care and gratitude.",
+      "Wishing you healing, calm and meaningful time with family this Christmas.",
+      "May your festive season bring wellness, hope and cherished memories.",
+      "Wishing you comfort, gratitude and a healthy, joyful new year ahead.",
+      "May this season fill your days with care, calm and renewed optimism."
+    ],
+    "es": [
+      "Te deseo salud renovada y momentos de paz en esta temporada festiva.",
+      "Que tus días estén llenos de cuidado, consuelo y mañanas más brillantes.",
+      "Te deseo fortaleza, bienestar y calma durante estas fiestas.",
+      "Que tus vacaciones traigan sanación, gratitud y momentos alegres.",
+      "Te deseo cuidado, consuelo y esperanza para un año nuevo saludable.",
+      "Que tus días estén llenos de bienestar, calma y suave restauración.",
+      "Te deseo gratitud por tu camino y días más luminosos por venir.",
+      "Que esta temporada esté llena de sanación y descanso significativo.",
+      "Te deseo días tranquilos, energía renovada y momentos cálidos con tus seres queridos.",
+      "Que tu bienestar crezca y tu corazón se mantenga ligero esta temporada.",
+      "Te deseo cuidado, apoyo y momentos de verdadero consuelo esta Navidad.",
+      "Que tus fiestas traigan fuerza, sanación y recuerdos felices.",
+      "Te deseo restauración, calma y un comienzo de año saludable.",
+      "Que tus días estén llenos de gratitud, bienestar y esperanza para el mañana.",
+      "Te deseo energía renovada, paz mental y momentos de sanación.",
+      "Que esta temporada te traiga consuelo, salud y alegría sincera.",
+      "Te deseo bienestar, calma y esperanza al cerrar el año.",
+      "Que tus fiestas sean brillantes, pacíficas y llenas de momentos de sanación.",
+      "Te deseo fortaleza, gratitud y días serenos en esta temporada.",
+      "Que tu salud florezca y tu corazón se sienta ligero esta Navidad.",
+      "Te deseo cuidado suave, descanso significativo y verdadera paz.",
+      "Que tu temporada esté llena de bienestar, recuperación y alegría tranquila.",
+      "Te deseo consuelo, calma y días saludables cerca de quienes amas.",
+      "Que tus fiestas restauren energía, esperanza y equilibrio interior.",
+      "Te deseo fuerza, momentos de paz y vitalidad renovada.",
+      "Que tu salud crezca y tus días brillen con cuidado y gratitud.",
+      "Te deseo sanación, calma y tiempo significativo en familia.",
+      "Que tu temporada festiva traiga bienestar, esperanza y recuerdos valiosos.",
+      "Te deseo consuelo, gratitud y un año nuevo saludable y alegre.",
+      "Que esta temporada llene tus días de cuidado, calma y optimismo renovado."
+    ],
+    "pt": [
+      "Desejo a você saúde renovada e momentos de paz neste fim de ano.",
+      "Que seus dias sejam cheios de cuidado, conforto e novos horizontes.",
+      "Desejo força, bem-estar e calma durante toda a temporada festiva.",
+      "Que suas festas tragam cura, gratidão e momentos de alegria.",
+      "Desejo cuidado, conforto e esperança para um ano novo saudável.",
+      "Que seus dias sejam repletos de bem-estar, calma e restauração suave.",
+      "Desejo gratidão pela sua jornada e dias mais luminosos pela frente.",
+      "Que seu fim de ano seja cheio de cura e descanso significativo.",
+      "Desejo dias tranquilos, energia renovada e momentos calorosos com quem você ama.",
+      "Que seu bem-estar cresça e seu coração permaneça leve nesta temporada.",
+      "Desejo cuidado, apoio e momentos de verdadeiro conforto neste Natal.",
+      "Que suas festas tragam força, cura e boas lembranças.",
+      "Desejo restauração, calma e um início de ano saudável.",
+      "Que seus dias sejam repletos de gratidão, bem-estar e esperança pelo amanhã.",
+      "Desejo energia renovada, paz de espírito e momentos de cura.",
+      "Que esta temporada lhe traga conforto, saúde e alegria genuína.",
+      "Desejo bem-estar, calma e esperança ao encerrar o ano.",
+      "Que suas festas sejam iluminadas, tranquilas e cheias de cura.",
+      "Desejo força, gratidão e dias serenos nesta temporada.",
+      "Que sua saúde floresça e seu coração fique leve neste Natal.",
+      "Desejo cuidado gentil, descanso verdadeiro e momentos de paz.",
+      "Que sua temporada seja cheia de bem-estar, recuperação e alegria calma.",
+      "Desejo conforto, tranquilidade e dias saudáveis ao lado de quem você ama.",
+      "Que suas festas restaurem energia, esperança e equilíbrio interior.",
+      "Desejo força, serenidade e vitalidade renovada neste fim de ano.",
+      "Que sua saúde cresça e seus dias brilhem com cuidado e gratidão.",
+      "Desejo cura, calma e tempo especial em família neste Natal.",
+      "Que sua temporada traga bem-estar, esperança e boas memórias.",
+      "Desejo conforto, gratidão e um ano novo saudável e alegre.",
+      "Que esta temporada preencha seus dias com cuidado, calma e otimismo renovado."
+    ],
+    "fr": [
+      "Je vous souhaite une santé renouvelée et des moments de paix en cette saison.",
+      "Que vos journées soient remplies de soin, de réconfort et de lendemains plus lumineux.",
+      "Je vous souhaite force, bien-être et calme pendant les fêtes.",
+      "Que vos fêtes apportent guérison, gratitude et moments joyeux.",
+      "Je vous souhaite soin, réconfort et espoir pour une nouvelle année en bonne santé.",
+      "Que vos journées soient remplies de bien-être, de calme et de douce restauration.",
+      "Je vous souhaite gratitude pour votre parcours et des jours plus clairs à venir.",
+      "Que votre saison soit remplie de guérison et de repos significatif.",
+      "Je vous souhaite des jours paisibles, une énergie renouvelée et des moments chaleureux.",
+      "Que votre bien-être grandisse et que votre cœur reste léger en cette saison.",
+      "Je vous souhaite soin, soutien et véritables moments de réconfort ce Noël.",
+      "Que vos fêtes apportent force, guérison et souvenirs joyeux.",
+      "Je vous souhaite restauration, calme et un début d'année sain.",
+      "Que vos journées soient remplies de gratitude, de bien-être et d’espoir.",
+      "Je vous souhaite énergie renouvelée, paix intérieure et moments de guérison.",
+      "Que cette saison vous apporte réconfort, santé et joie sincère.",
+      "Je vous souhaite bien-être, calme et espoir en cette fin d'année.",
+      "Que vos fêtes soient lumineuses, paisibles et pleines de guérison.",
+      "Je vous souhaite force, gratitude et journées sereines.",
+      "Que votre santé s’épanouisse et que votre cœur soit léger ce Noël.",
+      "Je vous souhaite douceur, repos véritable et moments de paix.",
+      "Que votre saison soit remplie de bien-être, de récupération et de joie tranquille.",
+      "Je vous souhaite confort, calme et journées en santé auprès des vôtres.",
+      "Que vos fêtes restaurent énergie, espoir et équilibre intérieur.",
+      "Je vous souhaite force, sérénité et vitalité renouvelée.",
+      "Que votre santé grandisse et que vos journées brillent de gratitude.",
+      "Je vous souhaite guérison, calme et moments familiaux significatifs.",
+      "Que votre saison apporte bien-être, espoir et souvenirs précieux.",
+      "Je vous souhaite confort, gratitude et une nouvelle année saine et joyeuse.",
+      "Que cette saison remplisse vos journées de soin, de calme et d’un optimisme renouvelé."
+    ],
+    "de": [
+      "Ich wünsche Ihnen erneuerte Gesundheit und friedliche Momente in dieser Festzeit.",
+      "Möge Ihre Zeit voller Fürsorge, Trost und hoffnungsvoller Tage sein.",
+      "Ich wünsche Ihnen Stärke, Wohlbefinden und Ruhe in dieser Saison.",
+      "Möge Ihre Weihnachtszeit Heilung, Dankbarkeit und Freude bringen.",
+      "Ich wünsche Ihnen Fürsorge, Trost und Hoffnung für ein gesundes neues Jahr.",
+      "Mögen Ihre Tage voller Wohlbefinden, Ruhe und sanfter Erholung sein.",
+      "Ich wünsche Ihnen Dankbarkeit für Ihren Weg und hellere Tage voraus.",
+      "Möge Ihre Festzeit voller Heilung und bedeutsamer Erholung sein.",
+      "Ich wünsche Ihnen friedliche Tage, neue Energie und warme Momente.",
+      "Möge Ihr Wohlbefinden wachsen und Ihr Herz leicht bleiben.",
+      "Ich wünsche Ihnen Fürsorge, Unterstützung und echten Trost zu Weihnachten.",
+      "Möge Ihre Festzeit Stärke, Heilung und schöne Erinnerungen bringen.",
+      "Ich wünsche Ihnen Erholung, Ruhe und einen gesunden Jahresbeginn.",
+      "Mögen Ihre Tage voller Dankbarkeit, Wohlbefinden und Hoffnung sein.",
+      "Ich wünsche Ihnen erneuerte Energie, inneren Frieden und heilende Momente.",
+      "Möge diese Saison Ihnen Trost, Gesundheit und echte Freude bringen.",
+      "Ich wünsche Ihnen Wohlbefinden, Ruhe und Hoffnung zum Jahresende.",
+      "Möge Ihre Weihnachtszeit hell, friedlich und voller Heilung sein.",
+      "Ich wünsche Ihnen Stärke, Dankbarkeit und ruhige Tage.",
+      "Möge Ihre Gesundheit gedeihen und Ihr Herz leicht sein.",
+      "Ich wünsche Ihnen sanfte Fürsorge, bedeutsame Erholung und wahre Ruhe.",
+      "Möge Ihre Saison voller Wohlbefinden, Genesung und stiller Freude sein.",
+      "Ich wünsche Ihnen Trost, Ruhe und gesunde Tage mit Ihren Liebsten.",
+      "Möge Ihre Festzeit Energie, Hoffnung und innere Balance wiederherstellen.",
+      "Ich wünsche Ihnen Stärke, friedliche Momente und neue Vitalität.",
+      "Möge Ihre Gesundheit wachsen und Ihre Tage vor Dankbarkeit strahlen.",
+      "Ich wünsche Ihnen Heilung, Ruhe und wertvolle Familienmomente.",
+      "Möge Ihre Saison Wohlbefinden, Hoffnung und geschätzte Erinnerungen bringen.",
+      "Ich wünsche Ihnen Trost, Dankbarkeit und ein gesundes, glückliches neues Jahr.",
+      "Möge diese Saison Ihre Tage mit Fürsorge, Ruhe und erneuertem Optimismus füllen."
+    ],
+    "it": [
+      "Ti auguro salute rinnovata e momenti di pace in questa stagione.",
+      "Che i tuoi giorni siano pieni di cura, conforto e nuove speranze.",
+      "Ti auguro forza, benessere e calma durante le feste.",
+      "Che le tue vacanze portino guarigione, gratitudine e gioia.",
+      "Ti auguro cura, conforto e speranza per un nuovo anno in salute.",
+      "Che i tuoi giorni siano pieni di benessere, calma e dolce ripresa.",
+      "Ti auguro gratitudine per il tuo percorso e giorni più luminosi.",
+      "Che la tua stagione sia piena di guarigione e riposo significativo.",
+      "Ti auguro giorni sereni, energia rinnovata e momenti caldi con i tuoi cari.",
+      "Che il tuo benessere cresca e il tuo cuore resti leggero.",
+      "Ti auguro cura, sostegno e vero conforto questo Natale.",
+      "Che le tue feste portino forza, guarigione e felici ricordi.",
+      "Ti auguro ripresa, calma e un inizio d'anno in salute.",
+      "Che i tuoi giorni siano pieni di gratitudine, benessere e speranza.",
+      "Ti auguro energia rinnovata, serenità e momenti di guarigione.",
+      "Che questa stagione ti porti conforto, salute e gioia sincera.",
+      "Ti auguro benessere, calma e speranza alla fine dell'anno.",
+      "Che le tue feste siano luminose, serene e piene di guarigione.",
+      "Ti auguro forza, gratitudine e giorni tranquilli.",
+      "Che la tua salute prosperi e il tuo cuore sia leggero.",
+      "Ti auguro cura gentile, riposo significativo e pace vera.",
+      "Che la tua stagione sia piena di benessere, recupero e gioia tranquilla.",
+      "Ti auguro conforto, calma e giorni in salute vicino ai tuoi cari.",
+      "Che le tue feste ristabiliscano energia, speranza ed equilibrio interiore.",
+      "Ti auguro forza, serenità e vitalità rinnovata.",
+      "Che la tua salute cresca e i tuoi giorni brillino di gratitudine.",
+      "Ti auguro guarigione, calma e tempo prezioso in famiglia.",
+      "Che la tua stagione porti benessere, speranza e ricordi cari.",
+      "Ti auguro conforto, gratitudine e un nuovo anno sano e felice.",
+      "Che questa stagione riempia i tuoi giorni di cura, calma e ottimismo rinnovato."
+    ]
+  },
+  "hospitality": {
+    "en": [
+      "Wishing you a holiday filled with comfort, warmth and memorable stays.",
+      "May your festive season be full of welcoming moments and joy.",
+      "Wishing you relaxing days and unforgettable experiences this Christmas.",
+      "May your holidays bring cozy comfort and joyful memories with loved ones.",
+      "Wishing you warm welcomes and peaceful moments throughout the season.",
+      "May your festive days be filled with happiness and delightful stays.",
+      "Wishing you a season of relaxation, comfort and cherished memories.",
+      "May your holidays be bright, welcoming and full of joyful experiences.",
+      "Wishing you moments of peace, warmth and unforgettable celebrations.",
+      "May your season be filled with comfort, joy and memorable gatherings.",
+      "Wishing you cozy days, cheerful nights and moments of true relaxation.",
+      "May your holidays bring welcoming smiles and joyful experiences.",
+      "Wishing you a festive season filled with comfort and happy memories.",
+      "May your Christmas be bright, warm and full of unforgettable stays.",
+      "Wishing you joyful moments, cozy nights and peaceful holiday days.",
+      "May your season bring comfort, relaxation and cherished experiences.",
+      "Wishing you warm days, festive nights and joyful holiday memories.",
+      "May your holidays be filled with welcoming moments and lasting joy.",
+      "Wishing you a season of comfort, warmth and unforgettable experiences.",
+      "May your festive season bring peace, happiness and memorable stays.",
+      "Wishing you cozy celebrations, joyful gatherings and serene moments.",
+      "May your holidays be filled with comfort, warmth and festive cheer.",
+      "Wishing you bright moments, welcoming smiles and joyful experiences.",
+      "May your season bring relaxation, memorable stays and happy days.",
+      "Wishing you cheerful celebrations, cozy nights and joyful memories.",
+      "May your Christmas be warm, welcoming and full of happy moments.",
+      "Wishing you festive days filled with comfort, peace and joy.",
+      "May your holidays create lasting memories and welcoming experiences.",
+      "Wishing you a season full of warmth, cheerful moments and comfort.",
+      "May your festive season be joyful, welcoming and unforgettable."
+    ],
+    "es": [
+      "Te deseamos unas vacaciones llenas de confort, calidez y estancias memorables.",
+      "Que tu temporada festiva esté llena de momentos acogedores y alegría.",
+      "Te deseamos días relajantes y experiencias inolvidables esta Navidad.",
+      "Que tus vacaciones traigan comodidad, calidez y recuerdos felices con tus seres queridos.",
+      "Te deseamos una cálida bienvenida y momentos de paz durante toda la temporada.",
+      "Que tus días festivos estén llenos de felicidad y estancias encantadoras.",
+      "Te deseamos una temporada de relajación, comodidad y recuerdos preciados.",
+      "Que tus vacaciones sean brillantes, acogedoras y llenas de experiencias alegres.",
+      "Te deseamos momentos de paz, calidez y celebraciones inolvidables.",
+      "Que tu temporada esté llena de confort, alegría y reuniones memorables.",
+      "Te deseamos días acogedores, noches alegres y momentos de verdadera relajación.",
+      "Que tus vacaciones traigan sonrisas acogedoras y experiencias alegres.",
+      "Te deseamos una temporada festiva llena de confort y recuerdos felices.",
+      "Que tu Navidad sea brillante, cálida y llena de estancias inolvidables.",
+      "Te deseamos momentos alegres, noches acogedoras y días festivos tranquilos.",
+      "Que tu temporada traiga comodidad, relajación y experiencias apreciadas.",
+      "Te deseamos días cálidos, noches festivas y recuerdos alegres de las vacaciones.",
+      "Que tus vacaciones estén llenas de momentos acogedores y alegría duradera.",
+      "Te deseamos una temporada de confort, calidez y experiencias inolvidables.",
+      "Que tu temporada festiva traiga paz, felicidad y estancias memorables.",
+      "Te deseamos celebraciones acogedoras, reuniones alegres y momentos serenos.",
+      "Que tus vacaciones estén llenas de confort, calidez y alegría festiva.",
+      "Te deseamos momentos brillantes, sonrisas acogedoras y experiencias alegres.",
+      "Que tu temporada traiga relajación, estancias memorables y días felices.",
+      "Te deseamos celebraciones alegres, noches acogedoras y recuerdos felices.",
+      "Que tu Navidad sea cálida, acogedora y llena de momentos felices.",
+      "Te deseamos días festivos llenos de confort, paz y alegría.",
+      "Que tus vacaciones creen recuerdos duraderos y experiencias acogedoras.",
+      "Te deseamos una temporada llena de calidez, momentos alegres y confort.",
+      "Que tu temporada festiva sea alegre, acogedora e inolvidable."
+    ],
+    "pt": [
+      "Desejamos a você um feriado cheio de conforto, calor e estadias memoráveis.",
+      "Que sua temporada festiva esteja repleta de momentos acolhedores e alegria.",
+      "Desejamos dias relaxantes e experiências inesquecíveis neste Natal.",
+      "Que suas férias tragam conforto, calor e lembranças felizes com seus entes queridos.",
+      "Desejamos boas-vindas calorosas e momentos de paz durante toda a temporada.",
+      "Que seus dias festivos estejam cheios de felicidade e estadias encantadoras.",
+      "Desejamos uma temporada de relaxamento, conforto e memórias preciosas.",
+      "Que suas férias sejam brilhantes, acolhedoras e cheias de experiências alegres.",
+      "Desejamos momentos de paz, calor e celebrações inesquecíveis.",
+      "Que sua temporada esteja cheia de conforto, alegria e encontros memoráveis.",
+      "Desejamos dias acolhedores, noites alegres e momentos de verdadeiro relaxamento.",
+      "Que suas férias tragam sorrisos acolhedores e experiências alegres.",
+      "Desejamos uma temporada festiva cheia de conforto e lembranças felizes.",
+      "Que seu Natal seja brilhante, caloroso e cheio de estadias inesquecíveis.",
+      "Desejamos momentos alegres, noites acolhedoras e dias festivos tranquilos.",
+      "Que sua temporada traga conforto, relaxamento e experiências preciosas.",
+      "Desejamos dias quentes, noites festivas e lembranças alegres de feriado.",
+      "Que suas férias estejam cheias de momentos acolhedores e alegria duradoura.",
+      "Desejamos uma temporada de conforto, calor e experiências inesquecíveis.",
+      "Que sua temporada festiva traga paz, felicidade e estadias memoráveis.",
+      "Desejamos celebrações acolhedoras, encontros alegres e momentos serenos.",
+      "Que suas férias estejam cheias de conforto, calor e alegria festiva.",
+      "Desejamos momentos brilhantes, sorrisos acolhedores e experiências alegres.",
+      "Que sua temporada traga relaxamento, estadias memoráveis e dias felizes.",
+      "Desejamos celebrações alegres, noites acolhedoras e lembranças felizes.",
+      "Que seu Natal seja caloroso, acolhedor e cheio de momentos felizes.",
+      "Desejamos dias festivos cheios de conforto, paz e alegria.",
+      "Que suas férias criem lembranças duradouras e experiências acolhedoras.",
+      "Desejamos uma temporada cheia de calor, momentos alegres e conforto.",
+      "Que sua temporada festiva seja alegre, acolhedora e inesquecível."
+    ],
+    "fr": [
+      "Nous vous souhaitons des fêtes remplies de confort, de chaleur et de séjours mémorables.",
+      "Que votre saison festive soit pleine de moments accueillants et de joie.",
+      "Nous vous souhaitons des jours relaxants et des expériences inoubliables ce Noël.",
+      "Que vos vacances apportent confort douillet et souvenirs heureux avec vos proches.",
+      "Nous vous souhaitons un accueil chaleureux et des moments de paix tout au long de la saison.",
+      "Que vos journées festives soient remplies de bonheur et de séjours agréables.",
+      "Nous vous souhaitons une saison de détente, de confort et de souvenirs précieux.",
+      "Que vos vacances soient lumineuses, accueillantes et pleines d'expériences joyeuses.",
+      "Nous vous souhaitons des moments de paix, de chaleur et de célébrations inoubliables.",
+      "Que votre saison soit remplie de confort, de joie et de réunions mémorables.",
+      "Nous vous souhaitons des jours douillets, des nuits joyeuses et de vrais moments de détente.",
+      "Que vos vacances apportent des sourires accueillants et des expériences joyeuses.",
+      "Nous vous souhaitons une saison festive remplie de confort et de souvenirs heureux.",
+      "Que votre Noël soit lumineux, chaleureux et rempli de séjours inoubliables.",
+      "Nous vous souhaitons des moments joyeux, des nuits douillettes et des journées de fêtes paisibles.",
+      "Que votre saison apporte confort, détente et expériences précieuses.",
+      "Nous vous souhaitons des journées chaleureuses, des nuits festives et des souvenirs joyeux.",
+      "Que vos vacances soient pleines de moments accueillants et de joie durable.",
+      "Nous vous souhaitons une saison de confort, de chaleur et d'expériences inoubliables.",
+      "Que votre saison festive apporte paix, bonheur et séjours mémorables.",
+      "Nous vous souhaitons des célébrations douillettes, des réunions joyeuses et des moments sereins.",
+      "Que vos vacances soient pleines de confort, de chaleur et de joie festive.",
+      "Nous vous souhaitons des moments lumineux, des sourires accueillants et des expériences joyeuses.",
+      "Que votre saison apporte détente, séjours mémorables et journées heureuses.",
+      "Nous vous souhaitons des célébrations joyeuses, des nuits douillettes et des souvenirs heureux.",
+      "Que votre Noël soit chaleureux, accueillant et rempli de moments heureux.",
+      "Nous vous souhaitons des journées festives remplies de confort, de paix et de joie.",
+      "Que vos vacances créent des souvenirs durables et des expériences accueillantes.",
+      "Nous vous souhaitons une saison pleine de chaleur, de moments joyeux et de confort.",
+      "Que votre saison festive soit joyeuse, accueillante et inoubliable."
+    ],
+    "de": [
+      "Wir wünschen Ihnen Feiertage voller Komfort, Wärme und unvergesslicher Aufenthalte.",
+      "Möge Ihre festliche Saison voller einladender Momente und Freude sein.",
+      "Wir wünschen Ihnen entspannte Tage und unvergessliche Erlebnisse zu Weihnachten.",
+      "Mögen Ihre Feiertage Gemütlichkeit und glückliche Erinnerungen mit Ihren Lieben bringen.",
+      "Wir wünschen Ihnen einen warmen Empfang und friedliche Momente während der gesamten Saison.",
+      "Mögen Ihre festlichen Tage voller Glück und angenehmer Aufenthalte sein.",
+      "Wir wünschen Ihnen eine Saison der Entspannung, des Komforts und wertvoller Erinnerungen.",
+      "Mögen Ihre Feiertage hell, einladend und voller freudiger Erlebnisse sein.",
+      "Wir wünschen Ihnen Momente des Friedens, der Wärme und unvergesslicher Feierlichkeiten.",
+      "Möge Ihre Saison voller Komfort, Freude und unvergesslicher Treffen sein.",
+      "Wir wünschen Ihnen gemütliche Tage, fröhliche Nächte und Momente wahrer Entspannung.",
+      "Mögen Ihre Feiertage einladende Lächeln und freudige Erlebnisse bringen.",
+      "Wir wünschen Ihnen eine festliche Saison voller Komfort und glücklicher Erinnerungen.",
+      "Möge Ihr Weihnachten hell, warm und voller unvergesslicher Aufenthalte sein.",
+      "Wir wünschen Ihnen freudige Momente, gemütliche Nächte und friedliche Feiertage.",
+      "Möge Ihre Saison Komfort, Entspannung und geschätzte Erlebnisse bringen.",
+      "Wir wünschen Ihnen warme Tage, festliche Nächte und freudige Urlaubserinnerungen.",
+      "Mögen Ihre Feiertage voller einladender Momente und dauerhafter Freude sein.",
+      "Wir wünschen Ihnen eine Saison des Komforts, der Wärme und unvergesslicher Erlebnisse.",
+      "Möge Ihre festliche Saison Frieden, Glück und unvergessliche Aufenthalte bringen.",
+      "Wir wünschen Ihnen gemütliche Feiern, freudige Treffen und ruhige Momente.",
+      "Mögen Ihre Feiertage voller Komfort, Wärme und festlicher Freude sein.",
+      "Wir wünschen Ihnen helle Momente, einladende Lächeln und freudige Erlebnisse.",
+      "Möge Ihre Saison Entspannung, unvergessliche Aufenthalte und glückliche Tage bringen.",
+      "Wir wünschen Ihnen fröhliche Feiern, gemütliche Nächte und freudige Erinnerungen.",
+      "Möge Ihr Weihnachten warm, einladend und voller glücklicher Momente sein.",
+      "Wir wünschen Ihnen festliche Tage voller Komfort, Frieden und Freude.",
+      "Mögen Ihre Feiertage bleibende Erinnerungen und einladende Erlebnisse schaffen.",
+      "Wir wünschen Ihnen eine Saison voller Wärme, fröhlicher Momente und Komfort.",
+      "Möge Ihre festliche Saison fröhlich, einladend und unvergesslich sein."
+    ],
+    "it": [
+      "Ti auguriamo vacanze piene di comfort, calore e soggiorni memorabili.",
+      "Che la tua stagione festiva sia piena di momenti accoglienti e gioia.",
+      "Ti auguriamo giorni rilassanti ed esperienze indimenticabili questo Natale.",
+      "Che le tue vacanze portino comfort accogliente e ricordi felici con i tuoi cari.",
+      "Ti auguriamo un caloroso benvenuto e momenti di pace per tutta la stagione.",
+      "Che i tuoi giorni festivi siano pieni di felicità e soggiorni piacevoli.",
+      "Ti auguriamo una stagione di relax, comfort e ricordi preziosi.",
+      "Che le tue vacanze siano luminose, accoglienti e piene di esperienze gioiose.",
+      "Ti auguriamo momenti di pace, calore e celebrazioni indimenticabili.",
+      "Che la tua stagione sia piena di comfort, gioia e incontri memorabili.",
+      "Ti auguriamo giorni accoglienti, notti gioiose e momenti di vero relax.",
+      "Che le tue vacanze portino sorrisi accoglienti ed esperienze gioiose.",
+      "Ti auguriamo una stagione festiva piena di comfort e ricordi felici.",
+      "Che il tuo Natale sia luminoso, caldo e pieno di soggiorni indimenticabili.",
+      "Ti auguriamo momenti gioiosi, notti accoglienti e giornate festive tranquille.",
+      "Che la tua stagione porti comfort, relax ed esperienze preziose.",
+      "Ti auguriamo giornate calde, notti festive e ricordi felici delle vacanze.",
+      "Che le tue vacanze siano piene di momenti accoglienti e gioia duratura.",
+      "Ti auguriamo una stagione di comfort, calore ed esperienze indimenticabili.",
+      "Che la tua stagione festiva porti pace, felicità e soggiorni memorabili.",
+      "Ti auguriamo celebrazioni accoglienti, incontri gioiosi e momenti sereni.",
+      "Che le tue vacanze siano piene di comfort, calore e gioia festiva.",
+      "Ti auguriamo momenti luminosi, sorrisi accoglienti ed esperienze gioiose.",
+      "Che la tua stagione porti relax, soggiorni memorabili e giorni felici.",
+      "Ti auguriamo celebrazioni gioiose, notti accoglienti e ricordi felici.",
+      "Che il tuo Natale sia caldo, accogliente e pieno di momenti felici.",
+      "Ti auguriamo giorni festivi pieni di comfort, pace e gioia.",
+      "Che le tue vacanze creino ricordi duraturi ed esperienze accoglienti.",
+      "Ti auguriamo una stagione piena di calore, momenti gioiosi e comfort.",
+      "Che la tua stagione festiva sia gioiosa, accogliente e indimenticabile."
+    ]
+  },
+  "legal": {
+    "en": [
+      "Wishing you a season of peace, clarity and positive resolutions.",
+      "May your holidays bring confidence, protection and reassurance.",
+      "Wishing you calm days, guidance and fair outcomes this festive season.",
+      "May this season bring clarity, security and peaceful moments for you.",
+      "Wishing you trust, confidence and meaningful resolutions this Christmas.",
+      "May your holidays be filled with guidance, fairness and peace.",
+      "Wishing you protection, clarity and successful outcomes this season.",
+      "May your season bring reassurance, confidence and harmony in all matters.",
+      "Wishing you fair decisions, calm days and peace throughout the holidays.",
+      "May your holidays be secure, bright and full of clarity.",
+      "Wishing you trust, guidance and positive outcomes this festive season.",
+      "May your season bring peace, confidence and meaningful results.",
+      "Wishing you calm, clarity and protection for you and your loved ones.",
+      "May your holidays bring reassurance, fairness and confidence.",
+      "Wishing you successful outcomes, trust and peaceful moments this season.",
+      "May this season bring guidance, clarity and harmony to your days.",
+      "Wishing you confidence, peace and meaningful resolutions this Christmas.",
+      "May your holidays be full of protection, clarity and calm.",
+      "Wishing you reassurance, trust and successful outcomes this season.",
+      "May your season bring fair resolutions, confidence and harmony.",
+      "Wishing you clarity, guidance and peace throughout the festive days.",
+      "May your holidays be secure, fair and full of meaningful results.",
+      "Wishing you confidence, calm and successful resolutions this season.",
+      "May this festive season bring protection, trust and clarity to you.",
+      "Wishing you guidance, reassurance and joyful peace this holiday.",
+      "May your holidays bring harmony, clarity and confidence in all matters.",
+      "Wishing you protection, trust and calm moments throughout the season.",
+      "May your season be filled with successful resolutions and peace.",
+      "Wishing you clarity, confidence and guidance for joyful holidays.",
+      "May your holidays bring fair outcomes, reassurance and serenity."
+    ],
+    "es": [
+      "Te deseo una temporada de paz, claridad y resoluciones positivas.",
+      "Que tus fiestas traigan confianza, protección y tranquilidad.",
+      "Te deseo días tranquilos, orientación y decisiones justas en esta temporada.",
+      "Que esta temporada te brinde claridad, seguridad y momentos de paz.",
+      "Te deseo confianza, protección y resoluciones significativas esta Navidad.",
+      "Que tus fiestas estén llenas de guía, justicia y paz.",
+      "Te deseo protección, claridad y resultados exitosos esta temporada.",
+      "Que tu temporada traiga tranquilidad, confianza y armonía en todos los asuntos.",
+      "Te deseo decisiones justas, días tranquilos y paz durante las fiestas.",
+      "Que tus fiestas sean seguras, brillantes y llenas de claridad.",
+      "Te deseo confianza, guía y resultados positivos esta temporada.",
+      "Que tu temporada traiga paz, confianza y resultados significativos.",
+      "Te deseo calma, claridad y protección para ti y tus seres queridos.",
+      "Que tus fiestas traigan tranquilidad, justicia y confianza.",
+      "Te deseo resultados exitosos, confianza y momentos de paz esta temporada.",
+      "Que esta temporada te brinde guía, claridad y armonía.",
+      "Te deseo confianza, paz y resoluciones significativas esta Navidad.",
+      "Que tus fiestas estén llenas de protección, claridad y tranquilidad.",
+      "Te deseo tranquilidad, confianza y resultados exitosos esta temporada.",
+      "Que tu temporada traiga resoluciones justas, confianza y armonía.",
+      "Te deseo claridad, guía y paz durante las fiestas.",
+      "Que tus fiestas sean seguras, justas y llenas de resultados significativos.",
+      "Te deseo confianza, calma y resoluciones exitosas esta temporada.",
+      "Que esta temporada festiva te brinde protección, confianza y claridad.",
+      "Te deseo guía, tranquilidad y paz alegre en estas fiestas.",
+      "Que tus fiestas traigan armonía, claridad y confianza en todos los asuntos.",
+      "Te deseo protección, confianza y momentos de calma esta temporada.",
+      "Que tu temporada esté llena de resoluciones exitosas y paz.",
+      "Te deseo claridad, confianza y guía durante las fiestas.",
+      "Que tus fiestas traigan resultados justos, tranquilidad y serenidad."
+    ],
+    "pt": [
+      "Desejando a você uma temporada de paz, clareza e boas resoluções.",
+      "Que suas festas tragam confiança, proteção e tranquilidade.",
+      "Desejando dias calmos, orientação e decisões justas nesta temporada.",
+      "Que esta época traga clareza, segurança e momentos de paz.",
+      "Desejando confiança, proteção e resoluções significativas neste Natal.",
+      "Que suas festas sejam cheias de orientação, justiça e paz.",
+      "Desejando proteção, clareza e resultados positivos nesta temporada.",
+      "Que sua temporada traga segurança, confiança e harmonia em todos os assuntos.",
+      "Desejando decisões justas, dias tranquilos e paz nas festas.",
+      "Que suas festas sejam seguras, iluminadas e cheias de clareza.",
+      "Desejando confiança, orientação e resultados positivos nesta época.",
+      "Que sua temporada traga paz, confiança e resultados significativos.",
+      "Desejando calma, clareza e proteção para você e seus entes queridos.",
+      "Que suas festas tragam tranquilidade, justiça e confiança.",
+      "Desejando resultados positivos, confiança e momentos de paz nesta temporada.",
+      "Que esta época traga orientação, clareza e harmonia aos seus dias.",
+      "Desejando confiança, paz e boas resoluções neste Natal.",
+      "Que suas festas sejam cheias de proteção, clareza e tranquilidade.",
+      "Desejando tranquilidade, confiança e bons resultados nesta época.",
+      "Que sua temporada traga resoluções justas, confiança e harmonia.",
+      "Desejando clareza, orientação e paz ao longo das festas.",
+      "Que suas festas sejam seguras, justas e cheias de bons resultados.",
+      "Desejando confiança, calma e resoluções positivas nesta temporada.",
+      "Que esta época festiva traga proteção, confiança e clareza.",
+      "Desejando orientação, tranquilidade e paz alegre para suas festas.",
+      "Que suas festas tragam harmonia, clareza e confiança em todos os assuntos.",
+      "Desejando proteção, confiança e momentos de calma nesta temporada.",
+      "Que sua temporada seja cheia de boas resoluções e paz.",
+      "Desejando clareza, confiança e orientação para as festas.",
+      "Que suas festas tragam bons resultados, tranquilidade e serenidade."
+    ],
+    "fr": [
+      "Je vous souhaite une saison de paix, de clarté et de belles résolutions.",
+      "Que vos fêtes apportent confiance, protection et sérénité.",
+      "Je vous souhaite des jours calmes, des conseils éclairés et des décisions justes.",
+      "Que cette saison vous apporte clarté, sécurité et moments paisibles.",
+      "Je vous souhaite confiance, protection et résolutions significatives pour Noël.",
+      "Que vos fêtes soient remplies de guidance, d’équité et de paix.",
+      "Je vous souhaite protection, clarté et résultats positifs cette saison.",
+      "Que votre saison apporte réassurance, confiance et harmonie.",
+      "Je vous souhaite des décisions justes, des jours calmes et la paix.",
+      "Que vos fêtes soient sûres, lumineuses et pleines de clarté.",
+      "Je vous souhaite confiance, guidance et résultats positifs.",
+      "Que votre saison apporte paix, confiance et résultats significatifs.",
+      "Je vous souhaite calme, clarté et protection pour vous et vos proches.",
+      "Que vos fêtes apportent sérénité, équité et confiance.",
+      "Je vous souhaite réussite, confiance et moments paisibles.",
+      "Que cette saison vous apporte guidance, clarté et harmonie.",
+      "Je vous souhaite confiance, paix et belles résolutions pour Noël.",
+      "Que vos fêtes soient remplies de protection, clarté et sérénité.",
+      "Je vous souhaite sérénité, confiance et résultats positifs.",
+      "Que votre saison apporte justice, confiance et harmonie.",
+      "Je vous souhaite clarté, guidance et paix durant les fêtes.",
+      "Que vos fêtes soient sûres, justes et pleines de résultats significatifs.",
+      "Je vous souhaite confiance, calme et réussites cette saison.",
+      "Que cette période festive vous apporte protection, confiance et clarté.",
+      "Je vous souhaite guidance, sérénité et paix joyeuse.",
+      "Que vos fêtes apportent harmonie, clarté et confiance.",
+      "Je vous souhaite protection, confiance et moments paisibles.",
+      "Que votre saison soit remplie de résolutions réussies et de paix.",
+      "Je vous souhaite clarté, confiance et guidance pour les fêtes.",
+      "Que vos fêtes apportent justice, sérénité et tranquillité."
+    ],
+    "de": [
+      "Ich wünsche dir eine Saison voller Frieden, Klarheit und positiver Lösungen.",
+      "Möge deine Feiertage Vertrauen, Schutz und Zuversicht bringen.",
+      "Ich wünsche dir ruhige Tage, Orientierung und faire Entscheidungen.",
+      "Möge diese Saison Klarheit, Sicherheit und friedliche Momente bringen.",
+      "Ich wünsche dir Vertrauen, Schutz und bedeutungsvolle Lösungen zu Weihnachten.",
+      "Mögen deine Feiertage voller Orientierung, Fairness und Frieden sein.",
+      "Ich wünsche dir Schutz, Klarheit und erfolgreiche Ergebnisse.",
+      "Möge deine Saison Zuversicht, Vertrauen und Harmonie bringen.",
+      "Ich wünsche dir faire Entscheidungen, ruhige Tage und Frieden.",
+      "Mögen deine Feiertage sicher, hell und klar sein.",
+      "Ich wünsche dir Vertrauen, Orientierung und positive Ergebnisse.",
+      "Möge deine Saison Frieden, Vertrauen und bedeutungsvolle Resultate bringen.",
+      "Ich wünsche dir Ruhe, Klarheit und Schutz für dich und deine Liebsten.",
+      "Mögen deine Feiertage Zuversicht, Fairness und Vertrauen bringen.",
+      "Ich wünsche dir erfolgreiche Resultate, Vertrauen und friedliche Momente.",
+      "Möge diese Saison Orientierung, Klarheit und Harmonie bringen.",
+      "Ich wünsche dir Vertrauen, Frieden und bedeutungsvolle Lösungen.",
+      "Möge deine Feiertage voller Schutz, Klarheit und Ruhe sein.",
+      "Ich wünsche dir Zuversicht, Vertrauen und erfolgreiche Ergebnisse.",
+      "Möge deine Saison faire Lösungen, Vertrauen und Harmonie bringen.",
+      "Ich wünsche dir Klarheit, Orientierung und Frieden.",
+      "Mögen deine Feiertage sicher, fair und bedeutungsvoll sein.",
+      "Ich wünsche dir Vertrauen, Ruhe und erfolgreiche Lösungen.",
+      "Möge diese festliche Saison Schutz, Vertrauen und Klarheit bringen.",
+      "Ich wünsche dir Orientierung, Zuversicht und freudigen Frieden.",
+      "Mögen deine Feiertage Harmonie, Klarheit und Vertrauen bringen.",
+      "Ich wünsche dir Schutz, Vertrauen und ruhige Momente.",
+      "Möge deine Saison erfolgreiche Lösungen und Frieden bringen.",
+      "Ich wünsche dir Klarheit, Vertrauen und Orientierung zu den Feiertagen.",
+      "Mögen deine Feiertage faire Resultate, Zuversicht und Ruhe bringen."
+    ],
+    "it": [
+      "Ti auguro una stagione di pace, chiarezza e buone risoluzioni.",
+      "Che le tue feste portino fiducia, protezione e serenità.",
+      "Ti auguro giorni tranquilli, guida e decisioni giuste.",
+      "Che questa stagione porti chiarezza, sicurezza e momenti di pace.",
+      "Ti auguro fiducia, protezione e risoluzioni significative per Natale.",
+      "Che le tue feste siano piene di guida, equità e pace.",
+      "Ti auguro protezione, chiarezza e risultati positivi.",
+      "Che la tua stagione porti rassicurazione, fiducia e armonia.",
+      "Ti auguro decisioni giuste, giorni sereni e pace.",
+      "Che le tue feste siano sicure, luminose e piene di chiarezza.",
+      "Ti auguro fiducia, guida e risultati positivi.",
+      "Che la tua stagione porti pace, fiducia e risultati significativi.",
+      "Ti auguro calma, chiarezza e protezione per te e i tuoi cari.",
+      "Che le tue feste portino serenità, equità e fiducia.",
+      "Ti auguro risultati positivi, fiducia e momenti di pace.",
+      "Che questa stagione porti guida, chiarezza e armonia.",
+      "Ti auguro fiducia, pace e buone risoluzioni per Natale.",
+      "Che le tue feste siano piene di protezione, chiarezza e serenità.",
+      "Ti auguro serenità, fiducia e buoni risultati.",
+      "Che la tua stagione porti soluzioni giuste, fiducia e armonia.",
+      "Ti auguro chiarezza, guida e pace durante le feste.",
+      "Che le tue feste siano sicure, giuste e piene di risultati significativi.",
+      "Ti auguro fiducia, calma e risultati positivi.",
+      "Che questa stagione festiva porti protezione, fiducia e chiarezza.",
+      "Ti auguro guida, serenità e una pace gioiosa.",
+      "Che le tue feste portino armonia, chiarezza e fiducia.",
+      "Ti auguro protezione, fiducia e momenti sereni.",
+      "Che la tua stagione sia piena di buone soluzioni e pace.",
+      "Ti auguro chiarezza, fiducia e guida per le feste.",
+      "Che le tue feste portino risultati giusti, serenità e tranquillità."
+    ]
+  },
+"veterinary": {
+    "en": [
+      "Wishing you and your furry friends a season full of love and care.",
+      "May your holidays be filled with joy, health and wagging tails.",
+      "Wishing you moments of happiness and wellness with your pets.",
+      "May this season bring comfort, love and healthy days for your companions.",
+      "Wishing you joy, care and peaceful moments with your furry friends.",
+      "May your holidays be bright, safe and full of happy pets.",
+      "Wishing you warmth, love and wellness for you and your companions.",
+      "May this festive season bring healthy pets and joyful moments.",
+      "Wishing you joy, care and plenty of wagging tails this Christmas.",
+      "May your holidays be filled with love, comfort and happy companions.",
+      "Wishing you bright moments and healthful days with your pets.",
+      "May this season bring care, happiness and cuddly moments for all.",
+      "Wishing you warmth, wellness and joyful time with your furry friends.",
+      "May your holidays be filled with love, tails wagging and peace.",
+      "Wishing you comfort, care and happy memories with your pets.",
+      "May this season bring joyful moments and healthy companions.",
+      "Wishing you love, wellness and moments to cherish with your pets.",
+      "May your holidays be bright, safe and full of wagging tails.",
+      "Wishing you joyful moments, care and healthful days with pets.",
+      "May your season bring love, happiness and playful companions.",
+      "Wishing you bright holidays filled with furry friends and joy.",
+      "May your holidays inspire care, health and wagging happiness.",
+      "Wishing you peaceful moments, love and healthy pets this season.",
+      "May your season be full of joyful cuddles and happy companions.",
+      "Wishing you love, care and memorable time with your furry friends.",
+      "May your holidays bring warmth, wellness and cheerful tails.",
+      "Wishing you health, happiness and playful moments with your pets.",
+      "May this season fill your days with joy, love and care for all pets.",
+      "Wishing you bright moments, wagging tails and a loving festive season.",
+      "May your holidays be full of comfort, happy companions and joy."
+    ],
+    "es": [
+      "Te deseo a ti y a tus amigos peludos una temporada llena de amor y cuidado.",
+      "Que tus fiestas estén llenas de alegría, salud y colitas felices.",
+      "Te deseo momentos de felicidad y bienestar junto a tus mascotas.",
+      "Que esta temporada traiga amor, comodidad y días saludables para tus compañeros.",
+      "Te deseo alegría, cuidado y momentos de paz con tus amigos peludos.",
+      "Que tus fiestas sean brillantes, seguras y llenas de mascotas felices.",
+      "Te deseo calidez, amor y bienestar para ti y tus compañeros.",
+      "Que esta temporada festiva traiga mascotas saludables y momentos alegres.",
+      "Te deseo alegría, cuidado y muchas colitas moviéndose esta Navidad.",
+      "Que tus fiestas estén llenas de amor, comodidad y compañeros felices.",
+      "Te deseo momentos brillantes y días saludables junto a tus mascotas.",
+      "Que esta temporada traiga cuidado, felicidad y momentos acogedores.",
+      "Te deseo calidez, bienestar y momentos alegres con tus amigos peludos.",
+      "Que tus fiestas estén llenas de amor, colitas moviéndose y paz.",
+      "Te deseo comodidad, cuidado y recuerdos felices con tus mascotas.",
+      "Que esta temporada traiga momentos alegres y compañeros saludables.",
+      "Te deseo amor, bienestar y momentos para atesorar con tus mascotas.",
+      "Que tus fiestas sean brillantes, seguras y llenas de colitas felices.",
+      "Te deseo momentos alegres, cuidado y días saludables con mascotas.",
+      "Que tu temporada traiga amor, felicidad y compañeros juguetones.",
+      "Te deseo fiestas brillantes llenas de amigos peludos y alegría.",
+      "Que tus fiestas inspiren cuidado, salud y felicidad moviendo colas.",
+      "Te deseo momentos de paz, amor y mascotas saludables esta temporada.",
+      "Que tu temporada esté llena de abrazos peludos y compañeros felices.",
+      "Te deseo amor, cuidado y momentos memorables con tus amigos peludos.",
+      "Que tus fiestas traigan calidez, bienestar y colitas alegres.",
+      "Te deseo salud, felicidad y momentos divertidos con tus mascotas.",
+      "Que esta temporada llene tus días de alegría, amor y cuidado por los animales.",
+      "Te deseo momentos brillantes, colitas moviéndose y una temporada llena de amor.",
+      "Que tus fiestas estén llenas de comodidad, compañeros felices y alegría."
+    ],
+    "pt": [
+      "Desejo a você e aos seus amigos de quatro patas uma temporada cheia de amor e cuidado.",
+      "Que suas festas sejam cheias de alegria, saúde e rabinhos balançando.",
+      "Desejo momentos de felicidade e bem-estar com seus pets.",
+      "Que esta temporada traga conforto, amor e dias saudáveis para seus companheiros.",
+      "Desejo alegria, cuidado e momentos de paz com seus amigos peludos.",
+      "Que suas festas sejam brilhantes, seguras e cheias de pets felizes.",
+      "Desejo calor, amor e bem-estar para você e seus companheiros.",
+      "Que esta temporada festiva traga pets saudáveis e momentos alegres.",
+      "Desejo alegria, cuidado e muitos rabinhos felizes neste Natal.",
+      "Que suas festas sejam cheias de amor, conforto e companheiros felizes.",
+      "Desejo momentos iluminados e dias saudáveis com seus pets.",
+      "Que esta temporada traga cuidado, felicidade e momentos acolhedores.",
+      "Desejo calor, bem-estar e momentos alegres com seus amigos peludos.",
+      "Que suas festas sejam cheias de amor, rabinhos balançando e paz.",
+      "Desejo conforto, cuidado e memórias felizes com seus pets.",
+      "Que esta temporada traga momentos alegres e companheiros saudáveis.",
+      "Desejo amor, bem-estar e momentos especiais com seus pets.",
+      "Que suas festas sejam brilhantes, seguras e cheias de rabinhos felizes.",
+      "Desejo momentos alegres, cuidado e dias saudáveis com seus pets.",
+      "Que sua temporada traga amor, felicidade e companheiros brincalhões.",
+      "Desejo festas iluminadas, cheias de amigos peludos e alegria.",
+      "Que suas festas inspirem cuidado, saúde e felicidade com pets.",
+      "Desejo momentos de paz, amor e pets saudáveis nesta temporada.",
+      "Que sua temporada seja cheia de abraços peludos e companheiros felizes.",
+      "Desejo amor, cuidado e momentos inesquecíveis com seus amigos peludos.",
+      "Que suas festas tragam calor, bem-estar e rabinhos felizes.",
+      "Desejo saúde, felicidade e momentos divertidos com seus pets.",
+      "Que esta temporada encha seus dias de alegria, amor e cuidado pelos animais.",
+      "Desejo momentos iluminados, rabinhos balançando e uma temporada cheia de amor.",
+      "Que suas festas sejam cheias de conforto, companheiros felizes e alegria."
+    ],
+    "fr": [
+      "Je vous souhaite, à vous et à vos compagnons à quatre pattes, une saison pleine d’amour et de douceur.",
+      "Que vos fêtes soient remplies de joie, de santé et de queues qui remuent.",
+      "Je vous souhaite des moments de bonheur et de bien-être avec vos animaux.",
+      "Que cette saison apporte confort, amour et jours en pleine santé à vos compagnons.",
+      "Je vous souhaite joie, douceur et moments paisibles avec vos amis poilus.",
+      "Que vos fêtes soient lumineuses, sûres et remplies d’animaux heureux.",
+      "Je vous souhaite chaleur, amour et bien-être pour vous et vos compagnons.",
+      "Que cette saison festive apporte des animaux en bonne santé et des moments joyeux.",
+      "Je vous souhaite joie, douceur et beaucoup de queues remuantes pour Noël.",
+      "Que vos fêtes soient remplies d’amour, de réconfort et de compagnons heureux.",
+      "Je vous souhaite des moments lumineux et des jours en pleine santé avec vos animaux.",
+      "Que cette saison apporte douceur, bonheur et instants câlins pour tous.",
+      "Je vous souhaite chaleur, bien-être et moments joyeux avec vos amis poilus.",
+      "Que vos fêtes soient pleines d’amour, de queues qui remuent et de paix.",
+      "Je vous souhaite réconfort, douceur et souvenirs heureux avec vos animaux.",
+      "Que cette saison apporte moments joyeux et compagnons en bonne santé.",
+      "Je vous souhaite amour, bien-être et instants précieux avec vos animaux.",
+      "Que vos fêtes soient lumineuses, sûres et remplies de queues remuantes.",
+      "Je vous souhaite moments joyeux, douceur et jours en pleine santé.",
+      "Que votre saison apporte amour, bonheur et compagnons joueurs.",
+      "Je vous souhaite des fêtes lumineuses pleines d’amis poilus et de joie.",
+      "Que vos fêtes inspirent douceur, santé et bonheur remuant.",
+      "Je vous souhaite des moments paisibles, de l’amour et des animaux en bonne santé.",
+      "Que votre saison soit remplie de câlins poilus et de compagnons heureux.",
+      "Je vous souhaite amour, douceur et moments mémorables avec vos amis à poils.",
+      "Que vos fêtes apportent chaleur, bien-être et queues joyeuses.",
+      "Je vous souhaite santé, bonheur et moments joyeux avec vos animaux.",
+      "Que cette saison remplisse vos journées de joie, d’amour et de soin pour les animaux.",
+      "Je vous souhaite des moments lumineux, des queues remuantes et une saison pleine d’amour.",
+      "Que vos fêtes soient pleines de confort, de compagnons heureux et de joie."
+    ],
+    "de": [
+      "Ich wünsche Ihnen und Ihren Fellfreunden eine Saison voller Liebe und Fürsorge.",
+      "Möge Ihre Feiertage voller Freude, Gesundheit und wedelnder Schwänze sein.",
+      "Ich wünsche Ihnen glückliche und gesunde Momente mit Ihren Haustieren.",
+      "Möge diese Saison Ihren tierischen Begleitern Komfort, Liebe und gesunde Tage bringen.",
+      "Ich wünsche Ihnen Freude, Fürsorge und friedliche Momente mit Ihren Fellfreunden.",
+      "Mögen Ihre Feiertage hell, sicher und voller glücklicher Tiere sein.",
+      "Ich wünsche Ihnen Wärme, Liebe und Wohlbefinden für Sie und Ihre Begleiter.",
+      "Möge diese festliche Saison gesunde Haustiere und glückliche Momente bringen.",
+      "Ich wünsche Ihnen Freude, Fürsorge und viele wedelnde Schwänze zu Weihnachten.",
+      "Mögen Ihre Feiertage voller Liebe, Komfort und glücklicher Begleiter sein.",
+      "Ich wünsche Ihnen helle Momente und gesunde Tage mit Ihren Haustieren.",
+      "Möge diese Saison Fürsorge, Glück und viele gemütliche Momente bringen.",
+      "Ich wünsche Ihnen Wärme, Wohlbefinden und fröhliche Zeit mit Ihren Fellfreunden.",
+      "Mögen Ihre Feiertage voller Liebe, wedelnder Schwänze und Frieden sein.",
+      "Ich wünsche Ihnen Komfort, Fürsorge und glückliche Erinnerungen mit Ihren Haustieren.",
+      "Möge diese Saison glückliche Momente und gesunde Begleiter bringen.",
+      "Ich wünsche Ihnen Liebe, Wohlbefinden und wertvolle Momente mit Ihren Haustieren.",
+      "Mögen Ihre Feiertage hell, sicher und voller wedelnder Schwänze sein.",
+      "Ich wünsche Ihnen fröhliche Momente, Fürsorge und gesunde Tage mit Tieren.",
+      "Möge Ihre Saison Liebe, Glück und verspielte Begleiter bringen.",
+      "Ich wünsche Ihnen strahlende Feiertage voller Fellfreunde und Freude.",
+      "Mögen Ihre Feiertage Fürsorge, Gesundheit und wedelnde Freude inspirieren.",
+      "Ich wünsche Ihnen friedliche Momente, Liebe und gesunde Haustiere.",
+      "Möge Ihre Saison voller kuscheliger Momente und glücklicher Begleiter sein.",
+      "Ich wünsche Ihnen Liebe, Fürsorge und unvergessliche Zeit mit Ihren Fellfreunden.",
+      "Mögen Ihre Feiertage Wärme, Wohlbefinden und fröhliche Schwänze bringen.",
+      "Ich wünsche Ihnen Gesundheit, Glück und spielerische Momente mit Ihren Haustieren.",
+      "Möge diese Saison Ihre Tage mit Freude, Liebe und Tierliebe füllen.",
+      "Ich wünsche Ihnen helle Momente, wedelnde Schwänze und eine liebevolle Festzeit.",
+      "Mögen Ihre Feiertage voller Komfort, glücklicher Begleiter und Freude sein."
+    ],
+    "it": [
+      "Ti auguro, a te e ai tuoi amici pelosi, una stagione piena di amore e cura.",
+      "Che le tue feste siano piene di gioia, salute e codine scodinzolanti.",
+      "Ti auguro momenti di felicità e benessere con i tuoi animali.",
+      "Che questa stagione porti comfort, amore e giorni sani ai tuoi compagni.",
+      "Ti auguro gioia, cura e momenti di pace con i tuoi amici pelosi.",
+      "Che le tue feste siano luminose, sicure e piene di animali felici.",
+      "Ti auguro calore, amore e benessere per te e i tuoi compagni.",
+      "Che questa stagione festiva porti animali in salute e momenti gioiosi.",
+      "Ti auguro gioia, cura e tante codine scodinzolanti per Natale.",
+      "Che le tue feste siano piene di amore, comfort e compagni felici.",
+      "Ti auguro momenti luminosi e giorni sani con i tuoi animali.",
+      "Che questa stagione porti cura, felicità e momenti accoglienti.",
+      "Ti auguro calore, benessere e tempo felice con i tuoi amici pelosi.",
+      "Che le tue feste siano piene di amore, codine scodinzolanti e pace.",
+      "Ti auguro comfort, cura e ricordi felici con i tuoi animali.",
+      "Che questa stagione porti momenti gioiosi e compagni in salute.",
+      "Ti auguro amore, benessere e momenti preziosi con i tuoi animali.",
+      "Che le tue feste siano luminose, sicure e piene di codine felici.",
+      "Ti auguro momenti gioiosi, cura e giorni sani con gli animali.",
+      "Che la tua stagione porti amore, felicità e compagni giocosi.",
+      "Ti auguro feste luminose piene di amici pelosi e gioia.",
+      "Che le tue feste ispirino cura, salute e felicità scodinzolante.",
+      "Ti auguro momenti di pace, amore e animali in salute.",
+      "Che la tua stagione sia piena di coccole pelose e compagni felici.",
+      "Ti auguro amore, cura e momenti memorabili con i tuoi amici pelosi.",
+      "Che le tue feste portino calore, benessere e codine allegre.",
+      "Ti auguro salute, felicità e momenti giocosi con i tuoi animali.",
+      "Che questa stagione riempia i tuoi giorni di gioia, amore e cura per gli animali.",
+      "Ti auguro momenti luminosi, codine scodinzolanti e una stagione piena d’amore.",
+      "Che le tue feste siano piene di comfort, compagni felici e gioia."
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+;
+
+
+let currentImageObjectURL = null;
+
+const colorSwatches = [
+    '#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff',
+    '#ffa500', '#800080', '#4a90e2', '#7ed321', '#d0021b', '#50e3c2', '#888888', '#fbbf24',
+    '#8b4513', '#2e8b57'
+];
+
+// ============================================
+// DOM ELEMENTS
+// ============================================
+const el = {
+    bg: document.getElementById('backgroundInput'),
+    customFileBtn: document.getElementById('customFileBtn'),
+    fileName: document.getElementById('fileName'),
+    text: document.getElementById('textInput'),
+    font: document.getElementById('fontSelect'),
+    bold: document.getElementById('boldCheck'),
+    italic: document.getElementById('italicCheck'),
+    fontSize: document.getElementById('fontSizeSlider'),
+    fontSizeValue: document.getElementById('fontSizeValue'),
+    prevText: document.getElementById('previewText'),
+    prevImg: document.getElementById('previewImage'),
+    download: document.getElementById('downloadBtn'),
+    colorPal: document.getElementById('colorPalette'),
+    output: document.getElementById('filteredPhrasesOutput'),
+    area: document.getElementById('previewArea'),
+    imgMsg: document.getElementById('imageMessage'),
+    dlMsg: document.getElementById('downloadMessage'),
+    segmentSelect: document.getElementById('segmentSelect')
+};
+
+// ============================================
+// RENDER PHRASES
+// ============================================
+
+function renderPhrases(segment, lang) {
+    currentSegment = segment;
+    currentLanguage = lang;
+    
+    // Check if phrases are loaded
+    if (!allPhrases[segment] || !allPhrases[segment][lang]) {
+        el.output.innerHTML = '<div style="padding:15px; color:#ff6b6b; text-align:center;">Loading phrases...</div>';
+        return;
+    }
+    
+    const phrases = allPhrases[segment][lang];
+    el.output.innerHTML = '';
+    
+    phrases.forEach(phrase => {
+        const item = document.createElement('div');
+        item.className = 'phrase-item';
+        item.textContent = phrase;
+        item.onclick = () => {
+            el.text.value = phrase;
+            updatePreview();
+            showMessage(el.imgMsg, '✨ Phrase added to your post!', 'success');
+            setTimeout(() => showMessage(el.imgMsg, '', ''), 2000);
+        };
+        el.output.appendChild(item);
+    });
+    
+    // Update active language button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+}
+
+// Segment selector change event
+if (el.segmentSelect) {
+    el.segmentSelect.addEventListener('change', () => {
+        renderPhrases(el.segmentSelect.value, currentLanguage);
+    });
+}
+
+// Language selector buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.onclick = () => renderPhrases(currentSegment, btn.dataset.lang);
+});
+
+// Initialize - render phrases immediately
+renderPhrases(currentSegment, currentLanguage);
+
+// ============================================
+// COLOR PALETTE
+// ============================================
+
+function createColorSwatches(container, targetElement, initialColor) {
+    container.innerHTML = '';
+    colorSwatches.forEach((color, index) => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch';
+        swatch.style.backgroundColor = color;
+        swatch.onclick = () => {
+            container.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+            swatch.classList.add('active');
+            targetElement.style.color = color;
+        };
+        if (color === initialColor) {
+            swatch.classList.add('active');
+        }
+        container.appendChild(swatch);
+    });
+}
+
+// ============================================
+// DRAG FUNCTIONALITY
+// ============================================
+
+function makeDraggable(element) {
+    let isDragging = false;
+    let startX, startY, initialX, initialY;
+
+    element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.classList.add('dragging');
+        
+        const rect = element.getBoundingClientRect();
+        const parentRect = el.area.getBoundingClientRect();
+        
+        startX = e.clientX;
+        startY = e.clientY;
+        initialX = rect.left - parentRect.left;
+        initialY = rect.top - parentRect.top;
+        
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        
+        const newLeft = initialX + dx;
+        const newTop = initialY + dy;
+        
+        element.style.left = newLeft + 'px';
+        element.style.top = newTop + 'px';
+        element.style.transform = 'none';
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            element.classList.remove('dragging');
+        }
+    });
+
+    element.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        element.classList.add('dragging');
+        
+        const touch = e.touches[0];
+        const rect = element.getBoundingClientRect();
+        const parentRect = el.area.getBoundingClientRect();
+        
+        startX = touch.clientX;
+        startY = touch.clientY;
+        initialX = rect.left - parentRect.left;
+        initialY = rect.top - parentRect.top;
+        
+        e.preventDefault();
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const touch = e.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        
+        const newLeft = initialX + dx;
+        const newTop = initialY + dy;
+        
+        element.style.left = newLeft + 'px';
+        element.style.top = newTop + 'px';
+        element.style.transform = 'none';
+    });
+
+    document.addEventListener('touchend', () => {
+        if (isDragging) {
+            isDragging = false;
+            element.classList.remove('dragging');
+        }
+    });
+}
+
+makeDraggable(el.prevText);
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+function showMessage(container, message, type = '') {
+    container.textContent = message;
+    container.className = message ? `message ${type}` : '';
+}
+
+// ============================================
+// FILE UPLOAD
+// ============================================
+
+el.customFileBtn.onclick = () => el.bg.click();
+el.bg.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    if (!file.type.startsWith('image/')) {
+        showMessage(el.imgMsg, '⚠️ Please select a valid image file!', 'error');
+        return;
+    }
+    
+    if (file.size > 10 * 1024 * 1024) {
+        showMessage(el.imgMsg, '⚠️ Image too large! Max 10MB.', 'error');
+        return;
+    }
+    
+    if (currentImageObjectURL) {
+        URL.revokeObjectURL(currentImageObjectURL);
+    }
+
+    currentImageObjectURL = URL.createObjectURL(file);
+    el.prevImg.src = currentImageObjectURL;
+    el.fileName.textContent = file.name;
+    showMessage(el.imgMsg, 'Image loaded successfully!', 'success');
+};
+
+// ============================================
+// PREVIEW UPDATES
+// ============================================
+
+function updatePreview() {
+    el.prevText.innerText = el.text.value || '';
+    el.prevText.style.fontFamily = el.font.value;
+    el.prevText.style.fontWeight = el.bold.checked ? '700' : '400';
+    el.prevText.style.fontStyle = el.italic.checked ? 'italic' : 'normal';
+    
+    const requestedSize = parseInt(el.fontSize.value);
+    const maxWidth = el.area.offsetWidth * 0.9;
+    
+    el.prevText.style.fontSize = requestedSize + 'px';
+    
+    setTimeout(() => {
+        let finalSize = requestedSize;
+        
+        while (el.prevText.scrollWidth > maxWidth && finalSize > 16) {
+            finalSize -= 2;
+            el.prevText.style.fontSize = finalSize + 'px';
+        }
+        
+        if (finalSize < requestedSize) {
+            el.fontSizeValue.innerHTML = `${requestedSize}px <span style="font-size:0.75rem; color:#ff6b6b; font-style:italic; margin-left:5px;">(auto: ${finalSize}px)</span>`;
+            el.fontSizeValue.style.color = '#ff6b6b';
+        } else {
+            el.fontSizeValue.textContent = `${requestedSize}px`;
+            el.fontSizeValue.style.color = '#22c55e';
+        }
+    }, 50);
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+el.text.oninput = updatePreview;
+el.font.onchange = updatePreview;
+el.bold.onchange = updatePreview;
+el.italic.onchange = updatePreview;
+el.fontSize.oninput = updatePreview;
+
+// ============================================
+// IMAGE GENERATION
+// ============================================
+
+async function generateImage() {
+    const canvas = await html2canvas(el.area, {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null,
+        scale: 2
+    });
+    
+    return canvas;
+}
+
+// ============================================
+// DOWNLOAD FUNCTIONALITY
+// ============================================
+
+el.download.onclick = async () => {
+    console.log('🔍 DEBUG: Download button clicked');
+    console.log('🔍 Image src:', el.prevImg.src);
+    
+    if (!el.prevImg.src) {
+        showMessage(el.dlMsg, 'Please add an image first!', 'error');
+        alert('⚠️ Please add a background image first!');
+        return;
+    }
+
+    el.download.disabled = true;
+    
+    try {
+        console.log('🔍 DEBUG: Starting image generation...');
+        el.download.innerHTML = '<span class="spinner"></span>Generating...';
+        
+        const canvas = await generateImage();
+        console.log('🔍 DEBUG: Canvas generated:', canvas);
+        
+        const link = document.createElement('a');
+        link.download = 'Holiday-Cards-' + Date.now() + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        console.log('🔍 DEBUG: Download link clicked');
+        showMessage(el.dlMsg, '✅ Download completed successfully!', 'success');
+    } catch (err) {
+        console.error('❌ ERROR:', err);
+        showMessage(el.dlMsg, '❌ Error generating image!', 'error');
+        alert('❌ Error: ' + err.message);
+    } finally {
+        el.download.disabled = false;
+        el.download.innerHTML = '🎁 Download Image';
+    }
+};
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    createColorSwatches(el.colorPal, el.prevText, '#ffffff');
+    
+    // Phrases will be loaded and rendered by loadPhrases() function
+    
+    updatePreview();
+});
+
+window.addEventListener('beforeunload', () => {
+    if (currentImageObjectURL) {
+        URL.revokeObjectURL(currentImageObjectURL);
+    }
+});
+</script>
+
+</body>
+</html>
